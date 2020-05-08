@@ -51,6 +51,11 @@ VALUES (1, 'banana', 3.432, 'pieces', Now() + INTERVAL '1' HOUR),
        (2, 'cinnamon', 1.95, 'tablespoons', Now() + INTERVAL '5' HOUR),
        (3, 'salt', 1, 'pinch', Now() + INTERVAL '6' HOUR);
 
+INSERT INTO allergies (user_id, name)
+VALUES (1, 'peanut'),
+       (1, 'lactose'),
+       (2, 'garlic'),
+       (3, 'gluten');
 
 
 
