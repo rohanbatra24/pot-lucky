@@ -15,8 +15,9 @@ CREATE TABLE pantries (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
-  quantity INTEGER NOT NULL,
-  expirations DATE
+  quantity DECIMAL(10, 3) NOT NULL,
+  unit VARCHAR(255) NOT NULL,
+  expiry DATE
 );
 
 CREATE TABLE allergies (
@@ -35,3 +36,21 @@ ALTER SEQUENCE users_id_seq RESTART WITH 1;
 ALTER SEQUENCE pantries_id_seq RESTART WITH 1;
 ALTER SEQUENCE allergies_id_seq RESTART WITH 1;
 ALTER SEQUENCE saved_recipes_id_seq RESTART WITH 1;
+
+
+INSERT INTO users (name, email, password)
+VALUES ('user_a', 'a@gmail.com','password'),
+       ('user_b', 'b@gmail.com', 'password'),
+       ('user_c', 'c@gmail.com', 'password');
+
+INSERT INTO pantries (user_id, name, quantity, unit, expiry)
+VALUES (1, 'banana', 3.432, 'pieces', Now() + INTERVAL '1' HOUR),
+       (1, 'sugar', 23, 'ounces', Now() + INTERVAL '2' HOUR),
+       (1, 'turnip', 12, 'pieces', Now() + INTERVAL '3' HOUR),
+       (2, 'lemon juice', .75, 'cups', Now() + INTERVAL '4' HOUR),
+       (2, 'cinnamon', 1.95, 'tablespoons', Now() + INTERVAL '5' HOUR),
+       (3, 'salt', 1, 'pinch', Now() + INTERVAL '6' HOUR);
+
+
+
+
