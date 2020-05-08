@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 export default function Show(props) {
-  const pantriesClass = classNames({
+  const pantryClass = classNames({
     "pantry-list__item": props,
     "pantry-list__item--selected": props.selected,
   });
