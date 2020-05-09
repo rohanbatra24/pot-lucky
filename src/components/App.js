@@ -10,7 +10,7 @@ import NavBar from './NavBar'
 import Filter from './Filter'
 
 const state = {
-	pantryListItems : [
+	pantryListItems: [
 		{
 			id       : 1,
 			user_id  : 1,
@@ -77,7 +77,15 @@ const state = {
 			servings       : 12,
 			title          : 'Best Baked Macaroni and Cheese'
 		}
-	]
+	],
+	users: [
+    {
+      id: 1,,
+      name: 'Harry Potter',
+      email: 'hp@hogwarts.com(opens in new tab)',
+      password: 'password' //will store as hash
+    }
+  ]
 };
 
 /*
