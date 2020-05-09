@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function Show(props) {
 	const pantryClass = classNames({
@@ -10,8 +11,8 @@ export default function Show(props) {
 	console.log('props:', props);
 
 	return (
-		<li>
-			<h3>{props.name}</h3>
-		</li>
+		<ListGroup.Item as="li">
+    	<h3>{props.name}</h3>
+  	</ListGroup.Item>
 	);
 }

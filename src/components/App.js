@@ -101,12 +101,12 @@ function App() {
 
 	return (
 		<Fragment>
-			<NavBar />
+			<div><NavBar /></div>
 			<Search />
 			<MixingBowl />
-			<label htmlFor="">Pantry List</label>
+			<label htmlFor=""><h1>Pantry List</h1></label>
 			<div className="pantry">{pantry}</div>
-			<label htmlFor="">Recipes</label>
+			<label htmlFor=""><h1>Recipes</h1></label>
 			<div className="recipes">{recipes}</div>
 		</Fragment>
 	);
