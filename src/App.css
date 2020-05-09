@@ -20,3 +20,17 @@ li {
 	margin: 0;
 	padding: 0;
 } */
+
+.main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.pantry-container {
+	display: block;
+}
+.mixingbowl {
+	display: block;
+}
