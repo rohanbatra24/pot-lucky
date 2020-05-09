@@ -101,13 +101,20 @@ function App() {
 
 	return (
 		<Fragment>
-			<div><NavBar /></div>
-			<Search />
-			<MixingBowl />
-			<label htmlFor=""><h1>Pantry List</h1></label>
-			<div className="pantry">{pantry}</div>
-			<label htmlFor=""><h1>Recipes</h1></label>
-			<div className="recipes">{recipes}</div>
+			<NavBar />
+			<div className='main'>
+				<div className='pantry-container'>
+					<div className='mixingbowl'><MixingBowl /></div>
+					<label htmlFor=""><h1>Pantry List</h1></label>
+					<div className="pantry">{pantry}</div>
+				</div>
+
+				<div className='recipe-container'>
+					<Search />
+					<label htmlFor=""><h1>Recipes</h1></label>
+					<div className="recipes">{recipes}</div>
+				</div>
+			</div>
 		</Fragment>
 	);
 }
