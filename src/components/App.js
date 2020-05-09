@@ -7,6 +7,7 @@ import RecipeList from './Recipes/Index';
 import MixingBowl from './MixingBowl'
 import Search from './Search'
 import NavBar from './NavBar'
+import Filter from './Filter'
 
 const state = {
 	pantryListItems : [
@@ -111,6 +112,7 @@ function App() {
 
 				<div className='recipe-container'>
 					<Search />
+					<Filter />
 					<label htmlFor=""><h1>Recipes</h1></label>
 					<div className="recipes">{recipes}</div>
 				</div>
