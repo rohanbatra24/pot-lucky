@@ -80,7 +80,7 @@ const state = {
 	],
 	users: [
     {
-      id: 1,,
+      id: 1,
       name: 'Harry Potter',
       email: 'hp@hogwarts.com(opens in new tab)',
       password: 'password' //will store as hash
