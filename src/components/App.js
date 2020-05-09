@@ -1,15 +1,6 @@
 import React from 'react';
 import '../App.css';
 
-// const pantryList = [{
-//   id: 1,
-//   user_id: 1,
-//   name: 'banana',
-//   quantity: 3.432,
-//   unit: 'pieces',
-//   expiry: '2020-05-08'
-// }];
-
 const state = {
   'pantryListItems': [{
       id: 1,
@@ -76,7 +67,6 @@ function App() {
 
 	return (
 		<div className="App">
-
 			<PantryList />
 		</div>
 	);
