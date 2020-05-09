@@ -4,6 +4,9 @@ import '../App.css';
 
 import PantryList from './Pantry/Index';
 import RecipeList from './Recipes/Index';
+import MixingBowl from './MixingBowl'
+import Search from './Search'
+import NavBar from './NavBar'
 
 const state = {
 	pantryListItems : [
@@ -83,6 +86,7 @@ const state = {
 		2. Recipe list
 		3. Search
 		4. Navigation bar
+		5. Mixing Bowl
 
 */
 
@@ -97,6 +101,9 @@ function App() {
 
 	return (
 		<Fragment>
+			<NavBar />
+			<Search />
+			<MixingBowl />
 			<label htmlFor="">Pantry List</label>
 			<div className="pantry">{pantry}</div>
 			<label htmlFor="">Recipes</label>
