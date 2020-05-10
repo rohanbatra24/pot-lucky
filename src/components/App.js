@@ -1,4 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import axios from 'axios';
+
+import '../hooks/useApplicationData';
 
 import '../App.css';
 
@@ -88,25 +91,24 @@ const state = {
 	]
 };
 
-/*
-
-	Child components:
-		1. Pantry list
-		2. Recipe list
-		3. Search
-		4. Navigation bar
-		5. Mixing Bowl
-
-*/
-
 function App() {
 	// const [ users, setUsers ] = useState([]);
 
 	const [ pantry, setPantry ] = useState([]);
+	const [ recipeList, setRecipeList ] = useState([]);
 
 	useEffect(() => {
 		getPantry();
+		getRecipeList();
 	}, []);
+
+	function getRecipeList() {
+		axios.get('https://api.spoonacular.com/recipes/search?query=cheese&number=10&apiKey=4ed5da45f1c94518a9663b95f895c3b3')
+		  .then(res => {
+		  	setRecipeList(res.data.results);
+		  })
+		  .catch(err => console.error(err));
+	}
 
 	function getPantry() {
 		fetch('http://localhost:3001')
@@ -126,7 +128,7 @@ function App() {
 		return <h1>{item.name} </h1>;
 	});
 
-	const recipes = state.recipeListItems.map((item) => {
+	const recipes = recipeList.map((item) => {
 		return <RecipeList name={item.title} />;
 	});
 
