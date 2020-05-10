@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import '../App.css';
 
 import PantryList from './Pantry/Index';
 import RecipeList from './Recipes/Index';
-import MixingBowl from './MixingBowl'
-import Search from './Search'
-import NavBar from './NavBar'
-import Filter from './Filter'
+import MixingBowl from './MixingBowl';
+import Search from './Search';
+import NavBar from './NavBar';
+import Filter from './Filter';
 
 const state = {
-	pantryListItems: [
+	pantryListItems : [
 		{
 			id       : 1,
 			user_id  : 1,
@@ -78,14 +78,14 @@ const state = {
 			title          : 'Best Baked Macaroni and Cheese'
 		}
 	],
-	users: [
-    {
-      id: 1,
-      name: 'Harry Potter',
-      email: 'hp@hogwarts.com(opens in new tab)',
-      password: 'password' //will store as hash
-    }
-  ]
+	users           : [
+		{
+			id       : 1,
+			name     : 'Harry Potter',
+			email    : 'hp@hogwarts.com(opens in new tab)',
+			password : 'password' //will store as hash
+		}
+	]
 };
 
 /*
@@ -100,8 +100,26 @@ const state = {
 */
 
 function App() {
-	const pantry = state.pantryListItems.map((item) => {
-		return <PantryList name={item.name} />;
+	const [ users, setUsers ] = useState([]);
+
+	useEffect(() => {
+		getUsers();
+	}, []);
+
+	function getUsers() {
+		fetch('http://localhost:3001')
+			.then((response) => {
+				return response.text();
+			})
+			.then((data) => {
+				setUsers(data);
+			});
+	}
+
+	console.log('====', users);
+
+	const usersList = users.map((user) => {
+		return <h1>{user.name} </h1>;
 	});
 
 	const recipes = state.recipeListItems.map((item) => {
@@ -111,19 +129,27 @@ function App() {
 	return (
 		<Fragment>
 			<NavBar />
-			<div className='main'>
-				<div className='pantry-container'>
-					<div className='mixingbowl'><MixingBowl /></div>
-					<label htmlFor=""><h1>Pantry List</h1></label>
-					<div className="pantry">{pantry}</div>
+			<div className="main">
+				<div className="pantry-container">
+					<div className="mixingbowl">
+						<MixingBowl />
+					</div>
+					<label htmlFor="">
+						<h1>Pantry List</h1>
+					</label>
+					<div className="pantry">{usersList && usersList}</div>
 				</div>
 
-				<div className='recipe-container'>
-					<Search />
-					<Filter />
-					<label htmlFor=""><h1>Recipes</h1></label>
-					<div className="recipes">{recipes}</div>
-				</div>
+				{
+					<div className="recipe-container">
+						<Search />
+						<Filter />
+						<label htmlFor="">
+							<h1>Recipes</h1>
+						</label>
+						<div className="recipes">{recipes}</div>
+					</div>
+				}
 			</div>
 		</Fragment>
 	);
