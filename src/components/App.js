@@ -94,19 +94,17 @@ const state = {
 function App() {
 	// const [ users, setUsers ] = useState([]);
 
-	const [ pantry, setPantry ] = useState([]);
-	const [ recipeList, setRecipeList ] = useState([]);
+	const [pantry, setPantry] = useState([]);
+	const [recipeList, setRecipeList] = useState([]);
 
 	useEffect(() => {
 		getPantry();
-		getRecipeList();
+		// getRecipeList();
 	}, []);
 
 	function getRecipeList() {
 		axios.get('https://api.spoonacular.com/recipes/search?query=cheese&number=10&apiKey=4ed5da45f1c94518a9663b95f895c3b3')
-		  .then(res => {
-		  	setRecipeList(res.data.results);
-		  })
+		  .then(res => setRecipeList(res.data.results))
 		  .catch(err => console.error(err));
 	}
 
@@ -148,7 +146,7 @@ function App() {
 
 				{
 					<div className="recipe-container">
-						<Search />
+						<Search setRecipeList={setRecipeList} />
 						<Filter />
 						<label htmlFor="">
 							<h1>Recipes</h1>
