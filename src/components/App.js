@@ -100,26 +100,30 @@ const state = {
 */
 
 function App() {
-	const [ users, setUsers ] = useState([]);
+	// const [ users, setUsers ] = useState([]);
+
+	const [ pantry, setPantry ] = useState([]);
 
 	useEffect(() => {
-		getUsers();
+		getPantry();
 	}, []);
 
-	function getUsers() {
+	function getPantry() {
 		fetch('http://localhost:3001')
 			.then((response) => {
-				return response.text();
+				// console.log('response====', response);
+				return response.json();
 			})
 			.then((data) => {
-				setUsers(data);
+				console.log(data);
+				setPantry(data);
 			});
 	}
 
-	console.log('====', users);
+	// console.log('====', pantry);
 
-	const usersList = users.map((user) => {
-		return <h1>{user.name} </h1>;
+	const pantryList = pantry.map((item) => {
+		return <h1>{item.name} </h1>;
 	});
 
 	const recipes = state.recipeListItems.map((item) => {
@@ -137,7 +141,7 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<div className="pantry">{usersList && usersList}</div>
+					<div className="pantry">{pantryList && pantryList}</div>
 				</div>
 
 				{

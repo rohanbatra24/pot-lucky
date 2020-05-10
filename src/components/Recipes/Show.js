@@ -8,11 +8,11 @@ export default function Show(props) {
 		'pantry-list__item--selected' : props.selected
 	});
 
-	console.log('props:', props);
+	// console.log('props:', props);
 
 	return (
 		<ListGroup.Item as="li">
-    	<h3>{props.name}</h3>
-  	</ListGroup.Item>
+			<h3>{props.name}</h3>
+		</ListGroup.Item>
 	);
 }
