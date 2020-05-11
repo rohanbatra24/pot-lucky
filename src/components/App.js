@@ -27,14 +27,13 @@ function App() {
 	const [pantry, setPantry] = useState([]);
 	const [recipeList, setRecipeList] = useState([]);
 
-
 	useEffect(() => {
 		getPantry();
 	}, []);
 
 	function getRecipes() {	
-		console.log("in get recipes")
-		console.log("recipeList: ", recipeList)
+		console.log("inside getRecipes()")
+		console.log("recipeList ====>", recipeList)
 		const recipes = recipeList.map((item) => {
 			for (let filter in filters) {
 				if (item[filter] === filters.filter) {
@@ -50,25 +49,24 @@ function App() {
 	}, [filters, recipeList])
 
 	function getPantry() {
-		fetch('http://localhost:3001')
+		// fetch('http://localhost:3001')
+		fetch('http://localhost:8080')
 			.then((response) => {
-				// console.log('response====', response);
+				// console.log('response (fetch from localhost) ====>', response);
 				return response.json();
 			})
 			.then((data) => {
-				console.log(data);
+				console.log('data (json from fetch from localhost) ====>', data);
 				setPantry(data);
 			})
 			.catch(err => console.error(err));
 	}
 
-	console.log('====', pantry);
+	// console.log('pantry ====>', pantry);
 
 	const pantryList = pantry.map((item) => {
-		return <h1>{item.name} </h1>;
+		return <h1>{item.name}</h1>;
 	});
-
-
 
 	return (
 		<Fragment>
