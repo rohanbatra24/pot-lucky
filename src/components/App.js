@@ -50,7 +50,7 @@ function App() {
 	}, [filters, recipeList])
 
 	function getPantry() {
-		fetch('http://localhost:8080')
+		fetch('http://localhost:3001')
 			.then((response) => {
 				// console.log('response====', response);
 				return response.json();
@@ -58,7 +58,8 @@ function App() {
 			.then((data) => {
 				console.log(data);
 				setPantry(data);
-			});
+			})
+			.catch(err => console.error(err));
 	}
 
 	console.log('====', pantry);
