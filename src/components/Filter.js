@@ -22,7 +22,7 @@ export default function Filter(props) {
     return <option>${type}</option>
   })
 
-  console.log("Filters:  ", props.filters)
+  console.log("Filters ====>", props.filters)
 
   return (
     <div className='filters'>

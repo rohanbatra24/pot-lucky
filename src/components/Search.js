@@ -15,7 +15,7 @@ export default function Search(props) {
     .then(ids => {
       console.log("ids --->", ids)
       console.log("join ids ---> ", ids.join('%2C'))
-      ids && axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join(',')}&apiKey=7a707a8f3c6b42ffb52bccfa111f4a00`)})
+      ids && axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join('%2C')}&apiKey=7a707a8f3c6b42ffb52bccfa111f4a00`)})
     .then(res => {
       console.log("RESULTS===> ", res.data)
       props.setRecipeList(res.data.results)
@@ -26,7 +26,7 @@ export default function Search(props) {
   return (
     <div>
       Search:
-      <form class="search">
+      <form className="search">
         <input
           placeholder='input search'
           value={searchText}
