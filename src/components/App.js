@@ -26,10 +26,9 @@ function App() {
 	});
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
-	const [ selectedPantryList, setSelectedPantryList ] = useState({});
+	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
 	useEffect(() => {
-		// console.log("about to get pantry")
 		getPantry();
 	}, []);
 
@@ -57,10 +56,8 @@ function App() {
 	}
 
 	function getPantry() {
-		// fetch('http://localhost:3001')
 		fetch('http://localhost:8080')
 			.then((response) => {
-				// console.log('response (fetch from localhost) ====>', response);
 				return response.json();
 			})
 			.then((data) => {
@@ -70,29 +67,14 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
-	// console.log('pantry ====>', pantry);
-
-	// const addPantryButtonHandler = () => {
-	// 	alert(this);
-	// };
-
 	const pantryList = pantry.map((item) => {
 		return (
 			<Fragment>
 				<h1>{item.name}</h1>
-				<button
-					onClick={() => setSelectedPantryList({ ...selectedPantryList, [item.name]: true })}
-					data-id={item.name}
-				>
-					+
-				</button>
+				<button onClick={() => setSelectedPantryList([ ...selectedPantryList, item.name ])}>+</button>
 			</Fragment>
 		);
 	});
-
-	console.log(selectedPantryList);
-
-	console.log('===', pantryList);
 
 	return (
 		<Fragment>
@@ -100,6 +82,7 @@ function App() {
 			<div className="main">
 				<div className="pantry-container">
 					<div className="mixingbowl">
+						{selectedPantryList}
 						<MixingBowl />
 					</div>
 					<label htmlFor="">
