@@ -6,7 +6,7 @@ export default function Search(props) {
 
   // Dynamically update list of recipes based on user's search input
   useEffect(() => {
-    axios.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=5&apiKey=4ed5da45f1c94518a9663b95f895c3b3`)
+    searchText && axios.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=5&apiKey=4ed5da45f1c94518a9663b95f895c3b3`)
       .then(res => props.setRecipeList(res.data.results))
       .catch(err => console.error(err))
   }, [searchText]);
