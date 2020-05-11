@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
 // cuisine - dropdown
@@ -12,13 +12,41 @@ import Form from 'react-bootstrap/Form';
 // dish type - dropdown
 
 export default function Filter(props) {
+  const [filters, setFilters] = useState({
+    vegan: false,
+    vegetarian: false,
+    glutenfree: false,
+    healthy: false,
+    time: 0,
+    rating: 0,
+    cuisine: null,
+    dish: null
+  })
+  
+  // const handleSwitch = (type) => {
+  //   setFilters({...filters, type: !filters[type]})
+  //   console.log("CHANGED FILTER: ", filters)
+  // }
+
+  const dishesList = props.dishes.map( dish => {
+    return <option>${dish}</option>
+  })
+
+  const cuisineList = props.cuisines.map( type => {
+    return <option>${type}</option>
+  })
+
+  console.log("Filters:  ", filters)
+
   return (
     <div className='filters'>
     <Form>
       <Form.Check 
         type="switch"
-        id="custom-switch"
+        id="vegan-switch"
         label="Vegan"
+        checked= {filters.vegan}
+        handleToggle={() => setFilters({...filters, vegan: !filters.vegan})}
       />
       <Form.Check 
         type="switch"
@@ -46,6 +74,7 @@ export default function Filter(props) {
       <Form.Group controlId="exampleForm.SelectCustom">
       <Form.Label>Cuisine</Form.Label>
         <Form.Control as="select" custom>
+          {/* {cuisinesList} */}
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -56,6 +85,7 @@ export default function Filter(props) {
       <Form.Group controlId="exampleForm.SelectCustom">
       <Form.Label>Dish Type</Form.Label>
         <Form.Control as="select" custom>
+          {/* {dishesList} */}
           <option>1</option>
           <option>2</option>
           <option>3</option>

@@ -63,6 +63,8 @@ function App() {
 						<Search setRecipeList={setRecipeList} />
 						{recipeList.length > 0 && // only show filters if there are recipes
 							<Filter />
+							// need to pass list of dishes and cuisines to form drop downs
+							// <Filter dishes={recipeList.dishes} cuisine={recipeList.cuisine}/>
       			}
 						<label htmlFor="">
 							<h1>Recipes</h1>
