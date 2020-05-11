@@ -32,8 +32,25 @@ function App() {
 		getPantry();
 	}, []);
 
+	function getRecipes() {	
+		console.log("in get recipes")
+		console.log("recipeList: ", recipeList)
+		const recipes = recipeList.map((item) => {
+			for (let filter in filters) {
+				if (item[filter] === filters.filter) {
+					return <RecipeList name={item.title} />;
+				}
+			};
+		});
+		return recipes;
+	}
+	useEffect(() => {
+		console.log("something changed")
+		getRecipes();
+	}, [filters, recipeList])
+
 	function getPantry() {
-		fetch('http://localhost:3001')
+		fetch('http://localhost:8080')
 			.then((response) => {
 				// console.log('response====', response);
 				return response.json();
@@ -44,15 +61,13 @@ function App() {
 			});
 	}
 
-	// console.log('====', pantry);
+	console.log('====', pantry);
 
 	const pantryList = pantry.map((item) => {
 		return <h1>{item.name} </h1>;
 	});
 
-	const recipes = recipeList.map((item) => {
-		return <RecipeList name={item.title} />;
-	});
+
 
 	return (
 		<Fragment>
@@ -77,7 +92,7 @@ function App() {
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
-						<div className="recipes">{recipes}</div>
+						<div className="recipes">{getRecipes()}</div>
 					</div>
 				}
 			</div>
