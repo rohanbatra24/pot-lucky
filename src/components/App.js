@@ -61,7 +61,9 @@ function App() {
 				{
 					<div className="recipe-container">
 						<Search setRecipeList={setRecipeList} />
-						<Filter />
+						{recipeList.length > 0 && // only show filters if there are recipes
+							<Filter />
+      			}
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
