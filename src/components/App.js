@@ -28,31 +28,35 @@ function App() {
 	const [recipeList, setRecipeList] = useState([]);
 
 	useEffect(() => {
+		console.log("about to get pantry")
 		getPantry();
 	}, []);
 
 	function getRecipes() {	
 		console.log("inside getRecipes()")
 		console.log("recipeList ====>", recipeList)
-		const recipes = recipeList.map((item) => {
-			for (let filter in filters) {
-				if (item[filter] === filters.filter) {
-					return <RecipeList name={item.title} />;
-				}
-			};
-		});
+		//loop filters keys, get true ones "active filters"
+		// const activeFilters = Object.keys(filters).filters(f => f)
+		const filtered = recipeList.filter(item => item.vegan)
+		const recipes = filtered.map((item) => {
+			return <RecipeList name={item.title} />;
+		})
+		// const recipes = recipeList.map((item) => {
+		// 	for (let filter in filters) {
+		// 		if (item[filter] === filters.filter) {
+		// 			return <RecipeList name={item.title} />;
+		// 		}
+		// 	};
+		// });
 		return recipes;
 	}
-	useEffect(() => {
-		console.log("something changed")
-		getRecipes();
-	}, [filters, recipeList])
+
 
 	function getPantry() {
 		// fetch('http://localhost:3001')
 		fetch('http://localhost:8080')
 			.then((response) => {
-				// console.log('response (fetch from localhost) ====>', response);
+				console.log('response (fetch from localhost) ====>', response);
 				return response.json();
 			})
 			.then((data) => {
@@ -62,7 +66,7 @@ function App() {
 			.catch(err => console.error(err));
 	}
 
-	// console.log('pantry ====>', pantry);
+	console.log('pantry ====>', pantry);
 
 	const pantryList = pantry.map((item) => {
 		return <h1>{item.name}</h1>;
@@ -79,7 +83,7 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<div className="pantry">{pantryList && pantryList}</div>
+					<div className="pantry">{pantryList}</div>
 				</div>
 
 				{
@@ -91,6 +95,7 @@ function App() {
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
+						{/* <RecipeList recipes={recipeList} /> */}
 						<div className="recipes">{getRecipes()}</div>
 					</div>
 				}
