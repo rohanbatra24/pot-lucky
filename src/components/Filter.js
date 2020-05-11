@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
+import Switch from './Switch';
 
 // cuisine - dropdown
 // time required - slider
@@ -12,57 +13,40 @@ import Form from 'react-bootstrap/Form';
 // dish type - dropdown
 
 export default function Filter(props) {
-  const [filters, setFilters] = useState({
-    vegan: false,
-    vegetarian: false,
-    glutenfree: false,
-    healthy: false,
-    time: 0,
-    rating: 0,
-    cuisine: null,
-    dish: null
-  })
-  
-  // const handleSwitch = (type) => {
-  //   setFilters({...filters, type: !filters[type]})
-  //   console.log("CHANGED FILTER: ", filters)
-  // }
 
   const dishesList = props.dishes.map( dish => {
     return <option>${dish}</option>
   })
 
-  const cuisineList = props.cuisines.map( type => {
+  const cuisinesList = props.cuisines.map( type => {
     return <option>${type}</option>
   })
 
-  console.log("Filters:  ", filters)
+  console.log("Filters:  ", props.filters)
 
   return (
     <div className='filters'>
     <Form>
-      <Form.Check 
-        type="switch"
-        id="vegan-switch"
-        label="Vegan"
-        checked= {filters.vegan}
-        handleToggle={() => setFilters({...filters, vegan: !filters.vegan})}
+      <Switch 
+        isOn={props.filters.vegan}
+        handleToggle={() => props.setFilters({...props.filters, vegan: !props.filters.vegan})}
+      /> 
+      Vegan
+      <Switch 
+        isOn={props.filters.vegetarian}
+        handleToggle={() => props.setFilters({...props.filters, vegetarian: !props.filters.vegetarian})}
       />
-      <Form.Check 
-        type="switch"
-        id="custom-switch"
-        label="Vegetarian"
+      Vegetarian
+      <Switch 
+        isOn={props.filters.glutenfree}
+        handleToggle={() => props.setFilters({...props.filters, glutenfree: !props.filters.glutenfree})}
       />
-        <Form.Check 
-        type="switch"
-        id="custom-switch"
-        label="Gluten-Free"
+      Gluten Free
+      <Switch 
+        isOn={props.filters.healthy}
+        handleToggle={() => props.setFilters({...props.filters, healthy: !props.filters.healthy})}
       />
-        <Form.Check 
-        type="switch"
-        id="custom-switch"
-        label="Low Calorie"
-      />
+      Healthy
       <Form.Group controlId="formBasicRange">
         <Form.Label>Time</Form.Label>
         <Form.Control type="range" />
@@ -74,23 +58,23 @@ export default function Filter(props) {
       <Form.Group controlId="exampleForm.SelectCustom">
       <Form.Label>Cuisine</Form.Label>
         <Form.Control as="select" custom>
-          {/* {cuisinesList} */}
-          <option>1</option>
+          {cuisinesList}
+          {/* <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option>5</option> */}
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="exampleForm.SelectCustom">
       <Form.Label>Dish Type</Form.Label>
         <Form.Control as="select" custom>
-          {/* {dishesList} */}
-          <option>1</option>
+          {dishesList}
+          {/* <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option>5</option> */}
         </Form.Control>
       </Form.Group>
     </Form>
