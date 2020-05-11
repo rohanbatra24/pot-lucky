@@ -14,9 +14,19 @@ import Filter from './Filter';
 
 function App() {
 	// const [ users, setUsers ] = useState([]);
-
+	const [filters, setFilters] = useState({
+    vegan: false,
+    vegetarian: false,
+    glutenfree: false,
+    healthy: false,
+    time: 0,
+    rating: 0,
+    cuisine: null,
+    dish: null
+  })
 	const [pantry, setPantry] = useState([]);
 	const [recipeList, setRecipeList] = useState([]);
+
 
 	useEffect(() => {
 		getPantry();
@@ -61,11 +71,9 @@ function App() {
 				{
 					<div className="recipe-container">
 						<Search setRecipeList={setRecipeList} />
-						{recipeList.length > 0 && // only show filters if there are recipes
-							<Filter />
-							// need to pass list of dishes and cuisines to form drop downs
-							// <Filter dishes={recipeList.dishes} cuisine={recipeList.cuisine}/>
-      			}
+						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
+							<Filter filters={filters} setFilters={setFilters} dishes={['breakfast', 'dinner']} cuisines={['italian', 'mediterranian']} />
+      			{/* } */}
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
