@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ListGroup from 'react-bootstrap/ListGroup';
+
 export default function Show(props) {
 	const pantryClass = classNames({
 		'pantry-list__item'           : props,
