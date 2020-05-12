@@ -71,13 +71,8 @@ function App() {
 
 	function getPantry() {
 		fetch('http://localhost:8080')
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				// console.log('data (json from fetch from localhost) ====>', data);
-				setPantry(data);
-			})
+			.then(response => response.json())
+			.then(data => setPantry(data))
 			.catch((err) => console.error(err));
 	}
 
