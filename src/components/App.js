@@ -4,7 +4,7 @@ import '../hooks/useApplicationData';
 
 import '../App.css';
 
-import PantryList from './Pantry/Index';
+import PantryList from './Pantry/PantryList';
 import RecipeList from './Recipes/Index';
 import MixingBowl from './MixingBowl';
 import Search from './Search';
@@ -64,34 +64,45 @@ function App() {
 		return recipes;
 	}
 
-	function getSelectedPantryList() {
-		setSelectedPantryList({ ...selectedPantryList, [data]: true });
-	}
-
 	function getPantry() {
 		fetch('http://localhost:8080/api/pantries/all')
-			.then(response => response.json())
-			.then(data => {
-				console.log("getPantry response===> ", data)
-				setPantry(data)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('getPantry response===> ', data);
+				setPantry(data);
 			})
 			.catch((err) => console.error(err));
 	}
 
 	function addToPantry(event, newItem) {
-		event.preventDefault(); 
+		event.preventDefault();
 		fetch('http://localhost:8080/api/pantries/add', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(newItem)
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify(newItem)
 		})
-		.then(res => res.json())
-		.then(res => {
-			setPantry([...pantry, res])
-		})
-		.catch(err => console.error(err))
+			.then((res) => res.json())
+			.then((res) => {
+				setPantry([ ...pantry, res ]);
+			})
+			.catch((err) => console.error(err));
 	}
-	
+
+	function deleteFromPantry(event, itemId) {
+		event.preventDefault();
+		console.log('itemID===', itemId);
+		fetch('http://localhost:8080/api/pantries/delete', {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify({ id: itemId })
+		})
+			.then((res) => {
+				// setPantry([ ...pantry, res ]);
+				getPantry();
+			})
+			.catch((err) => console.error(err));
+	}
+
 	return (
 		<Fragment>
 			<NavBar />
@@ -99,24 +110,27 @@ function App() {
 				<div className="pantry-container">
 					<div className="mixingbowl">
 						{selectedPantryList}
+						<button>Make buttons for deleting these</button>
 						<MixingBowl />
 					</div>
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<PantryList handleAddItem={addToPantry} pantry={pantry} setSelectedPantryList={setSelectedPantryList} selectedPantryList={selectedPantryList}/>
+					<PantryList
+						handleAddItem={addToPantry}
+						pantry={pantry}
+						setSelectedPantryList={setSelectedPantryList}
+						selectedPantryList={selectedPantryList}
+						handleDeleteItem={deleteFromPantry}
+					/>
 				</div>
 
 				{
 					<div className="recipe-container">
 						<Search setRecipeList={setRecipeList} />
 						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
-							<Filter 
-								filters={filters} 
-								setFilters={setFilters} 
-								recipeList={recipeList} 
-							/>
-      			{/* } */}
+						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
+						{/* } */}
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
