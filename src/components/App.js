@@ -14,62 +14,80 @@ import Filter from './Filter';
 
 function App() {
 	// const [ users, setUsers ] = useState([]);
-	const [filters, setFilters] = useState({
-    vegan: false,
-    vegetarian: false,
-    glutenfree: false,
-    healthy: false,
-    time: 0,
-    rating: 0,
-    cuisine: null,
-    dish: null
-  })
-	const [pantry, setPantry] = useState([]);
-	const [recipeList, setRecipeList] = useState([]);
+	const [ filters, setFilters ] = useState({
+		vegan      : false,
+		vegetarian : false,
+		glutenfree : false,
+		healthy    : false,
+		time       : 0,
+		rating     : 0,
+		cuisine    : null,
+		dish       : null
+	});
+	const [ pantry, setPantry ] = useState([]);
+	const [ recipeList, setRecipeList ] = useState([]);
+	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
 	useEffect(() => {
-		console.log("about to get pantry")
 		getPantry();
 	}, []);
 
-	function getRecipes() {	
-		console.log("inside getRecipes()")
-		console.log("recipeList ====>", recipeList)
+	function getRecipes() {
 		//loop filters keys, get true ones "active filters"
-		// const activeFilters = Object.keys(filters).filters(f => f)
-		const filtered = recipeList.filter(item => item.vegan)
-		const recipes = filtered.map((item) => {
-			return <RecipeList name={item.title} />;
-		})
-		// const recipes = recipeList.map((item) => {
-		// 	for (let filter in filters) {
-		// 		if (item[filter] === filters.filter) {
-		// 			return <RecipeList name={item.title} />;
-		// 		}
-		// 	};
-		// });
+		const activeFilters = Object.keys(filters).filter((f) => filters[f]);
+
+		// console.log(activeFilters);
+		// console.log('recipe list===', recipeList);
+
+		let filtered = [];
+
+		if (activeFilters.length > 0) {
+			recipeList.forEach((recipe) => {
+				if (filters.vegan && recipe.vegan) {
+					filtered.push(recipe);
+				}
+
+				if (filters.vegetarian && recipe.vegetarian) {
+					filtered.push(recipe);
+				}
+			});
+		}
+		else {
+			filtered = recipeList;
+		}
+
+		let unique = [ ...new Set(filtered) ];
+
+		const recipes = unique.map((recipe) => {
+			return <RecipeList name={recipe.title} />;
+		});
+
 		return recipes;
 	}
 
+	function getSelectedPantryList() {
+		setSelectedPantryList({ ...selectedPantryList, [data]: true });
+	}
 
 	function getPantry() {
-		// fetch('http://localhost:3001')
 		fetch('http://localhost:8080')
 			.then((response) => {
-				console.log('response (fetch from localhost) ====>', response);
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data (json from fetch from localhost) ====>', data);
+				// console.log('data (json from fetch from localhost) ====>', data);
 				setPantry(data);
 			})
-			.catch(err => console.error(err));
+			.catch((err) => console.error(err));
 	}
 
-	console.log('pantry ====>', pantry);
-
 	const pantryList = pantry.map((item) => {
-		return <h1>{item.name}</h1>;
+		return (
+			<Fragment>
+				<h1>{item.name}</h1>
+				<button onClick={() => setSelectedPantryList([ ...selectedPantryList, item.name ])}>+</button>
+			</Fragment>
+		);
 	});
 
 	return (
@@ -78,6 +96,7 @@ function App() {
 			<div className="main">
 				<div className="pantry-container">
 					<div className="mixingbowl">
+						{selectedPantryList}
 						<MixingBowl />
 					</div>
 					<label htmlFor="">

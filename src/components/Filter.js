@@ -5,7 +5,7 @@ import Slider from './Slider';
 
 // cuisine - dropdown
 // time required - slider
-// dietary restrictions - switches 
+// dietary restrictions - switches
 //  - vegan
 //  - vegatarian
 //  - gluten-free
