@@ -22,6 +22,15 @@ function retrievePantry(user_id) {
   	.catch(err => console.log('Error retrieving items from pantry!', err);
 };
 
+/*
+
+  Concerns:
+    - User-defined expiry date, perhaps use a pop-up calendar?
+    - User-defined units, perhaps use a dropdown box?
+
+*/
+
+
 // Add a new item to the pantry
 function addItemToPantry(item) {
   const params = [
