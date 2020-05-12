@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import axios from 'axios';
 
 import '../hooks/useApplicationData';
 
@@ -70,21 +69,29 @@ function App() {
 	}
 
 	function getPantry() {
-		fetch('http://localhost:8080')
+		fetch('http://localhost:8080/api/pantries/all')
 			.then(response => response.json())
-			.then(data => setPantry(data))
+			.then(data => {
+				console.log("getPantry response===> ", data)
+				setPantry(data)
+			})
 			.catch((err) => console.error(err));
 	}
 
-	const pantryList = pantry.map((item) => {
-		return (
-			<Fragment>
-				<h1>{item.name}</h1>
-				<button onClick={() => setSelectedPantryList([ ...selectedPantryList, item.name ])}>+</button>
-			</Fragment>
-		);
-	});
-
+	function addToPantry(event, newItem) {
+		event.preventDefault(); 
+		fetch('http://localhost:8080/api/pantries/add', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(newItem)
+		})
+		.then(res => res.json())
+		.then(res => {
+			setPantry([...pantry, res])
+		})
+		.catch(err => console.error(err))
+	}
+	
 	return (
 		<Fragment>
 			<NavBar />
@@ -97,7 +104,7 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<div className="pantry">{pantryList}</div>
+					<PantryList handleAddItem={addToPantry} pantry={pantry} setSelectedPantryList={setSelectedPantryList} selectedPantryList={selectedPantryList}/>
 				</div>
 
 				{
