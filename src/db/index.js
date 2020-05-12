@@ -1,25 +1,81 @@
 const { Pool } = require('pg');
-const pool = new Pool({
+const db = new Pool({
 	user     : 'vagrant',
 	password : '123',
 	host     : 'localhost',
 	database : 'potlucky'
 });
-// module.exports = {
-// 	query : (text, params) => {
-// 		return pool.query(text, params);
-// 	}
-// };
 
-function viewPantry(user_id) {
-	return pool
-		.query(
-			`
-    SELECT * FROM pantries
-    where user_id = '${user_id}';
-    `
-		)
-		.then((res) => res.rows[0])
-		.catch((err) => console.log(err));
-}
-exports.viewPantry = viewPantry;
+// Query database for all items in pantry
+function retrievePantry(user_id) {
+  const params = [user_id];
+
+  const queryString = `
+    SELECT *
+    FROM pantries
+    WHERE user_id = $1;
+  `;
+
+	return db
+    .query(queryString, params)
+  	.then(res => res.rows[0])
+  	.catch(err => console.log('Error retrieving items from pantry!', err);
+};
+
+/*
+
+  Concerns:
+    - User-defined expiry date, perhaps use a pop-up calendar?
+    - User-defined units, perhaps use a dropdown box?
+
+*/
+
+
+// Add a new item to the pantry
+function addItemToPantry(item) {
+  const params = [
+    item.name,
+    item.quantity,
+    item.units
+  ];
+
+  const queryString = `
+    INSERT INTO pantries
+    (name, quantity, unit)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `;
+
+  return db
+    .query(queryString, params)
+    .then(res => res.rows[0])
+    .catch(err => console.log('Error adding item to pantry!', err));
+};
+
+// Remove an item from the pantry
+function removeItemFromPantry(item) {
+  const params = [
+    item.id,
+    item.user_id
+  ];
+
+  const queryString = `
+    DELETE
+    FROM pantries
+    WHERE id = $1
+    AND user_id = $2
+  `;
+
+  return db
+    .query(queryString, params)
+    .then(res => res)
+    .catch(err => console.log('Error removing item from pantry!', err));
+};
+
+// exports.retrievePantry = retrievePantry;
+module.exports = {
+  retrievePantry,
+  addItemToPantry,
+  removeItemFromPantry
+};
+
