@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import axios from 'axios';
 
 import '../hooks/useApplicationData';
 
@@ -72,12 +71,14 @@ function App() {
 	function getPantry() {
 		fetch('http://localhost:8080/api/pantries/all')
 			.then(response => response.json())
-			.then(data => setPantry(data))
+			.then(data => {
+				console.log("getPantry response===> ", data)
+				setPantry(data)
+			})
 			.catch((err) => console.error(err));
 	}
 
 	function addToPantry(event, newItem) {
-		console.log("new item ---> ", JSON.stringify(newItem))
 		event.preventDefault(); 
 		fetch('http://localhost:8080/api/pantries/add', {
 			method: 'post',
@@ -86,8 +87,7 @@ function App() {
 		})
 		.then(res => res.json())
 		.then(res => {
-			console.log("response from fetch post: ", res)
-			// setPantry(res)
+			setPantry([...pantry, res])
 		})
 		.catch(err => console.error(err))
 	}
