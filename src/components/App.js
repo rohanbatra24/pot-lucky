@@ -109,14 +109,10 @@ function App() {
 
 				{
 					<div className="recipe-container">
-						<Search setRecipeList={setRecipeList} />
+						<Search selectedPantryList={selectedPantryList} setRecipeList={setRecipeList} />
 						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
-							<Filter 
-								filters={filters} 
-								setFilters={setFilters} 
-								recipeList={recipeList} 
-							/>
-      			{/* } */}
+						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
+						{/* } */}
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
