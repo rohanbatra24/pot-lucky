@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Show from './Show';
 import Add from './Add';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -9,13 +9,26 @@ export default function PantryList(props) {
 	// First item in list will always be New/Form
 	// Render PantryListItem in each iteration
 
+	const pantryList = props.pantry.map((item) => {
+		return (
+			<Fragment>
+				<Show
+					setSelectedPantryList={props.setSelectedPantryList}
+					selectedPantryList={props.selectedPantryList}
+					name={item.name}
+					id={item.id}
+					handleDeleteItem={props.handleDeleteItem}
+				/>
+				{/* fix needed = only allow user to add item once */}
+			</Fragment>
+		);
+	});
+
 	return (
-    <Fragment>
-      <Add />
-      <ListGroup as="ul">
-        <Show name={props.name} />
-      </ListGroup>
-    </Fragment>
-    
+		<Fragment>
+			<Add handleAddItem={props.handleAddItem} />
+
+			<ListGroup as="ul">{pantryList}</ListGroup>
+		</Fragment>
 	);
 }
