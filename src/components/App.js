@@ -70,20 +70,12 @@ function App() {
 	}
 
 	function getPantry() {
-		fetch('http://localhost:8080')
+		fetch('http://localhost:8080/api/pantries/all')
 			.then(response => response.json())
 			.then(data => setPantry(data))
 			.catch((err) => console.error(err));
 	}
 
-	const pantryList = pantry.map((item) => {
-		return (
-			<Fragment>
-				<h1>{item.name}</h1>
-				<button onClick={() => setSelectedPantryList([ ...selectedPantryList, item.name ])}>+</button>
-			</Fragment>
-		);
-	});
 
 	return (
 		<Fragment>
@@ -97,7 +89,7 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<div className="pantry">{pantryList}</div>
+					<PantryList handleAddItem={addToPantry} pantry={pantry} setSelectedPantryList={setSelectedPantryList} selectedPantryList={selectedPantryList}/>
 				</div>
 
 				{
