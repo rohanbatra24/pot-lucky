@@ -76,7 +76,22 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
-
+	function addToPantry(event, newItem) {
+		console.log("new item ---> ", JSON.stringify(newItem))
+		event.preventDefault(); 
+		fetch('http://localhost:8080/api/pantries/add', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(newItem)
+		})
+		.then(res => res.json())
+		.then(res => {
+			console.log("response from fetch post: ", res)
+			// setPantry(res)
+		})
+		.catch(err => console.error(err))
+	}
+	
 	return (
 		<Fragment>
 			<NavBar />
