@@ -1,5 +1,6 @@
 import React from 'react';
 import Show from './Show';
+import Add from './Add';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './styles.css';
 
@@ -9,8 +10,12 @@ export default function PantryList(props) {
 	// Render PantryListItem in each iteration
 
 	return (
-		<ListGroup as="ul">
-			<Show name={props.name} />
-		</ListGroup>
+    <Fragment>
+      <Add />
+      <ListGroup as="ul">
+        <Show name={props.name} />
+      </ListGroup>
+    </Fragment>
+    
 	);
 }
