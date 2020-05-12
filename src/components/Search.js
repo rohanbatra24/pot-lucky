@@ -7,32 +7,33 @@ export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
 
 	// Dynamically update list of recipes based on user's search input
-	useEffect(
-		() => {
-			// console.log(bulk);
-			// props.setRecipeList(bulk);
-			// searchText && axios.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=5&apiKey=7a707a8f3c6b42ffb52bccfa111f4a00`)
-			// .then(res => res.data.results.map(item => item.id ))
-			// .then(ids => {
-			//   console.log("ids --->", ids)
-			//   console.log("join ids ---> ", ids.join('%2C'))
-			//   if (ids) {
-			//     return axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join(',')}&apiKey=7a707a8f3c6b42ffb52bccfa111f4a00`)
-			//     .then(res => {
-			//       console.log("RESULTS===> ", res.data)
-			//       props.setRecipeList(res.data.results)
-			//     })
-			//   }
-			// })
-			// .catch(err => console.error(err))
-		},
-		[ searchText ]
-	);
+	const getRecipeList = () => {
+		// console.log(bulk);
+	};
 
 	function onSubmit(event) {
 		event.preventDefault();
-		const bulk = getBulkInfo();
-		props.setRecipeList(bulk);
+		searchText &&
+			axios
+				.get(
+					`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=692296bbb58c433b89dba0eb2c54099b`
+				)
+				.then((res) => res.data.results.map((item) => item.id))
+				.then((ids) => {
+					if (ids) {
+						return axios
+							.get(
+								`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join(
+									','
+								)}&apiKey=692296bbb58c433b89dba0eb2c54099b`
+							)
+							.then((res) => {
+								console.log('RESULTS from api call==>', res.data);
+								props.setRecipeList(res.data);
+							});
+					}
+				})
+				.catch((err) => console.error(err));
 	}
 
 	return (
