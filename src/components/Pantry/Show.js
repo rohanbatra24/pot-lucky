@@ -16,7 +16,7 @@ export default function Show(props) {
 			<button onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, props.name ])}>
 				Add to Sel Pantry List
 			</button>
-			<button type="submit" onClick={(event) => props.handleDeleteItem(event, props.id)}>
+			<button type="submit" onClick={(event) => props.handleDeleteItem(event, props.id, props.name)}>
 				Delete
 			</button>
 		</ListGroup.Item>
