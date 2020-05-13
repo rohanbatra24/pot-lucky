@@ -3,7 +3,7 @@ import axios from 'axios';
 import bulkInfo from '../assets/api_bulk_info';
 import getBulkInfo from '../assets/api_bulk_info';
 
-// API KEYS 
+// API KEYS
 // 7a707a8f3c6b42ffb52bccfa111f4a00
 // 4ed5da45f1c94518a9663b95f895c3b3
 // 692296bbb58c433b89dba0eb2c54099b
@@ -15,8 +15,7 @@ import getBulkInfo from '../assets/api_bulk_info';
 // a260062916e04970801d03d0db2c32b4
 // 46ef327a373243b192fc86af3fa94823
 
-
-const apiKey = '76961f7e03aa4b47955a3ce3c98c45f6'
+const apiKey = 'a59c64c98d4d4156b1e8d2992bc5ca06';
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
 
@@ -26,9 +25,7 @@ export default function Search(props) {
 		event.preventDefault();
 		searchText &&
 			axios
-				.get(
-					`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`
-				)
+				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`)
 				.then((res) => res.data.results.map((item) => item.id))
 				.then((ids) => {
 					if (ids) {
@@ -62,9 +59,7 @@ export default function Search(props) {
 		//api.spoonacular.com/recipes/findByIngredients?ingredients=banana,+sugar,+turnip&apiKey=692296bbb58c433b89dba0eb2c54099b
 
 		axios
-			.get(
-				`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}`
-			)
+			.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}`)
 			.then((res) => {
 				console.log(res.data);
 				return res.data.map((item) => item.id);
@@ -74,9 +69,7 @@ export default function Search(props) {
 				if (ids) {
 					return axios
 						.get(
-							`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join(
-								','
-							)}&apiKey=${apiKey}`
+							`https://api.spoonacular.com/recipes/informationBulk?ids=${ids.join(',')}&apiKey=${apiKey}`
 						)
 						.then((res) => {
 							console.log('RESULTS from api call==>', res.data);

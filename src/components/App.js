@@ -31,7 +31,7 @@ function App() {
 		getPantry();
 	}, []);
 
-	function getRecipes() {
+	function getFilteredRecipes() {
 		//loop filters keys, get true ones "active filters"
 		const activeFilters = Object.keys(filters).filter((f) => filters[f]);
 
@@ -57,11 +57,13 @@ function App() {
 
 		let unique = [ ...new Set(filtered) ];
 
-		const recipes = unique.map((recipe) => {
-			return <RecipeList name={recipe.title} />;
-		});
-
-		return recipes;
+		// const recipes = unique.map((recipe) => {
+		// 	console.log('recipe unique in app=====', recipe);
+		// 	return recipe />;
+		// });
+		// console.log('recipes in app=====', recipes);
+		console.log('unique===', unique);
+		return unique;
 	}
 
 	function getPantry() {
@@ -135,7 +137,7 @@ function App() {
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
-						<RecipeList recipes={recipeList} />
+						<RecipeList recipes={getFilteredRecipes()} />
 						{/* <div className="recipes">{getRecipes()}</div> */}
 					</div>
 				}
