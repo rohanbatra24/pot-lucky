@@ -26,7 +26,7 @@ export default function PantryList(props) {
 
 	return (
 		<Fragment>
-			<Add handleAddItem={props.handleAddItem} />
+			<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
 
 			<ListGroup as="ul">{pantryList}</ListGroup>
 		</Fragment>
