@@ -5,7 +5,7 @@ import '../hooks/useApplicationData';
 import '../App.css';
 
 import PantryList from './Pantry/PantryList';
-import RecipeList from './Recipes/Index';
+import RecipeList from './Recipes/RecipeList';
 import MixingBowl from './MixingBowl';
 import Search from './Search';
 import NavBar from './NavBar';
