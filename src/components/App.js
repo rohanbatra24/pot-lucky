@@ -88,7 +88,7 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
-	function deleteFromPantry(event, itemId) {
+	function deleteFromPantry(event, itemId, name) {
 		event.preventDefault();
 		console.log('itemID===', itemId);
 		fetch('http://localhost:8080/api/pantries/delete', {
@@ -97,7 +97,8 @@ function App() {
 			body    : JSON.stringify({ id: itemId })
 		})
 			.then((res) => {
-				// setPantry([ ...pantry, res ]);
+				setSelectedPantryList(selectedPantryList.filter((item) => item !== name));
+
 				getPantry();
 			})
 			.catch((err) => console.error(err));
