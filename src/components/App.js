@@ -10,6 +10,7 @@ import MixingBowl from './MixingBowl';
 import Search from './Search';
 import NavBar from './NavBar';
 import Filter from './Filter';
+import SelectedPantry from './Pantry/SelectedPantry';
 
 function App() {
 	// const [ users, setUsers ] = useState([]);
@@ -112,8 +113,8 @@ function App() {
 			<div className="main">
 				<div className="pantry-container">
 					<div className="mixingbowl">
-						{selectedPantryList}
-						<button>Make buttons for deleting these</button>
+						{/*selectedPantryList*/}
+						<SelectedPantry selectedPantryList={selectedPantryList} setSelectedPantryList={setSelectedPantryList} />
 						<MixingBowl />
 					</div>
 					<label htmlFor="">
