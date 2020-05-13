@@ -8,10 +8,16 @@ export default function RecipeList(props) {
 	// Retrieve list from database
 	// First item in list will always be New/Form
 	// Render PantryListItem in each iteration
+	const recipes = props.recipes.map(recipe => {
+		return (
+			<Show recipe={recipe} />
+		)
+
+	})
 
 	return (
 		<ListGroup as="ul">
-			<Show name={props.name} />
+			{recipes}
 		</ListGroup>
 	);
 }

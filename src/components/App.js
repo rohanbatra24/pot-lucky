@@ -135,8 +135,8 @@ function App() {
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
-						{/* <RecipeList recipes={recipeList} /> */}
-						<div className="recipes">{getRecipes()}</div>
+						<RecipeList recipes={recipeList} />
+						{/* <div className="recipes">{getRecipes()}</div> */}
 					</div>
 				}
 			</div>
