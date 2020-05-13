@@ -17,7 +17,7 @@ export default function RecipeList(props) {
 	const makeRecipeList = () => {
 		const recipes = props.recipes.map(recipe => {
 			return (
-				<Show selected={selected} setSelected={setSelected}recipe={recipe} />
+				<Show selected={selected} setSelected={setSelected} recipe={recipe} />
 			)
 		})
 		return recipes;
