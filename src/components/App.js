@@ -24,20 +24,19 @@ function App() {
 		cuisine    : null,
 		dish       : null
 	});
+	const [ingredients, setIngredients] = useState([])
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
 	useEffect(() => {
 		getPantry();
+		getIngredients()
 	}, []);
 
 	function getFilteredRecipes() {
 		//loop filters keys, get true ones "active filters"
 		const activeFilters = Object.keys(filters).filter((f) => filters[f]);
-
-		// console.log(activeFilters);
-		// console.log('recipe list===', recipeList);
 
 		let filtered = [];
 
@@ -66,6 +65,16 @@ function App() {
 		console.log('unique===', unique);
 		return unique;
 	}
+
+	function getIngredients() {
+		fetch('http://localhost:8080/api/ingredients/all')
+			.then((response) => response.json())
+			.then((data) => {
+        console.log('getIngredients response===> ', data);
+        setIngredients(data);
+			})
+			.catch((err) => console.error(err));
+  }
 
 	function getPantry() {
 		fetch('http://localhost:8080/api/pantries/all')
@@ -126,6 +135,7 @@ function App() {
 						setSelectedPantryList={setSelectedPantryList}
 						selectedPantryList={selectedPantryList}
 						handleDeleteItem={deleteFromPantry}
+						ingredients={ingredients}
 					/>
 				</div>
 
