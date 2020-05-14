@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import '../../App.css';
+
 export default function Add(props) {
 	const [ values, setValues ] = useState({
 		name     : '',
@@ -53,7 +55,7 @@ export default function Add(props) {
 		<Fragment>
 			<Form>
 				<Form.Group controlId="formBasicEmail">
-					<Form.Label>Add new item to pantry</Form.Label>
+					{/*<Form.Label>Add new item to pantry</Form.Label>*/}
 					<Form.Control
 						className="form-component"
 						value={values.name}
@@ -95,8 +97,8 @@ export default function Add(props) {
 						type="date"
 						onChange={(e) => setValues({ ...values, expiry: e.target.value })}
 					/>
-					<Button variant="info" type="submit" onClick={(event) => props.handleAddItem(event, values)}>
-						Add
+					<Button className="centered-button" variant="outline-danger" type="submit" onClick={(event) => props.handleAddItem(event, values)} block>
+						Add item to your pantry
 					</Button>
 				</Form.Group>
 			</Form>
