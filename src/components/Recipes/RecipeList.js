@@ -15,13 +15,21 @@ export default function RecipeList(props) {
 	// First item in list will always be New/Form
 	// Render PantryListItem in each iteration
 	const makeRecipeList = () => {
-		const recipes = props.recipes.map(recipe => {
+		if (props.recipes.length === 0) {
 			return (
-				<Show selected={selected} setSelected={setSelected} recipe={recipe} />
+				<div> Empty List - Search for something or add to your mixing bowl! </div>
 			)
-		})
-		return recipes;
+		} else {
+			const recipes = props.recipes.map(recipe => {
+				return (
+					<Show selected={selected} setSelected={setSelected} recipe={recipe} />
+					)
+				})
+				return recipes;
+			}
 	}
+
+
 	return (
 		<ListGroup as="ul">
 			{makeRecipeList()}
