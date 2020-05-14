@@ -10,16 +10,22 @@ export default function Show(props) {
 
 	// console.log('props:', props);
 
-	const isSelected = () => !props.selectedPantryList.includes(props.name);
-	
+	const isSelected = () => !props.selectedPantryList.includes(props.item.name);
+
 	return (
-		<ListGroup.Item as="li" id={props.id}>
-			<h3>{props.name}</h3>
-				{isSelected() && 
-					<button className={pantryClass} onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, props.name ])}>
-						Add to Sel Pantry List
-					</button>}
-			<button type="submit" onClick={(event) => props.handleDeleteItem(event, props.id, props.name)}>
+		<ListGroup.Item as="li" id={props.item.id}>
+			<h3>{props.item.name}</h3>
+			<h4>Quantity: {+props.item.quantity}</h4>
+			<h4>Unit: {props.item.unit}</h4>
+			{isSelected() && (
+				<button
+					className={pantryClass}
+					onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, props.item.name ])}
+				>
+					Add to Sel Pantry List
+				</button>
+			)}
+			<button type="submit" onClick={(event) => props.handleDeleteItem(event, props.item.id, props.item.name)}>
 				Delete
 			</button>
 		</ListGroup.Item>
