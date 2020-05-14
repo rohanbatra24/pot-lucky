@@ -1,15 +1,31 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import Button from 'react-bootstrap/Button';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 export default function SelectedPantry(props) {
+  if (props.selectedPantryList.length === 0) {
+    return(
+      <Jumbotron className="seleted-pantry_empty">
+        Add Item from Pantry!
+      </Jumbotron>
+    )
+  }
+  
   const items = props.selectedPantryList.map(item => {
     return (
-      <Fragment>
+      <div className="selected-pantry__item">
         <span>{item}</span>
-        <button onClick={() => props.setSelectedPantryList(props.selectedPantryList.filter((name) => item !== name))}>Remove</button>
-      </Fragment>
+        <Button onClick={() => props.setSelectedPantryList(props.selectedPantryList.filter((name) => item !== name))} variant="outline-secondary">Remove</Button>
+        {/* <button onClick={() => props.setSelectedPantryList(props.selectedPantryList.filter((name) => item !== name))}>Remove</button> */}
+      </div>
     )
   });
 
-  return items;
+  return (
+    <Jumbotron className="selected-pantry__full">
+      <h5>Searching with: </h5>
+      {items}
+    </Jumbotron>
+    );
 };
 
