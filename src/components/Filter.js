@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Switch from './Switch';
 import Slider from './Slider';
@@ -95,27 +95,32 @@ export default function Filter(props) {
 	return (
 		<div className="filters">
 			<Form>
-				<Switch
+        <Switch
+          type="vegan"
 					isOn={props.filters.vegan}
 					handleToggle={() => props.setFilters({ ...props.filters, vegan: !props.filters.vegan })}
 				/>
 				Vegan
 				<Switch
+          type="vegetarian"
 					isOn={props.filters.vegetarian}
 					handleToggle={() => props.setFilters({ ...props.filters, vegetarian: !props.filters.vegetarian })}
 				/>
 				Vegetarian
 				<Switch
+          type="glutenfree"
 					isOn={props.filters.glutenfree}
 					handleToggle={() => props.setFilters({ ...props.filters, glutenfree: !props.filters.glutenfree })}
 				/>
 				Gluten Free
 				<Switch
+          type="healthy"
 					isOn={props.filters.healthy}
 					handleToggle={() => props.setFilters({ ...props.filters, healthy: !props.filters.healthy })}
 				/>
 				Healthy
 				<Slider
+          type="rating"
 					maxSize={100}
 					minSize={0}
 					initialSize={props.filters.rating}
@@ -123,6 +128,7 @@ export default function Filter(props) {
 				/>
 				Rating
 				<Slider
+          type="time"
 					maxSize={max_time}
 					minSize={min_time}
 					initialSize={props.filters.time}
