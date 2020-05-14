@@ -53,7 +53,7 @@ li {
 	flex-direction: column;
 	background-color: green;
 	height: 100%;
-	width: 50vw;
+	width: 25vw;
 }
 
 .recipe-container {
@@ -61,9 +61,14 @@ li {
 	flex-direction: column;
 	background-color: yellow;
 	height: 100%;
-	width: 50vw;
+	width: 75vw;
 }
 
 .mixingbowl {
-	display: block;
+	display: flex;
+	justify-content: center;
+}
+
+.mixingbowl img {
+	height: 6em;
 }
