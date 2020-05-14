@@ -15,8 +15,7 @@ export default function PantryList(props) {
 				<Show
 					setSelectedPantryList={props.setSelectedPantryList}
 					selectedPantryList={props.selectedPantryList}
-					name={item.name}
-					id={item.id}
+					item={item}
 					handleDeleteItem={props.handleDeleteItem}
 				/>
 				{/* fix needed = only allow user to add item once */}
