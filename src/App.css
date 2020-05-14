@@ -21,6 +21,42 @@ li {
 	padding: 0;
 } */
 
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modalMain {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-content {
+	width: 45em;
+	display: flex;
+	background-color: #dbddcc;
+	/* border: 5px solid black; */
+	border-radius: 25px;
+}
+
+.modal-content h3 {
+	color: green;
+}
+
+.modal-content h4 {
+	color: red;
+}
+
+.modal-content img {
+	border-radius: 50px;
+	width: fit-content;
+
+	margin: 20px;
+
+	/* border: 5px solid goldenrod; */
+}
+
 .form-control {
 	margin: 20px;
 	margin-left: 50px;
