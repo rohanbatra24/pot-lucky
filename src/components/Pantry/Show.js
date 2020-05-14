@@ -13,8 +13,7 @@ export default function Show(props) {
 	const isSelected = () => !props.selectedPantryList.includes(props.item.name);
 
 	return (
-		<ListGroup.Item as="li" id={props.item.id}>
-			<h3>{props.item.name}</h3>
+		<div>
 			<h4>Quantity: {+props.item.quantity}</h4>
 			<h4>Unit: {props.item.unit}</h4>
 			{isSelected() && (
@@ -28,6 +27,7 @@ export default function Show(props) {
 			<button type="submit" onClick={(event) => props.handleDeleteItem(event, props.item.id, props.item.name)}>
 				Delete
 			</button>
-		</ListGroup.Item>
-	);
+	</div>
+	)
 }
+

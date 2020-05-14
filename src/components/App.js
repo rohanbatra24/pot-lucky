@@ -92,12 +92,8 @@ function App() {
 			<div className="main">
 				<div className="pantry-container">
 					<div className="mixingbowl">
-						{/*selectedPantryList*/}
-						<SelectedPantry
-							selectedPantryList={selectedPantryList}
-							setSelectedPantryList={setSelectedPantryList}
-						/>
 						<MixingBowl />
+						<SelectedPantry selectedPantryList={selectedPantryList} setSelectedPantryList={setSelectedPantryList} />
 					</div>
 					<label htmlFor="">
 						<h1>Pantry List</h1>

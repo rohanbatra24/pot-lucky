@@ -1,23 +1,23 @@
 import React from 'react';
 // import './Switch.css';
 
-const Switch = ({ isOn, handleToggle }) => {
+const Switch = ({ isOn, handleToggle, type }) => {
   return (
-    <>
-      <input
+    <div className="custom-control custom-switch">
+      <input 
         checked={isOn}
         onChange={handleToggle}
-        className="react-switch-checkbox"
-        id={`react-switch-new`}
+        className="custom-control-input"
+        id={`${type}-switch`}
         type="checkbox"
       />
       <label
-        className="react-switch-label"
-        htmlFor={`react-switch-new`}
+        className="custom-control-label"
+        htmlFor={`${type}-switch`}
       >
         <span className={`react-switch-button`} />
       </label>
-    </>
+    </div>
   );
 };
 

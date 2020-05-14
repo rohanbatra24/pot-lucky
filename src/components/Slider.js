@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Slider = ({ initialSize, minSize, maxSize, handleChange }) => {
+const Slider = ({ initialSize, minSize, maxSize, handleChange, type }) => {
   
   
   return (
@@ -11,7 +11,7 @@ const Slider = ({ initialSize, minSize, maxSize, handleChange }) => {
         max={maxSize}
         min={minSize}
         className="slider"
-        // id={`slider`}
+        id={`${type}-slider`}
         type="range"
       />
       <label
@@ -20,6 +20,7 @@ const Slider = ({ initialSize, minSize, maxSize, handleChange }) => {
       >
         <span className={`react-slider`} />
       </label>
+      <output for={`${type}-slider`} id={`${type}-slider-output`}>{initialSize}</output>
     </>
   );
 };
