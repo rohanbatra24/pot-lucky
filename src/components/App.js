@@ -25,31 +25,31 @@ function App() {
 		cuisine    : null,
 		dish       : null
 	});
-	const [ingredients, setIngredients] = useState([])
+	const [ ingredients, setIngredients ] = useState([]);
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
 	useEffect(() => {
 		getPantry();
-		getIngredients()
+		getIngredients();
 	}, []);
 
 	function getIngredients() {
 		fetch('http://localhost:8080/api/ingredients/all')
 			.then((response) => response.json())
 			.then((data) => {
-        console.log('getIngredients response===> ', data);
-        setIngredients(data);
+				// console.log('getIngredients response===> ', data);
+				setIngredients(data);
 			})
 			.catch((err) => console.error(err));
-  }
+	}
 
 	function getPantry() {
 		fetch('http://localhost:8080/api/pantries/all')
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('getPantry response===> ', data);
+				// console.log('getPantry response===> ', data);
 				setPantry(data);
 			})
 			.catch((err) => console.error(err));
@@ -71,7 +71,7 @@ function App() {
 
 	function deleteFromPantry(event, itemId, name) {
 		event.preventDefault();
-		console.log('itemID===', itemId);
+		// console.log('itemID===', itemId);
 		fetch('http://localhost:8080/api/pantries/delete', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
@@ -92,7 +92,10 @@ function App() {
 				<div className="pantry-container">
 					<div className="mixingbowl">
 						{/*selectedPantryList*/}
-						<SelectedPantry selectedPantryList={selectedPantryList} setSelectedPantryList={setSelectedPantryList} />
+						<SelectedPantry
+							selectedPantryList={selectedPantryList}
+							setSelectedPantryList={setSelectedPantryList}
+						/>
 						<MixingBowl />
 					</div>
 					<label htmlFor="">
@@ -110,7 +113,11 @@ function App() {
 
 				{
 					<div className="recipe-container">
-						<Search selectedPantryList={selectedPantryList} setRecipeList={setRecipeList} setFilters={setFilters}/>
+						<Search
+							selectedPantryList={selectedPantryList}
+							setRecipeList={setRecipeList}
+							setFilters={setFilters}
+						/>
 						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
 						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
 						{/* } */}
