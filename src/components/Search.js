@@ -15,7 +15,7 @@ import getBulkInfo from '../assets/api_bulk_info';
 // a260062916e04970801d03d0db2c32b4
 // 46ef327a373243b192fc86af3fa94823 {{{IN-USE}}}
 
-const apiKey = '4ed5da45f1c94518a9663b95f895c3b3';
+const apiKey = 'b183b79d7863488aaca6c2aeb086183b';
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
 
@@ -34,8 +34,8 @@ export default function Search(props) {
 			rating     : 0,
 			cuisine    : null,
 			dish       : null
-		})
-		
+		});
+
 		searchText &&
 			axios
 				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`)
@@ -68,7 +68,7 @@ export default function Search(props) {
 			rating     : 0,
 			cuisine    : null,
 			dish       : null
-		})
+		});
 		const pantryArr = [];
 
 		for (let pantryItem of props.selectedPantryList) {
@@ -87,9 +87,9 @@ export default function Search(props) {
 				`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}&ignorePantry=true&ranking=2`
 			)
 			.then((res) => {
-				console.log('first log from generate: ', res.data);
+				// console.log('first log from generate: ', res.data);
 				const noMissingIngred = res.data.filter((recipe) => {
-					console.log('recipe =====> ', recipe.missedIngredientCount);
+					// console.log('recipe =====> ', recipe.missedIngredientCount);
 					return recipe.missedIngredientCount < 1;
 				});
 				if (noMissingIngred.length) {
