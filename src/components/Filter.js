@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Switch from './Switch';
 import Slider from './Slider';
+import { Jumbotron } from 'react-bootstrap';
 
 // cuisine - dropdown
 // time required - slider
@@ -95,46 +96,49 @@ export default function Filter(props) {
 	return (
 		<div className="filters">
 			<Form>
-        <Switch
-          type="vegan"
-					isOn={props.filters.vegan}
-					handleToggle={() => props.setFilters({ ...props.filters, vegan: !props.filters.vegan })}
-				/>
-				Vegan
-				<Switch
-          type="vegetarian"
-					isOn={props.filters.vegetarian}
-					handleToggle={() => props.setFilters({ ...props.filters, vegetarian: !props.filters.vegetarian })}
-				/>
-				Vegetarian
-				<Switch
-          type="glutenfree"
-					isOn={props.filters.glutenfree}
-					handleToggle={() => props.setFilters({ ...props.filters, glutenfree: !props.filters.glutenfree })}
-				/>
-				Gluten Free
-				<Switch
-          type="healthy"
-					isOn={props.filters.healthy}
-					handleToggle={() => props.setFilters({ ...props.filters, healthy: !props.filters.healthy })}
-				/>
-				Healthy
-				<Slider
-          type="rating"
-					maxSize={100}
-					minSize={0}
-					initialSize={props.filters.rating}
-					handleChange={(event) => props.setFilters({ ...props.filters, rating: event.target.value })}
-				/>
-				Rating
-				<Slider
-          type="time"
-					maxSize={max_time}
-					minSize={min_time}
-					initialSize={props.filters.time}
-					handleChange={(event) => props.setFilters({ ...props.filters, time: event.target.value })}
-				/>
-				Time
+				<Jumbotron className="buttonFilterContainer">
+					<Switch
+						type="vegan"
+						isOn={props.filters.vegan}
+						handleToggle={() => props.setFilters({ ...props.filters, vegan: !props.filters.vegan })}
+					/>
+					<Switch
+						type="vegetarian"
+						isOn={props.filters.vegetarian}
+						handleToggle={() =>
+							props.setFilters({ ...props.filters, vegetarian: !props.filters.vegetarian })}
+					/>
+					<Switch
+						type="glutenfree"
+						isOn={props.filters.glutenfree}
+						handleToggle={() =>
+							props.setFilters({ ...props.filters, glutenfree: !props.filters.glutenfree })}
+					/>
+					<Switch
+						type="healthy"
+						isOn={props.filters.healthy}
+						handleToggle={() => props.setFilters({ ...props.filters, healthy: !props.filters.healthy })}
+					/>
+				</Jumbotron>
+
+				<Jumbotron className="sliderFilterContainer">
+					<Slider
+						type="rating"
+						maxSize={100}
+						minSize={0}
+						initialSize={props.filters.rating}
+						handleChange={(event) => props.setFilters({ ...props.filters, rating: event.target.value })}
+					/>
+
+					<Slider
+						type="time"
+						maxSize={max_time}
+						minSize={min_time}
+						initialSize={props.filters.time}
+						handleChange={(event) => props.setFilters({ ...props.filters, time: event.target.value })}
+					/>
+				</Jumbotron>
+
 				<Form.Group controlId="exampleForm.SelectCustom">
 					<Form.Label>Dish Type</Form.Label>
 					<Form.Control
