@@ -9,7 +9,6 @@ export default function Add(props) {
   }) 
   
   const ingredientList = props.ingredients.map(ingred => {
-    console.log("ingred ====> ", ingred)
     return <option>{ingred.name}</option>
   })
   
