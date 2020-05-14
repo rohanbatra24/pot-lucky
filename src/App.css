@@ -21,16 +21,49 @@ li {
 	padding: 0;
 } */
 
+.form-control {
+	margin: 20px;
+	margin-left: 50px;
+	max-width: 80%;
+	align-items: center;
+}
+
+#root {
+	display: flex;
+}
+
+.nav {
+	position: fixed;
+	width: 100%;
+	background-color: red;
+}
+
 .main {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
+	margin-top: 40px;
+	width: 100vw;
+	/*background-image: url('https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');*/
 }
 
 .pantry-container {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	background-color: green;
+	height: 100%;
+	width: 50vw;
 }
+
+.recipe-container {
+	display: flex;
+	flex-direction: column;
+	background-color: yellow;
+	height: 100%;
+	width: 50vw;
+}
+
 .mixingbowl {
 	display: block;
 }
