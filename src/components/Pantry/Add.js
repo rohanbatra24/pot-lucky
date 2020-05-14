@@ -17,10 +17,10 @@ export default function Add(props) {
   return (
     <>
       <Form>
-        <Form.Group controlId="formBasicEmail" onSubmit={(event) => props.handleAddItem(event, values)}>
+        <Form.Group controlId="formBasicEmail">
           <Form.Label>Add new item to pantry</Form.Label>
           <Form.Control
-            class="form-component"
+            className="form-component"
             value={values.name} 
             name="name"
             placeholder="Ingredient" 
@@ -36,7 +36,7 @@ export default function Add(props) {
           <Form.Control class="form-component" value={values.quantity} name="quantity" placeholder="Quantity" type="number" onChange={(e) => setValues({...values, quantity: e.target.value})} />
           <Form.Control class="form-component" value={values.unit} name="unit" placeholder="Unit" type="text" onChange={(e) => setValues({...values, unit: e.target.value})} /> {/* dropdown */}
           <Form.Control class="form-component" value={values.expiry} name="expiry" placeholder="Expiration Date (Optional)" type="date" onChange={(e) => setValues({...values, expiry: e.target.value})} />
-          <Button variant="info" type="submit">Add</Button>
+          <Button variant="info" type="submit" onClick={(event) => props.handleAddItem(event, values)}>Add</Button>
         </Form.Group> 
       </Form>
     </>
