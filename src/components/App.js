@@ -11,6 +11,7 @@ import Search from './Search';
 import NavBar from './NavBar';
 import Filter from './Filter';
 import SelectedPantry from './Pantry/SelectedPantry';
+import getFilteredRecipes from '../helpers';
 
 function App() {
 	// const [ users, setUsers ] = useState([]);
@@ -33,38 +34,6 @@ function App() {
 		getPantry();
 		getIngredients()
 	}, []);
-
-	function getFilteredRecipes() {
-		//loop filters keys, get true ones "active filters"
-		const activeFilters = Object.keys(filters).filter((f) => filters[f]);
-
-		let filtered = [];
-
-		if (activeFilters.length > 0) {
-			recipeList.forEach((recipe) => {
-				if (filters.vegan && recipe.vegan) {
-					filtered.push(recipe);
-				}
-
-				if (filters.vegetarian && recipe.vegetarian) {
-					filtered.push(recipe);
-				}
-			});
-		}
-		else {
-			filtered = recipeList;
-		}
-
-		let unique = [ ...new Set(filtered) ];
-
-		// const recipes = unique.map((recipe) => {
-		// 	console.log('recipe unique in app=====', recipe);
-		// 	return recipe />;
-		// });
-		// console.log('recipes in app=====', recipes);
-		console.log('unique===', unique);
-		return unique;
-	}
 
 	function getIngredients() {
 		fetch('http://localhost:8080/api/ingredients/all')
@@ -148,7 +117,7 @@ function App() {
 						<label htmlFor="">
 							<h1>Recipes</h1>
 						</label>
-						<RecipeList recipes={getFilteredRecipes()} />
+						<RecipeList recipes={getFilteredRecipes(filters, recipeList)} />
 						{/* <div className="recipes">{getRecipes()}</div> */}
 					</div>
 				}
