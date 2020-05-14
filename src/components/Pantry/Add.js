@@ -80,7 +80,7 @@ export default function Add(props) {
 						{unitList}
 					</Form.Control>
 					<Form.Control
-						class="form-component"
+						className="form-component"
 						value={values.quantity}
 						name="quantity"
 						placeholder="Quantity"
@@ -88,7 +88,7 @@ export default function Add(props) {
 						onChange={(e) => setValues({ ...values, quantity: e.target.value })}
 					/>
 					<Form.Control
-						class="form-component"
+						className="form-component"
 						value={values.expiry}
 						name="expiry"
 						placeholder="Expiration Date (Optional)"
