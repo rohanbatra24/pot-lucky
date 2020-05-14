@@ -98,25 +98,14 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<Accordion>
-					  <Card>
-					    <Accordion.Toggle as={Button} eventKey="0">
-					      Add something to your pantry!
-					    </Accordion.Toggle>
-					    <Accordion.Collapse eventKey="0">
-					      <Card.Body>
-					      	<PantryList
-										handleAddItem={addToPantry}
-										pantry={pantry}
-										setSelectedPantryList={setSelectedPantryList}
-										selectedPantryList={selectedPantryList}
-										handleDeleteItem={deleteFromPantry}
-										ingredients={ingredients}
-									/>
-					      </Card.Body>
-					    </Accordion.Collapse>
-					  </Card>
-					</Accordion>
+					<PantryList
+						handleAddItem={addToPantry}
+						pantry={pantry}
+						setSelectedPantryList={setSelectedPantryList}
+						selectedPantryList={selectedPantryList}
+						handleDeleteItem={deleteFromPantry}
+						ingredients={ingredients}
+					/>
 				</div>
 
 				{
