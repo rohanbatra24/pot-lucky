@@ -65,10 +65,24 @@ li {
 }
 
 .mixingbowl {
-	display: flex;
+	display: unset;
+	flex-direction: row;
 	justify-content: center;
 }
 
 .mixingbowl img {
-	height: 6em;
+	height: 14em;
+}
+
+.mixingbowl .jumbotron {
+	display: grid;
+	margin: 1em;
+}
+.selected-pantry__empty {
+	display: flex;
+	justify-content: center;
+}
+.selected-pantry__item {
+	display: flex;
+	justify-content: space-between;
 }
