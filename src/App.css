@@ -1,10 +1,4 @@
-/* .pantry {
-	margin-top: 200px;
-	text-align: left;
-	border: 2px solid black;
-}
-
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -20,6 +14,36 @@ li {
 	margin: 0;
 	padding: 0;
 } */
+*/ .card-body {
+	margin-left: 60px;
+}
+
+.recipe-card .btn {
+	border-radius: 30%;
+	margin-top: .4em;
+}
+
+.recipe-card {
+	border-radius: 30%;
+	border: 5px dotted bisque;
+}
+
+.list-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.no-gutters {
+	overflow: hidden;
+}
+
+.card-img {
+	height: 70%;
+	/* width: auto; */
+	border-radius: 10% 30% 50% 70%;
+}
 
 .modalContainer {
 	display: flex;
@@ -57,6 +81,21 @@ li {
 	/* border: 5px solid goldenrod; */
 }
 
+.buttonFilterContainer {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 5px;
+	margin: 10px;
+}
+
+.sliderFilterContainer {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 5px;
+	margin: 10px;
+	margin-right: 10px;
+}
+
 .form-control {
 	margin: 20px 0;
 	/*margin-left: 50px;*/
@@ -87,7 +126,7 @@ li {
 .pantry-container {
 	display: flex;
 	flex-direction: column;
-	background-color: green;
+	background-color: cornflowerblue;
 	height: 100%;
 	width: 25vw;
 }
@@ -95,7 +134,7 @@ li {
 .recipe-container {
 	display: flex;
 	flex-direction: column;
-	background-color: yellow;
+	/* background-color: yellow; */
 	height: 100%;
 	width: 75vw;
 }
