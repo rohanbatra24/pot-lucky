@@ -89,7 +89,7 @@ export default function Filter(props) {
 	});
 	const max_time = Math.max(...times);
 	const min_time = Math.min(...times);
-	console.log('max: ', max_time, 'min: ', min_time);
+	// console.log('max: ', max_time, 'min: ', min_time);
 
 	//////////
 	return (
@@ -139,7 +139,7 @@ export default function Filter(props) {
 						<option value="" selected disabled hidden>
 							Pick a dish type
 						</option>
-            <option>All</option>
+						<option>All</option>
 						{dishesList}
 					</Form.Control>
 				</Form.Group>
@@ -153,7 +153,7 @@ export default function Filter(props) {
 						<option value="" selected disabled hidden>
 							Pick a cuisine type
 						</option>
-            <option>All</option>
+						<option>All</option>
 						{cuisinesList}
 					</Form.Control>
 				</Form.Group>
