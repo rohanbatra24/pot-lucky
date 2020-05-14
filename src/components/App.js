@@ -110,7 +110,7 @@ function App() {
 
 				{
 					<div className="recipe-container">
-						<Search selectedPantryList={selectedPantryList} setRecipeList={setRecipeList} />
+						<Search selectedPantryList={selectedPantryList} setRecipeList={setRecipeList} setFilters={setFilters}/>
 						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
 						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
 						{/* } */}

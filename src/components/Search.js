@@ -15,7 +15,7 @@ import getBulkInfo from '../assets/api_bulk_info';
 // a260062916e04970801d03d0db2c32b4
 // 46ef327a373243b192fc86af3fa94823 {{{IN-USE}}}
 
-const apiKey = '46ef327a373243b192fc86af3fa94823';
+const apiKey = '4ed5da45f1c94518a9663b95f895c3b3';
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
 
@@ -23,6 +23,19 @@ export default function Search(props) {
 
 	function onSubmit(event) {
 		event.preventDefault();
+
+		//reset filters
+		props.setFilters({
+			vegan      : false,
+			vegetarian : false,
+			glutenfree : false,
+			healthy    : false,
+			time       : 0,
+			rating     : 0,
+			cuisine    : null,
+			dish       : null
+		})
+		
 		searchText &&
 			axios
 				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`)
@@ -46,7 +59,16 @@ export default function Search(props) {
 
 	function handleGenerateRecipe(event) {
 		event.preventDefault();
-
+		props.setFilters({
+			vegan      : false,
+			vegetarian : false,
+			glutenfree : false,
+			healthy    : false,
+			time       : 0,
+			rating     : 0,
+			cuisine    : null,
+			dish       : null
+		})
 		const pantryArr = [];
 
 		for (let pantryItem of props.selectedPantryList) {
