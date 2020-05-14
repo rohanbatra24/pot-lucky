@@ -1,7 +1,7 @@
 export default function getFilteredRecipes(filters, recipeList) {
 	//loop filters keys, get true ones "active filters"
 	function checkFilters(currFilter, currRecipe, allFilters, isPassing) {
-    console.log("currFIlter ======", currFilter)
+		// console.log("currFIlter ======", currFilter)
 		switch (currFilter) {
 			case 'vegan':
 				isPassing = isPassing && (allFilters[currFilter] && currRecipe[currFilter]);
@@ -22,19 +22,19 @@ export default function getFilteredRecipes(filters, recipeList) {
 				isPassing = isPassing && currRecipe.spoonacularScore >= allFilters.rating;
 				break;
 			case 'dish':
-        console.log("cuisine set to======", allFilters.cuisine)
-        // if (allFilters.cuisine === "All") {
-        //   isPassing = isPassing && true
-        // } else {
-          isPassing = isPassing && currRecipe.dishTypes.some((type) => allFilters.dish.includes(type));
-        // }
+				// console.log("cuisine set to======", allFilters.cuisine)
+				// if (allFilters.cuisine === "All") {
+				//   isPassing = isPassing && true
+				// } else {
+				isPassing = isPassing && currRecipe.dishTypes.some((type) => allFilters.dish.includes(type));
+				// }
 				break;
 			case 'cuisine':
-        // if (allFilters.cuisine === "All") {
-        //   isPassing = isPassing && true
-        // } else {
-          isPassing = isPassing && currRecipe.cuisines.some((type) => allFilters.cuisine.includes(type));
-        // }
+				// if (allFilters.cuisine === "All") {
+				//   isPassing = isPassing && true
+				// } else {
+				isPassing = isPassing && currRecipe.cuisines.some((type) => allFilters.cuisine.includes(type));
+				// }
 				break;
 			default:
 				isPassing = true;
@@ -68,6 +68,6 @@ export default function getFilteredRecipes(filters, recipeList) {
 	// 	return recipe />;
 	// });
 	// console.log('recipes in app=====', recipes);
-	console.log('unique===', unique);
+	// console.log('unique===', unique);
 	return unique;
 }
