@@ -25,7 +25,7 @@ export default function Filter(props) {
 		'bread',
 		'breakfast',
 		'soup',
-		'everage',
+		'beverage',
 		'sauce',
 		'marinade',
 		'fingerfood',
@@ -139,6 +139,7 @@ export default function Filter(props) {
 						<option value="" selected disabled hidden>
 							Pick a dish type
 						</option>
+            <option>All</option>
 						{dishesList}
 					</Form.Control>
 				</Form.Group>
@@ -152,6 +153,7 @@ export default function Filter(props) {
 						<option value="" selected disabled hidden>
 							Pick a cuisine type
 						</option>
+            <option>All</option>
 						{cuisinesList}
 					</Form.Control>
 				</Form.Group>
