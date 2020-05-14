@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Show from './Show';
 import Add from './Add';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import './styles.css';
 
 
@@ -37,7 +37,19 @@ export default function PantryList(props) {
 		
 	return (
 		<Fragment>
-			<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
+			<Accordion>
+				<Card>
+					<Accordion.Toggle as={Button} eventKey="0">
+						Add something to your pantry!
+					</Accordion.Toggle>
+					<Accordion.Collapse eventKey="0">
+						<Card.Body>
+							<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
+						</Card.Body>
+					</Accordion.Collapse>
+				</Card>
+			</Accordion>
+			
 			<Accordion defaultActiveKey="0">
 				{pantryList}
 			</Accordion>
