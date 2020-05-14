@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Accordion, Card, Button } from 'react-bootstrap';
 
 import '../hooks/useApplicationData';
 
@@ -98,14 +99,25 @@ function App() {
 					<label htmlFor="">
 						<h1>Pantry List</h1>
 					</label>
-					<PantryList
-						handleAddItem={addToPantry}
-						pantry={pantry}
-						setSelectedPantryList={setSelectedPantryList}
-						selectedPantryList={selectedPantryList}
-						handleDeleteItem={deleteFromPantry}
-						ingredients={ingredients}
-					/>
+					<Accordion>
+					  <Card>
+					    <Accordion.Toggle as={Button} eventKey="0">
+					      Add something to your pantry!
+					    </Accordion.Toggle>
+					    <Accordion.Collapse eventKey="0">
+					      <Card.Body>
+					      	<PantryList
+										handleAddItem={addToPantry}
+										pantry={pantry}
+										setSelectedPantryList={setSelectedPantryList}
+										selectedPantryList={selectedPantryList}
+										handleDeleteItem={deleteFromPantry}
+										ingredients={ingredients}
+									/>
+					      </Card.Body>
+					    </Accordion.Collapse>
+					  </Card>
+					</Accordion>
 				</div>
 
 				{

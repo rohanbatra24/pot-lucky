@@ -22,9 +22,9 @@ li {
 } */
 
 .form-control {
-	margin: 20px;
-	margin-left: 50px;
-	max-width: 80%;
+	margin: 20px 0;
+	/*margin-left: 50px;*/
+	/*max-width: 80%;*/
 	align-items: center;
 }
 
@@ -71,4 +71,14 @@ li {
 
 .mixingbowl img {
 	height: 6em;
+}
+
+.centered-text {
+	text-align: center;
+}
+
+.centered-button {
+	/*display: flex;
+	justify-content: center;
+	align-items: center;*/
 }
