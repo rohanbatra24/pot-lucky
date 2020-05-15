@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Accordion, Card, Button } from 'react-bootstrap';
+import { useAuth0 } from '../contexts/auth0-context';
 
 import '../hooks/useApplicationData';
-
 import '../App.css';
 
 import PantryList from './Pantry/PantryList';
@@ -15,7 +14,9 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import getFilteredRecipes from '../helpers';
 
 function App() {
-	// const [ users, setUsers ] = useState([]);
+	// const auth0 = useContext(Auth0Context); 
+	const { isLoading, user, loginWithRedirect, logout } = useAuth0();
+
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
 		vegetarian : false,
@@ -110,6 +111,34 @@ function App() {
 
 				{
 					<div className="recipe-container">
+						<div className="hero is-info is-fullheight">
+							<div className="hero-body">
+								<div className="container has-text-centered">
+								{!isLoading && !user && (
+									<>
+										<h1>Click Below!</h1>
+										<button onClick={loginWithRedirect} className="button is-danger">
+											Login
+										</button>
+									</>
+								)}
+								{!isLoading && user && (
+										<>
+											<h1>You are logged in!</h1>
+											<p>Hello {user.name}</p>
+
+											{user.picture && <img src={user.picture} alt="My Avatar" />}
+										<button
+												onClick={() => logout({ returnTo: window.location.origin })}
+												className="button is-small is-dark"
+											>
+												Logout
+									</button>
+									</>
+									)}
+								</div>
+							</div>
+						</div>
 						<Search
 							selectedPantryList={selectedPantryList}
 							setRecipeList={setRecipeList}
