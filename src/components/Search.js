@@ -15,7 +15,7 @@ import getBulkInfo from '../assets/api_bulk_info';
 // a260062916e04970801d03d0db2c32b4
 // 46ef327a373243b192fc86af3fa94823 {{{IN-USE}}}
 
-const apiKey = 'b183b79d7863488aaca6c2aeb086183b';
+const apiKey = 'a260062916e04970801d03d0db2c32b4';
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
 
@@ -38,7 +38,7 @@ export default function Search(props) {
 
 		searchText &&
 			axios
-				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`)
+				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=200&apiKey=${apiKey}`)
 				.then((res) => res.data.results.map((item) => item.id))
 				.then((ids) => {
 					if (ids) {
