@@ -14,8 +14,8 @@ li {
 	margin: 0;
 	padding: 0;
 } */
-*/ .card-body {
-	margin-left: 60px;
+.card-body {
+	/* margin-left: 60px; */
 }
 
 .recipe-card .btn {
@@ -33,6 +33,7 @@ li {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	height: 550px;
 }
 
 .no-gutters {
@@ -137,6 +138,7 @@ li {
 	/* background-color: yellow; */
 	height: 100%;
 	width: 75vw;
+	overflow: scroll;
 }
 
 .mixingbowl {
