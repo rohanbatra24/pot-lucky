@@ -14,9 +14,9 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import getFilteredRecipes from '../helpers';
 
 function App() {
-	// const auth0 = useContext(Auth0Context); 
-	const { isLoading, user, loginWithRedirect, logout } = useAuth0();
-
+	// const auth0 = useContext(Auth0Context);
+	const { isLoading, user, userDb, loginWithRedirect, logout } = useAuth0();
+	console.log('user==', user);
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
 		vegetarian : false,
@@ -32,10 +32,36 @@ function App() {
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
-	useEffect(() => {
-		getPantry();
-		getIngredients();
-	}, []);
+	useEffect(
+		() => {
+			if (user) {
+				getUserFromDb(user.email);
+			}
+			else console.log('no user');
+
+			getIngredients();
+		},
+		[ user ]
+	);
+
+	function getUserFromDb(userEmail) {
+		fetch(`http://localhost:8080/api/users/${userEmail}`)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('user data from backend===', data);
+				return data;
+			})
+			.then((data) => {
+				if (data) {
+					console.log('data[0].id===', data[0].id);
+					getPantry(data[0].id);
+				}
+				else {
+					console.log('need to create user');
+				}
+			})
+			.catch((err) => console.error(err));
+	}
 
 	function getIngredients() {
 		fetch('http://localhost:8080/api/ingredients/all')
@@ -47,8 +73,8 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
-	function getPantry() {
-		fetch('http://localhost:8080/api/pantries/all')
+	function getPantry(id) {
+		fetch(`http://localhost:8080/api/pantries/${id}`)
 			.then((response) => response.json())
 			.then((data) => {
 				// console.log('getPantry response===> ', data);
@@ -94,7 +120,10 @@ function App() {
 				<div className="pantry-container">
 					<div className="mixingbowl">
 						<MixingBowl />
-						<SelectedPantry selectedPantryList={selectedPantryList} setSelectedPantryList={setSelectedPantryList} />
+						<SelectedPantry
+							selectedPantryList={selectedPantryList}
+							setSelectedPantryList={setSelectedPantryList}
+						/>
 					</div>
 					<label htmlFor="">
 						<h1>Pantry List</h1>
@@ -114,27 +143,29 @@ function App() {
 						<div className="hero is-info is-fullheight">
 							<div className="hero-body">
 								<div className="container has-text-centered">
-								{!isLoading && !user && (
-									<>
-										<h1>Click Below!</h1>
-										<button onClick={loginWithRedirect} className="button is-danger">
-											Login
-										</button>
-									</>
-								)}
-								{!isLoading && user && (
-										<>
+									{!isLoading &&
+									!user && (
+										<Fragment>
+											<h1>Click Below!</h1>
+											<button onClick={loginWithRedirect} className="button is-danger">
+												Login
+											</button>
+										</Fragment>
+									)}
+									{!isLoading &&
+									user && (
+										<Fragment>
 											<h1>You are logged in!</h1>
 											<p>Hello {user.name}</p>
 
 											{user.picture && <img src={user.picture} alt="My Avatar" />}
-										<button
+											<button
 												onClick={() => logout({ returnTo: window.location.origin })}
 												className="button is-small is-dark"
 											>
 												Logout
-									</button>
-									</>
+											</button>
+										</Fragment>
 									)}
 								</div>
 							</div>
