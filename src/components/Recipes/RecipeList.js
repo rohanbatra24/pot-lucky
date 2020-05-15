@@ -23,7 +23,7 @@ export default function RecipeList(props) {
 		}
 		else {
 			const recipes = props.recipes.map((recipe) => {
-				return <Show selected={selected} setSelected={setSelected} recipe={recipe} />;
+				return <Show key={recipe.id} selected={selected} setSelected={setSelected} recipe={recipe} />;
 			});
 			return recipes;
 		}
