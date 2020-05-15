@@ -15,7 +15,7 @@ li {
 	padding: 0;
 } */
 .card-body {
-	/* margin-left: 60px; */
+	margin-left: 50px;
 }
 
 .recipe-card .btn {
@@ -26,6 +26,7 @@ li {
 .recipe-card {
 	border-radius: 30%;
 	border: 5px dotted bisque;
+	max-width: 540px;
 }
 
 .list-group {

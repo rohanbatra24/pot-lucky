@@ -16,7 +16,7 @@ const Slider = ({ initialSize, minSize, maxSize, handleChange, type }) => {
 				type="range"
 			/>
 
-			<output for={`${type}-slider`} id={`${type}-slider-output`}>
+			<output htmlFor={`${type}-slider`} id={`${type}-slider-output`}>
 				{initialSize}
 			</output>
 		</div>
