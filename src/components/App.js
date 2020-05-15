@@ -113,7 +113,7 @@ function App() {
 			.then((res) => {
 				setSelectedPantryList(selectedPantryList.filter((item) => item !== name));
 
-				getPantry();
+				getPantry(userId);
 			})
 			.catch((err) => console.error(err));
 	}
