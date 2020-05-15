@@ -22,19 +22,10 @@ export default function getFilteredRecipes(filters, recipeList) {
 				isPassing = isPassing && currRecipe.spoonacularScore >= allFilters.rating;
 				break;
 			case 'dish':
-				// console.log("cuisine set to======", allFilters.cuisine)
-				// if (allFilters.cuisine === "All") {
-				//   isPassing = isPassing && true
-				// } else {
 				isPassing = isPassing && currRecipe.dishTypes.some((type) => allFilters.dish.includes(type));
-				// }
 				break;
 			case 'cuisine':
-				// if (allFilters.cuisine === "All") {
-				//   isPassing = isPassing && true
-				// } else {
 				isPassing = isPassing && currRecipe.cuisines.some((type) => allFilters.cuisine.includes(type));
-				// }
 				break;
 			default:
 				isPassing = true;
