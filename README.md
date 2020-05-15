@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Potlucky
 
-## Available Scripts
+Potlucky helps you optimize your food consumption, reduce food waste, and make fewer trips to the grocery store by suggesting recipes based on the items in your kitchen pantry.
 
-In the project directory, you can run:
+## How to use Potlucky
 
-### `npm start`
+Simply input the items in your pantry, specify which items you would like to consume, and Potlucky will give you a list of popular recipes based on the items that you selected.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can also perform a raw search of recipes that utilize ingredients, such as `cheese` or `bananas`. If you perform a raw search instead of asking Potlucky to generate recipes based on your pantry, you will be informed whether or not you have the required ingredients in your pantry to make each recipe.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+If you wish, you can also filter by vegan, gluten-free, cuisine, preparation time, allergies, and more.
 
-### `npm test`
+## Tools
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- PostgreSQL
+- Express.js
+- React.js
+- Node.js
+- React Bootstrap
 
-### `npm run build`
+API: [spoonacular](https://spoonacular.com/food-api)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Collaborators
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[](https://github.com/kelsey-griffin)
+[](https://github.com/rohanbatra24)
+[](https://github.com/dereknugroho)
