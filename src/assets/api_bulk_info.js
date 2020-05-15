@@ -2027,7 +2027,6 @@ const bulkInfo = [
   originalId: null
   }
   ]
-  // console.log(bulkInfo[0].vegetarian)
 
   export default function getBulkInfo() {
     return bulkInfo;

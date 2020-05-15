@@ -90,7 +90,6 @@ export default function Filter(props) {
 	});
 	const max_time = Math.max(...times);
 	const min_time = Math.min(...times);
-	// console.log('max: ', max_time, 'min: ', min_time);
 
 	//////////
 	return (

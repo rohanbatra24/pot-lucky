@@ -8,8 +8,6 @@ export default function Show(props) {
 		'pantry-list__item--selected' : props.selected
 	});
 
-	// console.log('props:', props);
-
 	const isSelected = () => !props.selectedPantryList.includes(props.item.name);
 
 	return (

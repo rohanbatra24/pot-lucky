@@ -1,7 +1,6 @@
 export default function getFilteredRecipes(filters, recipeList) {
 	//loop filters keys, get true ones "active filters"
 	function checkFilters(currFilter, currRecipe, allFilters, isPassing) {
-		// console.log("currFIlter ======", currFilter)
 		switch (currFilter) {
 			case 'vegan':
 				isPassing = isPassing && (allFilters[currFilter] && currRecipe[currFilter]);
@@ -54,11 +53,5 @@ export default function getFilteredRecipes(filters, recipeList) {
 
 	let unique = [ ...new Set(filtered) ];
 
-	// const recipes = unique.map((recipe) => {
-	// 	console.log('recipe unique in app=====', recipe);
-	// 	return recipe />;
-	// });
-	// console.log('recipes in app=====', recipes);
-	// console.log('unique===', unique);
 	return unique;
 }
