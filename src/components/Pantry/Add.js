@@ -37,13 +37,9 @@ export default function Add(props) {
 		'inches',
 		'stalks',
 		'sticks',
-
 		'strips',
-
 		'sprigs',
-
 		'dashes',
-
 		'pinches'
 	];
 
