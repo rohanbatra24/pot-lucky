@@ -64,11 +64,11 @@ export default function Filter(props) {
 	];
 
 	const dishesList = dishList.map((dish) => {
-		return <option>{dish}</option>;
+		return <option key={dish}>{dish}</option>;
 	});
 
 	const cuisinesList = cuisineList.map((cuisine) => {
-		return <option>{cuisine}</option>;
+		return <option key={cuisine}>{cuisine}</option>;
 	});
 
 	// props.recipeList.forEach((recipe) => {
@@ -144,12 +144,16 @@ export default function Filter(props) {
 					<Form.Control
 						as="select"
 						custom
-						onChange={(event) => props.setFilters({ ...props.filters, dish: event.target.value })}
+						onChange={(event) =>
+							props.setFilters({
+								...props.filters,
+								dish : event.target.value == 'All' ? null : event.target.value
+							})}
 					>
-						<option value="" selected disabled hidden>
+						<option value="" defaultValue disabled hidden>
 							Pick a dish type
 						</option>
-						<option>All</option>
+						<option value={null}>All</option>
 						{dishesList}
 					</Form.Control>
 				</Form.Group>
@@ -158,9 +162,13 @@ export default function Filter(props) {
 					<Form.Control
 						as="select"
 						custom
-						onChange={(event) => props.setFilters({ ...props.filters, cuisine: event.target.value })}
+						onChange={(event) =>
+							props.setFilters({
+								...props.filters,
+								cuisine : event.target.value == 'All' ? null : event.target.value
+							})}
 					>
-						<option value="" selected disabled hidden>
+						<option value="" defaultValue disabled hidden>
 							Pick a cuisine type
 						</option>
 						<option>All</option>
