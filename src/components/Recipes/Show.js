@@ -31,7 +31,7 @@ export default function Show(props) {
 				</button>
 			</ListGroup.Item> */}
 
-			<div className="recipe-card card mb-3" style={{ 'max-width': 540 + 'px' }}>
+			<div className="recipe-card card mb-3">
 				<div className="row no-gutters">
 					<div className="col-md-8">
 						<div className="card-body">
