@@ -24,6 +24,6 @@ API: [spoonacular](https://spoonacular.com/food-api)
 
 ## Collaborators
 
-[](https://github.com/kelsey-griffin)
-[](https://github.com/rohanbatra24)
-[](https://github.com/dereknugroho)
+[Kelsey Griffin](https://github.com/kelsey-griffin)
+[Rohan Batra](https://github.com/rohanbatra24)
+[Derek Nugroho](https://github.com/dereknugroho)
