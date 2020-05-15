@@ -12,7 +12,7 @@ export default function Add(props) {
 	});
 
 	const ingredientList = props.ingredients.map((ingred) => {
-		return <option>{ingred.name}</option>;
+		return <option key={ingred.spoonacular_id}>{ingred.name}</option>;
 	});
 
 	const units = [
@@ -48,14 +48,13 @@ export default function Add(props) {
 	];
 
 	const unitList = units.map((unit) => {
-		return <option>{unit}</option>;
+		return <option key={unit}>{unit}</option>;
 	});
 
 	return (
 		<Fragment>
 			<Form>
 				<Form.Group controlId="formBasicEmail">
-					{/*<Form.Label>Add new item to pantry</Form.Label>*/}
 					<Form.Control
 						className="form-component"
 						value={values.name}
@@ -76,7 +75,7 @@ export default function Add(props) {
 						placeholder="Unit"
 						onChange={(e) => setValues({ ...values, unit: e.target.value })}
 					>
-						<option value="" selected disabled hidden>
+						<option value="" defaultValue disabled hidden>
 							Pick a unit
 						</option>
 						{unitList}
@@ -97,7 +96,13 @@ export default function Add(props) {
 						type="date"
 						onChange={(e) => setValues({ ...values, expiry: e.target.value })}
 					/>
-					<Button className="centered-button" variant="outline-danger" type="submit" onClick={(event) => props.handleAddItem(event, values)} block>
+					<Button
+						className="centered-button"
+						variant="outline-danger"
+						type="submit"
+						onClick={(event) => props.handleAddItem(event, values)}
+						block
+					>
 						Add item to your pantry
 					</Button>
 				</Form.Group>
