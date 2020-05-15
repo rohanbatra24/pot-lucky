@@ -17,7 +17,6 @@ import getFilteredRecipes from '../helpers';
 function App() {
 	// const auth0 = useContext(Auth0Context);
 	const { isLoading, user, loginWithRedirect, logout } = useAuth0();
-	console.log('user==', user);
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
 		vegetarian : false,
@@ -37,11 +36,7 @@ function App() {
 
 	useEffect(
 		() => {
-			if (user) {
-				getUserFromDb(user.email);
-			}
-			else console.log('no user');
-
+			user &&	getUserFromDb(user.email);
 			getIngredients();
 		},
 		[ user ]
@@ -51,27 +46,39 @@ function App() {
 		fetch(`http://localhost:8080/api/users/${userEmail}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('user data from backend===', data);
 				return data;
 			})
 			.then((data) => {
-				if (data) {
-					console.log('data[0].id===', data[0].id);
+				if (data.length) {
 					getPantry(data[0].id);
 					setUserId(data[0].id);
 				}
 				else {
-					console.log('need to create user');
+					addUserToDb(user.email)					
 				}
 			})
 			.catch((err) => console.error(err));
 	}
 
+
+	function addUserToDb(newEmail) {
+		const email = {"email": newEmail}
+		fetch('http://localhost:8080/api/users/add', {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify(email)
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				getPantry(data.id)
+				setUserId(data.id);
+			})
+			.catch((err) => console.error(err));
+	}
 	function getIngredients() {
 		fetch('http://localhost:8080/api/ingredients/all')
 			.then((response) => response.json())
 			.then((data) => {
-				// console.log('getIngredients response===> ', data);
 				setIngredients(data);
 			})
 			.catch((err) => console.error(err));
@@ -81,7 +88,6 @@ function App() {
 		fetch(`http://localhost:8080/api/pantries/${id}`)
 			.then((response) => response.json())
 			.then((data) => {
-				// console.log('getPantry response===> ', data);
 				setPantry(data);
 			})
 			.catch((err) => console.error(err));
@@ -90,6 +96,7 @@ function App() {
 	function addToPantry(event, newItem) {
 		event.preventDefault();
 		const itemWithId = {...newItem, id: userId }
+
 		fetch('http://localhost:8080/api/pantries/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
@@ -104,7 +111,6 @@ function App() {
 
 	function deleteFromPantry(event, itemId, name) {
 		event.preventDefault();
-		// console.log('itemID===', itemId);
 		fetch('http://localhost:8080/api/pantries/delete', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
