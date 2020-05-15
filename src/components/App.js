@@ -32,6 +32,8 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
+	
+	const [userId, setUserId] = useState("");
 
 	useEffect(
 		() => {
@@ -56,6 +58,7 @@ function App() {
 				if (data) {
 					console.log('data[0].id===', data[0].id);
 					getPantry(data[0].id);
+					setUserId(data[0].id);
 				}
 				else {
 					console.log('need to create user');
@@ -86,10 +89,11 @@ function App() {
 
 	function addToPantry(event, newItem) {
 		event.preventDefault();
+		const itemWithId = {...newItem, id: userId }
 		fetch('http://localhost:8080/api/pantries/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
-			body    : JSON.stringify(newItem)
+			body    : JSON.stringify(itemWithId)
 		})
 			.then((res) => res.json())
 			.then((res) => {
