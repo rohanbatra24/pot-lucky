@@ -1,33 +1,33 @@
 import React from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Image, Button } from 'react-bootstrap';
+import { useAuth0 } from '../contexts/auth0-context';
+import logo from '../assets/bowl.png';
 
 export default function NavBar(props) {
-    const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
+
+  const { isLoading, user, logout } = useAuth0();
   
-    return (
-      <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
-        <Nav.Item>
-          <Nav.Link eventKey="1" href="#/home">
-            NavLink 1 content
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="2" title="Item">
-            NavLink 2 content
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="3" disabled>
-            NavLink 3 content
-          </Nav.Link>
-        </Nav.Item>
-        <NavDropdown title="Dropdown" id="nav-dropdown">
-          <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
+      return (
+        <Navbar fixed="top" bg="light">
+          <div className="nav-left">
+          <Image className="nav-logo" src={logo} alt="PotLucky Logo" roundedCircle/>
+          <Navbar.Brand href="#home">PotLucky</Navbar.Brand>
+          </div>
+            {!isLoading && user && (
+            <div className="nav-right">
+              <Navbar.Text>
+                Signed in as: {user.nickname}
+              </Navbar.Text>
+              {user.picture && <Image className="nav-avatar" src={user.picture} alt="My Avatar" roundedCircle/>}
+              <Button 
+                className="btn-logout"
+                variant="outline-dark"
+                onClick={() => logout({ returnTo: window.location.origin })}
+              >
+                Log Out
+              </Button>
+
+            </div>
+            )}
+        </Navbar>
     );
-}
