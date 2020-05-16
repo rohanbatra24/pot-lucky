@@ -1,11 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import classNames from 'classnames';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import FullRecipe from './FullRecipe';
 import '../../App.css';
-
+import { Image, Modal, Button } from 'react-bootstrap';
+import allergyBadge from '../../assets/allergyBadge.svg';
 export default function Show(props) {
 	const [ show, setShow ] = useState(false);
 
@@ -17,21 +15,27 @@ export default function Show(props) {
 		'pantry-list__item--selected' : props.selected
 	});
 
+	function isAllergic() {
+		let result = false;
+		for (let ingredient of props.recipe.extendedIngredients) {
+			for (let allergy of props.allergies) {
+				if (ingredient.name === allergy) {
+					console.log(true);
+					result = true;
+				}
+			}
+		}
+		return result;
+	}
+
+	// const allergyBadge = isAllergic() ? 'allergic' : 'notAllergic';
+
 	return (
 		<Fragment>
-			{/* <ListGroup.Item as="li">
-				<h3>{props.recipe.title}</h3>
-				<button
-					onClick={() => {
-						props.setSelected(props.recipe.id);
-						handleShow();
-					}}
-				>
-					View Full Recipe
-				</button>
-			</ListGroup.Item> */}
-
-			<div className="recipe-card card mb-3">
+			<div className={`recipe-card card mb-3`}>
+				{isAllergic() && (
+					<Image src={allergyBadge} roundedCircle className="allergyBadge" alt="allergy badge" />
+				)}
 				<div className="row no-gutters">
 					<div className="col-md-8">
 						<div className="card-body">
