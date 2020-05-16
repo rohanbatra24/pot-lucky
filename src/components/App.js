@@ -126,7 +126,7 @@ function App() {
 	if (user) {
 		return (
 			<Fragment>
-				<NavBar />
+			<NavBar />
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
@@ -147,40 +147,8 @@ function App() {
 							handleDeleteItem={deleteFromPantry}
 							ingredients={ingredients}
 						/>
-					</div>
-
-					{
+						</div>
 						<div className="recipe-container">
-							<div className="hero is-info is-fullheight">
-								<div className="hero-body">
-									<div className="container has-text-centered">
-										{!isLoading &&
-										!user && (
-											<Fragment>
-												<h1>Click Below!</h1>
-												<button onClick={loginWithRedirect} className="button is-danger">
-													Login
-												</button>
-											</Fragment>
-										)}
-										{!isLoading &&
-										user && (
-											<Fragment>
-												<h1>You are logged in!</h1>
-												<p>Hello {user.name}</p>
-
-												{user.picture && <img src={user.picture} alt="My Avatar" />}
-												<button
-													onClick={() => logout({ returnTo: window.location.origin })}
-													className="button is-small is-dark"
-												>
-													Logout
-												</button>
-											</Fragment>
-										)}
-									</div>
-								</div>
-							</div>
 							<Search
 								selectedPantryList={selectedPantryList}
 								setRecipeList={setRecipeList}
@@ -195,7 +163,6 @@ function App() {
 							<RecipeList recipes={getFilteredRecipes(filters, recipeList)} />
 							{/* <div className="recipes">{getRecipes()}</div> */}
 						</div>
-					}
 				</div>
 			</Fragment>
 		);
