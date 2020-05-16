@@ -3,6 +3,7 @@ import { useAuth0 } from '../contexts/auth0-context';
 
 import '../hooks/useApplicationData';
 import '../App.css';
+import '../App.scss';
 
 import PantryList from './Pantry/PantryList';
 import RecipeList from './Recipes/RecipeList';
@@ -11,7 +12,7 @@ import Search from './Search';
 import NavBar from './NavBar';
 import Filter from './Filter';
 import SelectedPantry from './Pantry/SelectedPantry';
-import Unauthorized from './Unauthorized'
+import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
 
 function App() {
@@ -31,12 +32,12 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
-	
-	const [userId, setUserId] = useState("");
+
+	const [ userId, setUserId ] = useState('');
 
 	useEffect(
 		() => {
-			user &&	getUserFromDb(user.email);
+			user && getUserFromDb(user.email);
 			getIngredients();
 		},
 		[ user ]
@@ -54,23 +55,22 @@ function App() {
 					setUserId(data[0].id);
 				}
 				else {
-					addUserToDb(user.email)					
+					addUserToDb(user.email);
 				}
 			})
 			.catch((err) => console.error(err));
 	}
 
-
 	function addUserToDb(newEmail) {
-		const email = {"email": newEmail}
+		const email = { email: newEmail };
 		fetch('http://localhost:8080/api/users/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(email)
-			})
+		})
 			.then((response) => response.json())
 			.then((data) => {
-				getPantry(data.id)
+				getPantry(data.id);
 				setUserId(data.id);
 			})
 			.catch((err) => console.error(err));
@@ -95,7 +95,7 @@ function App() {
 
 	function addToPantry(event, newItem) {
 		event.preventDefault();
-		const itemWithId = {...newItem, id: userId }
+		const itemWithId = { ...newItem, id: userId };
 
 		fetch('http://localhost:8080/api/pantries/add', {
 			method  : 'post',
@@ -126,7 +126,7 @@ function App() {
 	if (user) {
 		return (
 			<Fragment>
-			<NavBar />
+				<NavBar />
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
@@ -147,29 +147,28 @@ function App() {
 							handleDeleteItem={deleteFromPantry}
 							ingredients={ingredients}
 						/>
-						</div>
-						<div className="recipe-container">
-							<Search
-								selectedPantryList={selectedPantryList}
-								setRecipeList={setRecipeList}
-								setFilters={setFilters}
-							/>
-							{/* {recipeList.length > 0 && // only show filters if there are recipes */}
-							<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
-							{/* } */}
-							<label htmlFor="">
-								<h1>Recipes</h1>
-							</label>
-							<RecipeList recipes={getFilteredRecipes(filters, recipeList)} />
-							{/* <div className="recipes">{getRecipes()}</div> */}
-						</div>
+					</div>
+					<div className="recipe-container">
+						<Search
+							selectedPantryList={selectedPantryList}
+							setRecipeList={setRecipeList}
+							setFilters={setFilters}
+						/>
+						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
+						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
+						{/* } */}
+						{/* <label htmlFor="">
+							<h1>Recipes</h1>
+						</label> */}
+						<RecipeList recipes={getFilteredRecipes(filters, recipeList)} />
+						{/* <div className="recipes">{getRecipes()}</div> */}
+					</div>
 				</div>
 			</Fragment>
 		);
-	} else {
-		return (
-			<Unauthorized />
-		)
+	}
+	else {
+		return <Unauthorized />;
 	}
 }
 
