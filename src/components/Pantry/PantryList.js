@@ -53,7 +53,24 @@ export default function PantryList(props) {
 		
 	return (
 		<Fragment>
-
+			<ButtonToolbar> 
+				<ButtonGroup className="mr-2" aria-label="Add All Button">
+				<Button 
+					variant="success"
+					onClick={() => props.setSelectedPantryList([...allPantryNames])}
+				>
+					Add All
+				</Button>
+				</ButtonGroup>
+				<ButtonGroup className="mr-2" aria-label="Reset All Button">
+				<Button 
+					variant="warning"
+					onClick={() => props.setSelectedPantryList([])}
+				>
+					Reset All
+				</Button>
+				</ButtonGroup>
+			</ButtonToolbar>
 			<Accordion>
 				<Card>
 					<Accordion.Toggle as={Button} eventKey="0">
