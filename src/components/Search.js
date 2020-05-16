@@ -3,7 +3,7 @@ import axios from 'axios';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = '46ef327a373243b192fc86af3fa94823';
+const apiKey = '35c66bddbfde4e7bbdfb9f5b48774bb7';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
@@ -66,11 +66,6 @@ export default function Search(props) {
 
 		const apiString = pantryArr.join(',+');
 
-		//api.spoonacular.com/recipes/findByIngredients?ingredients=banana,+sugar,+turnip&apiKey=692296bbb58c433b89dba0eb2c54099b
-
-		// search by ingredients
-		// params: ranking=2 (minimize missing ingredients)
-		//         ignorePantry=true (ignore common pantry items like water, flour)
 		axios
 			.get(
 				`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}&ignorePantry=true&ranking=2`
