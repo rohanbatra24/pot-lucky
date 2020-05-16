@@ -3,7 +3,7 @@ import axios from 'axios';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = '0653802d839642be92a2a01cc680c389';
+const apiKey = '46ef327a373243b192fc86af3fa94823';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
@@ -27,7 +27,7 @@ export default function Search(props) {
 
 		searchText &&
 			axios
-				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=200&apiKey=${apiKey}`)
+				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=50&apiKey=${apiKey}`)
 				.then((res) => res.data.results.map((item) => item.id))
 				.then((ids) => {
 					if (ids) {

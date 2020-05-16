@@ -15,6 +15,26 @@ li {
 	padding: 0;
 } */
 
+.pantry-container h3 {
+	margin-top: 6em;
+	font-size: medium;
+	color: brown;
+	text-align: center;
+}
+
+.btn-toolbar {
+	display: flex;
+	justify-content: center;
+}
+
+.btn-outline-info {
+	float: right;
+}
+
+.btn-outline-success {
+	float: right;
+}
+
 .react-slider {
 	margin-right: .5em;
 }
@@ -188,7 +208,7 @@ li {
 }
 
 .accordion {
-	margin: 1em;
+	margin: .2em;
 }
 
 .main {
@@ -208,7 +228,7 @@ li {
 	flex-direction: column;
 	background-color: #bec7bb;
 	/* height: auto; */
-	width: 20vw;
+
 	border: 5px solid white;
 }
 
