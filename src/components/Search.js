@@ -3,7 +3,7 @@ import axios from 'axios';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = '35c66bddbfde4e7bbdfb9f5b48774bb7';
+const apiKey = '6c8dc0febf294ab4b75031caa50290cc';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
