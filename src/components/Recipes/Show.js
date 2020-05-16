@@ -28,11 +28,24 @@ export default function Show(props) {
 		return result;
 	}
 
-	// const allergyBadge = isAllergic() ? 'allergic' : 'notAllergic';
+	const pantryArr = props.pantry.map((item) => item.name);
+
+	function canCook() {
+		let result = true;
+		for (let ingredient of props.recipe.extendedIngredients) {
+			console.log('props.ingr', props.recipe.extendedIngredients);
+			console.log('pantry', props.pantry);
+			if (!pantryArr.includes(ingredient.name)) {
+				result = false;
+			}
+		}
+		return result;
+	}
+	const canCookClass = canCook() ? 'canCook' : 'cannotCook';
 
 	return (
 		<Fragment>
-			<div className={`recipe-card card mb-3`}>
+			<div className={`recipe-card card mb-3 ${canCookClass}`}>
 				{isAllergic() && (
 					<Image src={allergyBadge} roundedCircle className="allergyBadge" alt="allergy badge" />
 				)}
