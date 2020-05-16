@@ -164,7 +164,7 @@ function App() {
 	//////////////
 	if (user && !isLoading) {
 		return (
-			<Fragment>
+			<Fragment>			
 				<NavBar
 					allergies={fullUser.allergies}
 					ingredients={ingredients}
