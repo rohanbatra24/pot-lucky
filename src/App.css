@@ -14,6 +14,58 @@ li {
 	margin: 0;
 	padding: 0;
 } */
+
+.react-slider {
+	margin-right: .5em;
+}
+
+.filter-container {
+	background: rgba(120, 161, 191, 0.57);
+	border-radius: 2em;
+}
+
+.cuisine span {
+	margin-right: 1em;
+	white-space: nowrap;
+	margin-right: .5em;
+}
+
+.dish-type {
+	display: flex;
+	align-items: center;
+}
+
+.cuisine {
+	display: flex;
+	align-items: center;
+}
+
+.generate-recipe-btn {
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #60a3bc;
+	padding: 20px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+.generate-recipe-btn:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	transition: all 0.4s ease 0s;
+}
+
+.search-container {
+	margin-top: 1em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .card-body {
 	margin-left: 50px;
 }
@@ -30,6 +82,9 @@ li {
 }
 
 .list-group {
+	border-top: 2px solid black;
+	padding: .4em;
+
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -83,6 +138,29 @@ li {
 	/* border: 5px solid goldenrod; */
 }
 
+.filters-row1 {
+	/* border: solid black; */
+	padding: .3em;
+	/* border-radius: 1em; */
+	/* background-color: white; */
+	display: flex;
+	margin: 1em;
+	justify-content: space-around;
+	color: #000000;
+	font-style: italic;
+}
+
+.filters-row2 {
+	margin: 1em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: #000000;
+	font-style: italic;
+	/* border-radius: 1em; */
+	/* background-color: white; */
+}
+
 .buttonFilterContainer {
 	display: flex;
 	justify-content: space-evenly;
@@ -109,22 +187,28 @@ li {
 	display: flex;
 }
 
+.accordion {
+	margin: 1em;
+}
+
 .main {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	margin-top: 60px;
+	margin-top: 51px;
 	width: 100vw;
-	/*background-image: url('https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');*/
+	height: 94vh;
+	background-image: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
 }
 
 .pantry-container {
 	display: flex;
 	flex-direction: column;
-	background-color: cornflowerblue;
-	height: 100%;
-	width: 25vw;
+	background-color: #bec7bb;
+	/* height: auto; */
+	width: 20vw;
+	border: 5px solid white;
 }
 
 .recipe-container {
@@ -167,6 +251,7 @@ li {
 
 .navbar {
 	justify-content: space-between;
+	height: 3em;
 }
 .nav-avatar {
 	height: 2em;
