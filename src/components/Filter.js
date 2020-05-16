@@ -94,86 +94,93 @@ export default function Filter(props) {
 	//////////
 	return (
 		<div className="filters">
-			<Form>
-				<Jumbotron className="buttonFilterContainer">
+			<Form className="filter-container">
+				<div className="filters-row1">
 					<Switch
-						type="vegan"
+						type="Vegan"
 						isOn={props.filters.vegan}
 						handleToggle={() => props.setFilters({ ...props.filters, vegan: !props.filters.vegan })}
 					/>
 					<Switch
-						type="vegetarian"
+						type="Vegetarian"
 						isOn={props.filters.vegetarian}
 						handleToggle={() =>
 							props.setFilters({ ...props.filters, vegetarian: !props.filters.vegetarian })}
 					/>
 					<Switch
-						type="glutenfree"
+						type="Gluten Free"
 						isOn={props.filters.glutenfree}
 						handleToggle={() =>
 							props.setFilters({ ...props.filters, glutenfree: !props.filters.glutenfree })}
 					/>
 					<Switch
-						type="healthy"
+						type="Healthy"
 						isOn={props.filters.healthy}
 						handleToggle={() => props.setFilters({ ...props.filters, healthy: !props.filters.healthy })}
 					/>
-				</Jumbotron>
+				</div>
 
-				<Jumbotron className="sliderFilterContainer">
-					<Slider
-						type="rating"
-						maxSize={100}
-						minSize={0}
-						initialSize={props.filters.rating}
-						handleChange={(event) => props.setFilters({ ...props.filters, rating: event.target.value })}
-					/>
+				<div className="filters-row2">
+					<div className="sliders">
+						<Slider
+							type="Rating"
+							maxSize={100}
+							minSize={0}
+							initialSize={props.filters.rating}
+							handleChange={(event) => props.setFilters({ ...props.filters, rating: event.target.value })}
+						/>
 
-					<Slider
-						type="time"
-						maxSize={max_time}
-						minSize={min_time}
-						initialSize={props.filters.time}
-						handleChange={(event) => props.setFilters({ ...props.filters, time: event.target.value })}
-					/>
-				</Jumbotron>
+						<Slider
+							type="Time"
+							maxSize={max_time}
+							minSize={min_time}
+							initialSize={props.filters.time}
+							handleChange={(event) => props.setFilters({ ...props.filters, time: event.target.value })}
+						/>
+					</div>
 
-				<Form.Group controlId="exampleForm.SelectCustom">
-					<Form.Label>Dish Type</Form.Label>
-					<Form.Control
-						as="select"
-						custom
-						onChange={(event) =>
-							props.setFilters({
-								...props.filters,
-								dish : event.target.value == 'All' ? null : event.target.value
-							})}
-					>
-						<option value="" defaultValue disabled hidden>
-							Pick a dish type
-						</option>
-						<option value={null}>All</option>
-						{dishesList}
-					</Form.Control>
-				</Form.Group>
-				<Form.Group controlId="exampleForm.SelectCustom">
-					<Form.Label>Cuisine</Form.Label>
-					<Form.Control
-						as="select"
-						custom
-						onChange={(event) =>
-							props.setFilters({
-								...props.filters,
-								cuisine : event.target.value == 'All' ? null : event.target.value
-							})}
-					>
-						<option value="" defaultValue disabled hidden>
-							Pick a cuisine type
-						</option>
-						<option>All</option>
-						{cuisinesList}
-					</Form.Control>
-				</Form.Group>
+					<Form.Group controlId="exampleForm.SelectCustom">
+						<div className="dish-type">
+							<span>Dish Type</span>
+
+							<Form.Control
+								as="select"
+								custom
+								onChange={(event) =>
+									props.setFilters({
+										...props.filters,
+										dish : event.target.value == 'All' ? null : event.target.value
+									})}
+							>
+								<option value="" defaultValue disabled hidden>
+									Pick a dish type
+								</option>
+								<option value={null}>All</option>
+								{dishesList}
+							</Form.Control>
+						</div>
+					</Form.Group>
+					<Form.Group controlId="exampleForm.SelectCustom">
+						<div className="cuisine">
+							<span>Cuisine</span>
+							<Form.Control
+								as="select"
+								custom
+								onChange={(event) =>
+									props.setFilters({
+										...props.filters,
+										cuisine : event.target.value == 'All' ? null : event.target.value
+									})}
+							>
+								<option value="" defaultValue disabled hidden>
+									Pick a cuisine type
+								</option>
+								<option>All</option>
+								{cuisinesList}
+							</Form.Control>
+						</div>
+					</Form.Group>
+				</div>
 			</Form>
 		</div>
 	);
