@@ -89,7 +89,7 @@ li {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	height: 550px;
+	height: 95vh;
 }
 
 .no-gutters {
@@ -200,6 +200,7 @@ li {
 	width: 100vw;
 	height: 94vh;
 	background-image: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+	background-size: cover;
 }
 
 .pantry-container {
@@ -217,7 +218,6 @@ li {
 	/* background-color: yellow; */
 	height: 100%;
 	width: 75vw;
-	overflow: scroll;
 }
 
 .mixingbowl {
