@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Navbar, NavDropdown, Image, Button, Modal, Card } from 'react-bootstrap';
+import { Form, Navbar, NavDropdown, Image, Button, Modal, Card } from 'react-bootstrap';
 import { useAuth0 } from '../contexts/auth0-context';
 import logo from '../assets/bowl.png';
 
@@ -7,7 +7,7 @@ export default function NavBar(props) {
 
   const { isLoading, user, logout } = useAuth0();
   const [ show, setShow ] = useState(false);
-
+  const [ value, setValue ] = useState("");
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
@@ -33,7 +33,10 @@ export default function NavBar(props) {
     })
     return allergiesList;
   }
-  
+
+  const ingredientList = props.ingredients.map((ingred) => {
+		return <option key={ingred.spoonacular_id}>{ingred.name}</option>;
+	});
 
     return (
       <Fragment>
@@ -69,7 +72,30 @@ export default function NavBar(props) {
           </Modal.Header>
           <Modal.Body>
             <h3>We'll alert you if a recipe includes any of these ingredients!</h3>
-            Form for new allergy
+            <Form>
+              <Form.Group>
+                <Form.Control
+                  className="form-component"
+                  value={value}
+                  name="allergy"
+                  placeholder="Ingredient"
+                  type="text"
+                  list="ingredients"
+                  onChange={(e) => setValue(e.target.value)}
+                />
+                <datalist id="ingredients">
+                  <select>{ingredientList}</select>
+                </datalist>
+                <Button
+                  className="centered-button"
+                  variant="outline-warning"
+                  type="submit"
+                  onClick={(evt => props.handleAddAllergy(evt, value))}
+                >
+                  Save
+                </Button>
+              </Form.Group>
+              </Form>
             {setAllergyList()}
           </Modal.Body>
           <Modal.Footer>
