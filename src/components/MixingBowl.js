@@ -1,8 +1,9 @@
 import React from 'react';
-import image from '../assets/bowl.png';
+import image from '../assets/saucepan.svg';
 
 export default function MixingBowl(props) {
   return (
-    <img src={image} alt='Mixing Bowl'/>
+    <div></div>
+    // <img src={image} alt='Mixing Bowl'/>
   );
 }
