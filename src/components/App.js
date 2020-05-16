@@ -35,8 +35,8 @@ function App() {
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
-	const [ fullUser, setFullUser ] = useState({id: '', email: '', allergies: []})
-	
+	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [] });
+
 	useEffect(
 		() => {
 			user && getUserFromDb(user.email);
@@ -54,8 +54,8 @@ function App() {
 			.then((data) => {
 				if (data.length) {
 					getPantry(data[0].id);
-					const allergyList = data.map(item => item.allergy)
-					setFullUser({id: data[0].id, email: data[0].email, allergies: allergyList});
+					const allergyList = data.map((item) => item.allergy);
+					setFullUser({ id: data[0].id, email: data[0].email, allergies: allergyList });
 				}
 				else {
 					addUserToDb(user.email);
@@ -74,7 +74,7 @@ function App() {
 			.then((response) => response.json())
 			.then((data) => {
 				getPantry(data.id);
-				setFullUser({...fullUser, id: data.id, email: data.email, allergies: []});
+				setFullUser({ ...fullUser, id: data.id, email: data.email, allergies: [] });
 			})
 			.catch((err) => console.error(err));
 	}
@@ -129,7 +129,7 @@ function App() {
 
 	function addAllergy(event, newAllergy) {
 		event.preventDefault();
-		const itemWithId = { allergy: newAllergy};
+		const itemWithId = { allergy: newAllergy };
 
 		fetch(`http://localhost:8080/api/users/${fullUser.id}/allergies/add`, {
 			method  : 'post',
@@ -138,13 +138,12 @@ function App() {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log("RETURN FROM ADD ALLERGY", res)
-				const copy = [...fullUser.allergies, res.name]
-				setFullUser({...fullUser, allergies: copy});
+				console.log('RETURN FROM ADD ALLERGY', res);
+				const copy = [ ...fullUser.allergies, res.name ];
+				setFullUser({ ...fullUser, allergies: copy });
 			})
 			.catch((err) => console.error(err));
 	}
-
 
 	function deleteAllergy(event, ingredient) {
 		event.preventDefault();
@@ -154,20 +153,24 @@ function App() {
 			body    : JSON.stringify({ ingredient: ingredient })
 		})
 			.then((res) => {
-				const copy = fullUser.allergies
-				const updated = copy.filter(allergy => allergy !== ingredient)
-				setFullUser({...fullUser, allergies: updated});
+				const copy = fullUser.allergies;
+				const updated = copy.filter((allergy) => allergy !== ingredient);
+				setFullUser({ ...fullUser, allergies: updated });
 				getPantry(fullUser.id);
 			})
 			.catch((err) => console.error(err));
 	}
 
-
 	//////////////
 	if (user && !isLoading) {
 		return (
 			<Fragment>
-				<NavBar allergies={fullUser.allergies} ingredients={ingredients} handleAddAllergy={addAllergy} handleDeleteAllergy={deleteAllergy}/>
+				<NavBar
+					allergies={fullUser.allergies}
+					ingredients={ingredients}
+					handleAddAllergy={addAllergy}
+					handleDeleteAllergy={deleteAllergy}
+				/>
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
@@ -199,22 +202,22 @@ function App() {
 						{/* <label htmlFor="">
 							<h1>Recipes</h1>
 						</label> */}
-						<RecipeList recipes={getFilteredRecipes(filters, recipeList)} />
+						<RecipeList allergies={fullUser.allergies} recipes={getFilteredRecipes(filters, recipeList)} />
 						{/* <div className="recipes">{getRecipes()}</div> */}
 					</div>
 				</div>
 			</Fragment>
-		)
-	} else if (!user && !isLoading) {
-		return (
-			<Unauthorized />
-		)
-	} else {
+		);
+	}
+	else if (!user && !isLoading) {
+		return <Unauthorized />;
+	}
+	else {
 		return (
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>
 			</Spinner>
-		)
+		);
 	}
 }
 
