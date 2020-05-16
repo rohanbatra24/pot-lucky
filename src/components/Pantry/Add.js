@@ -96,7 +96,15 @@ export default function Add(props) {
 						className="centered-button"
 						variant="outline-danger"
 						type="submit"
-						onClick={(event) => props.handleAddItem(event, values)}
+						onClick={(event) => {
+							props.handleAddItem(event, values);
+							setValues({
+								name     : '',
+								quantity : '',
+								unit     : '',
+								expiry   : ''
+							});
+						}}
 						block
 					>
 						Add item to your pantry
