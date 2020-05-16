@@ -15,9 +15,11 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
 
+import { Spinner } from 'react-bootstrap';
+
 function App() {
 	// const auth0 = useContext(Auth0Context);
-	const { isLoading, user, loginWithRedirect, logout } = useAuth0();
+	const { isLoading, user } = useAuth0();
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
 		vegetarian : false,
@@ -33,8 +35,8 @@ function App() {
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
 
-	const [ userId, setUserId ] = useState('');
-
+	const [ fullUser, setFullUser ] = useState({id: '', email: '', allergies: []})
+	
 	useEffect(
 		() => {
 			user && getUserFromDb(user.email);
@@ -52,7 +54,8 @@ function App() {
 			.then((data) => {
 				if (data.length) {
 					getPantry(data[0].id);
-					setUserId(data[0].id);
+					const allergyList = data.map(item => item.allergy)
+					setFullUser({id: data[0].id, email: data[0].email, allergies: allergyList});
 				}
 				else {
 					addUserToDb(user.email);
@@ -71,7 +74,7 @@ function App() {
 			.then((response) => response.json())
 			.then((data) => {
 				getPantry(data.id);
-				setUserId(data.id);
+				setFullUser({...fullUser, id: data.id, email: data.email, allergies: []});
 			})
 			.catch((err) => console.error(err));
 	}
@@ -95,7 +98,7 @@ function App() {
 
 	function addToPantry(event, newItem) {
 		event.preventDefault();
-		const itemWithId = { ...newItem, id: userId };
+		const itemWithId = { ...newItem, id: fullUser.id };
 
 		fetch('http://localhost:8080/api/pantries/add', {
 			method  : 'post',
@@ -119,14 +122,52 @@ function App() {
 			.then((res) => {
 				setSelectedPantryList(selectedPantryList.filter((item) => item !== name));
 
-				getPantry(userId);
+				getPantry(fullUser.id);
 			})
 			.catch((err) => console.error(err));
 	}
-	if (user) {
+
+	function addAllergy(event, newAllergy) {
+		event.preventDefault();
+		const itemWithId = { allergy: newAllergy};
+
+		fetch(`http://localhost:8080/api/users/${fullUser.id}/allergies/add`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify(itemWithId)
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log("RETURN FROM ADD ALLERGY", res)
+				const copy = [...fullUser.allergies, res.name]
+				setFullUser({...fullUser, allergies: copy});
+			})
+			.catch((err) => console.error(err));
+	}
+
+
+	function deleteAllergy(event, ingredient) {
+		event.preventDefault();
+		fetch(`http://localhost:8080/api/users/${fullUser.id}/allergies/delete`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify({ ingredient: ingredient })
+		})
+			.then((res) => {
+				const copy = fullUser.allergies
+				const updated = copy.filter(allergy => allergy !== ingredient)
+				setFullUser({...fullUser, allergies: updated});
+				getPantry(fullUser.id);
+			})
+			.catch((err) => console.error(err));
+	}
+
+
+	//////////////
+	if (user && !isLoading) {
 		return (
 			<Fragment>
-				<NavBar />
+				<NavBar allergies={fullUser.allergies} ingredients={ingredients} handleAddAllergy={addAllergy} handleDeleteAllergy={deleteAllergy}/>
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
@@ -163,10 +204,17 @@ function App() {
 					</div>
 				</div>
 			</Fragment>
-		);
-	}
-	else {
-		return <Unauthorized />;
+		)
+	} else if (!user && !isLoading) {
+		return (
+			<Unauthorized />
+		)
+	} else {
+		return (
+			<Spinner animation="border" role="status">
+				<span className="sr-only">Loading...</span>
+			</Spinner>
+		)
 	}
 }
 
