@@ -15,6 +15,18 @@ li {
 	padding: 0;
 } */
 
+.allergyBadge {
+	height: 2.5em;
+}
+
+.allergic {
+	background-color: #d05e5e75;
+}
+
+.notAllergic {
+	background-color: #a1b99175;
+}
+
 .pantry-container h3 {
 	margin-top: 6em;
 	font-size: medium;
