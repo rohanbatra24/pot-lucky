@@ -30,6 +30,7 @@ export default function RecipeList(props) {
 						selected={selected}
 						setSelected={setSelected}
 						recipe={recipe}
+						pantry={props.pantry}
 					/>
 				);
 			});
