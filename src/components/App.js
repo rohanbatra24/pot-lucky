@@ -14,6 +14,8 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import Unauthorized from './Unauthorized'
 import getFilteredRecipes from '../helpers';
 
+import { Spinner } from 'react-bootstrap';
+
 function App() {
 	// const auth0 = useContext(Auth0Context);
 	const { isLoading, user, loginWithRedirect, logout } = useAuth0();
@@ -123,7 +125,7 @@ function App() {
 			})
 			.catch((err) => console.error(err));
 	}
-	if (user) {
+	if (user && !isLoading) {
 		return (
 			<Fragment>
 			<NavBar />
@@ -165,10 +167,16 @@ function App() {
 						</div>
 				</div>
 			</Fragment>
-		);
-	} else {
+		)
+	} else if (!user && !isLoading) {
 		return (
 			<Unauthorized />
+		)
+	} else {
+		return (
+			<Spinner animation="border" role="status">
+				<span className="sr-only">Loading...</span>
+			</Spinner>
 		)
 	}
 }
