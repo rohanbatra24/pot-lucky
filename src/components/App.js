@@ -127,6 +127,25 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
+	function addAllergy(event, newAllergy) {
+		event.preventDefault();
+		const itemWithId = { allergy: newAllergy};
+
+		fetch(`http://localhost:8080/api/users/${fullUser.id}/allergies/add`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify(itemWithId)
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log("RETURN FROM ADD ALLERGY", res)
+				const copy = [...fullUser.allergies, res.name]
+				setFullUser({...fullUser, allergies: copy});
+			})
+			.catch((err) => console.error(err));
+	}
+
+
 	function deleteAllergy(event, ingredient) {
 		event.preventDefault();
 		fetch(`http://localhost:8080/api/users/${fullUser.id}/allergies/delete`, {
@@ -148,7 +167,7 @@ function App() {
 	if (user && !isLoading) {
 		return (
 			<Fragment>
-				<NavBar allergies={fullUser.allergies} handleDeleteAllergy={deleteAllergy}/>
+				<NavBar allergies={fullUser.allergies} ingredients={ingredients} handleAddAllergy={addAllergy} handleDeleteAllergy={deleteAllergy}/>
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
