@@ -24,9 +24,21 @@ export default function PantryList(props) {
 	const isSelected = () => !props.selectedPantryList.includes(item.name);
 		return (
 				<Card>
-					<Accordion.Toggle as={Card.Header} eventKey={item.id}>
+					<Card.Header>
 						{item.name}
+						{isSelected() && (
+							<Button
+								variant="outline-success"
+								className={pantryClass}
+								onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, item.name ])}
+							>
+								+
+							</Button>
+						)}
+					<Accordion.Toggle as={Button} variant="outline-info" eventKey={item.id}>					
+							...
 					</Accordion.Toggle>
+					</Card.Header>
 
 					<Accordion.Collapse eventKey={item.id}>
 						<Card.Body>
@@ -38,15 +50,6 @@ export default function PantryList(props) {
 							/>
 						</Card.Body>
 					</Accordion.Collapse>
-					{isSelected() && (
-							<Button
-								variant="outline-info"
-								className={pantryClass}
-								onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, item.name ])}
-							>
-								<span role="img" aria-label="Add">➕</span>
-							</Button>
-						)}
 				</Card>
 			)
 	})	
