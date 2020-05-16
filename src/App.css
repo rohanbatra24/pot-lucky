@@ -19,11 +19,11 @@ li {
 	height: 2.5em;
 }
 
-.allergic {
+.cannotCook {
 	background-color: #d05e5e75;
 }
 
-.notAllergic {
+.canCook {
 	background-color: #a1b99175;
 }
 
