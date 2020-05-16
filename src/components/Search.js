@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 
-console.log("api key: ", process.env.SPOONACULAR_API_KEY)
+console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = "b183b79d7863488aaca6c2aeb086183b"
+const apiKey = '12929083c5c94e82b9a852cdb0c09641';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
@@ -106,21 +106,20 @@ export default function Search(props) {
 
 	return (
 		<Fragment>
-			<div>
+			<div className="search-container">
 				<form type="submit" onSubmit={handleGenerateRecipe}>
-					<button>Generate Recipe</button>
+					<button className="generate-recipe-btn">Generate Recipe</button>
 				</form>
-			</div>
-			<div>
-				Search by text:
-				<form type="submit" onSubmit={onSubmit} className="search">
-					<input
-						placeholder="input search"
-						value={searchText}
-						onChange={(e) => setSearchText(e.target.value)}
-					/>
-					<button>Submit</button>
-				</form>
+				<div>
+					<form type="submit" onSubmit={onSubmit} className="search">
+						<input
+							placeholder="Search recipes!"
+							value={searchText}
+							onChange={(e) => setSearchText(e.target.value)}
+						/>
+						<button>Submit</button>
+					</form>
+				</div>
 			</div>
 		</Fragment>
 	);
