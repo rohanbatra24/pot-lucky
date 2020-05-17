@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Show from './Show';
-import { Image, ListGroup } from 'react-bootstrap';
+import { Image, CardColumns } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -46,8 +46,10 @@ export default function RecipeList(props) {
 	};
 
 	return (
-		<ListGroup className="overflow-auto" as="ul">
+		<CardColumns>
 			{makeRecipeList()}
-		</ListGroup>
+		</CardColumns>
+		// <ListGroup className="overflow-auto" as="ul">
+		// </ListGroup>
 	);
 }
