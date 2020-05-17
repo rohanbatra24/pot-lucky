@@ -27,7 +27,7 @@ export default function Search(props) {
 
 		searchText &&
 			axios
-				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=10&apiKey=${apiKey}`)
+				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=3&apiKey=${apiKey}`)
 				.then((res) => res.data.results.map((item) => item.id))
 				.then((ids) => {
 					if (ids) {

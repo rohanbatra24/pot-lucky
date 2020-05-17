@@ -34,8 +34,9 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
+	const [ savedRecipes, setSavedRecipes ] = useState([]);
 
-	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [] });
+	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [], savedRecipes: [] });
 
 	useEffect(
 		() => {
@@ -55,7 +56,23 @@ function App() {
 				if (data.length) {
 					getPantry(data[0].id);
 					const allergyList = data.map((item) => item.allergy);
-					setFullUser({ id: data[0].id, email: data[0].email, allergies: allergyList });
+					console.log('data', data);
+					const savedRecipesList = data.map((item) => {
+						console.log('item in map===', item);
+						return {
+							url   : item.url,
+							title : item.title,
+							image : item.image
+						};
+					});
+
+					console.log('saved recipe list before set full user ', savedRecipesList);
+					setFullUser({
+						id           : data[0].id,
+						email        : data[0].email,
+						allergies    : allergyList,
+						savedRecipes : savedRecipesList
+					});
 				}
 				else {
 					addUserToDb(user.email);
@@ -161,15 +178,55 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 
+	function addSavedRecipe(event, newSavedRecipe) {
+		event.preventDefault();
+		// const itemWithId = { allergy: newAllergy };
+
+		fetch(`http://localhost:8080/api/users/${fullUser.id}/savedRecipes/add`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify({ newSavedRecipe })
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log('RETURN FROM ADD SAVED RECIPE', res);
+				console.log('fullusers.savedrecipes===', fullUser.savedRecipes);
+				const copy = [ ...fullUser.savedRecipes, res ];
+				setFullUser({ ...fullUser, savedRecipes: copy });
+			})
+			.catch((err) => console.error(err));
+	}
+
+	function deleteSavedRecipe(event, url) {
+		event.preventDefault();
+		fetch(`http://localhost:8080/api/users/${fullUser.id}/savedRecipes/delete`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify({ url: url })
+		})
+			.then((res) => {
+				const copy = fullUser.savedRecipes;
+				console.log('copy===', copy);
+				console.log('recipeID===', url);
+				const updated = copy.filter((savedRecipe) => savedRecipe.url !== url);
+				console.log('updated===', updated);
+				setFullUser({ ...fullUser, savedRecipes: updated });
+				getPantry(fullUser.id);
+			})
+			.catch((err) => console.error(err));
+	}
+
 	//////////////
 	if (user && !isLoading) {
 		return (
 			<Fragment>
 				<NavBar
+					savedRecipes={fullUser.savedRecipes}
 					allergies={fullUser.allergies}
 					ingredients={ingredients}
 					handleAddAllergy={addAllergy}
 					handleDeleteAllergy={deleteAllergy}
+					deleteSavedRecipe={deleteSavedRecipe}
 				/>
 				<div className="main">
 					<div className="pantry-container">
@@ -206,6 +263,7 @@ function App() {
 							pantry={pantry}
 							allergies={fullUser.allergies}
 							recipes={getFilteredRecipes(filters, recipeList)}
+							addSavedRecipe={addSavedRecipe}
 						/>
 						{/* <div className="recipes">{getRecipes()}</div> */}
 					</div>

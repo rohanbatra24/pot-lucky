@@ -10,6 +10,8 @@ export default function Show(props) {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
+	const [ mode, setMode ] = useState('before');
+
 	const pantryClass = classNames({
 		'pantry-list__item'           : props,
 		'pantry-list__item--selected' : props.selected
@@ -90,6 +92,36 @@ export default function Show(props) {
 					<Button variant="primary" onClick={handleClose}>
 						Make this and update my pantry!
 					</Button>
+
+					{mode === 'before' ? (
+						<Button
+							variant="primary"
+							onClick={(e) => {
+								setMode('after');
+
+								props.addSavedRecipe(e, {
+									url   : props.recipe.sourceUrl,
+									image : props.recipe.image,
+									title : props.recipe.title
+								});
+							}}
+						>
+							Add to my saved recipes
+						</Button>
+					) : (
+						<Button
+							disabled
+							variant="success"
+							onClick={(e) =>
+								props.addSavedRecipe(e, {
+									url   : props.recipe.sourceUrl,
+									image : props.recipe.image,
+									title : props.recipe.title
+								})}
+						>
+							Saved
+						</Button>
+					)}
 				</Modal.Footer>
 			</Modal>
 		</Fragment>
