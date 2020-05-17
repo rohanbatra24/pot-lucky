@@ -149,10 +149,6 @@ function App() {
 			body    : JSON.stringify(values)
 		})
 			.then((res) => {
-				// const copy = pantry.find(item => item.id === values.itemId)
-				// const updatedCopy = {...copy, unit: values.unit, quantity: values.quantity, expiry: values.expiry}
-
-				// setPantry({...pantry, unit: values.unit, quantity: values.quantity, expiry: values.expiry})
 				getPantry(fullUser.id);
 			})
 			.catch((err) => console.error(err));
@@ -269,6 +265,7 @@ function App() {
 							<h1>Recipes</h1>
 						</label> */}
 						<RecipeList
+							editInPantry={editInPantry}
 							pantry={pantry}
 							allergies={fullUser.allergies}
 							recipes={getFilteredRecipes(filters, recipeList)}
