@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Spinner, Form } from "react-bootstrap";
 
 const units = [
@@ -110,7 +110,7 @@ export default function Show(props) {
 					<Button
 						variant="outline-warning"
 						onClick={(e) => {
-							props.handleEditItem(e, values)
+							props.handleEditItem(e, { ...values, itemId: props.item.id})
 							setMode("view")
 						}
 					}
@@ -120,7 +120,5 @@ export default function Show(props) {
         </Form>
       </div>
     );
-  } else {
-    return <Spinner animation="border" variant="secondary" />;
   }
 }
