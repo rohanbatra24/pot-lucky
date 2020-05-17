@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import FullRecipe from './FullRecipe';
 import '../../App.css';
-import { Image, Modal, Button } from 'react-bootstrap';
+import { Image, Modal, Button, Card } from 'react-bootstrap';
 export default function Show(props) {
 	const [ show, setShow ] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Show(props) {
 
 	return (
 		<Fragment>
-			<div className={`recipe-card card mb-1 ${canCookClass} ${allergyClass}`}>
+			<Card className={`recipe-card card mb-1 ${canCookClass} ${allergyClass}`}>
 				<div className="badges-container">
 					{isAllergic() && (
 						<Image
@@ -81,30 +81,30 @@ export default function Show(props) {
 						/>	
 					)}
 				</div>
-				<div className="row no-gutters">
-					<div className="col-md-8">
-						<div className="card-body">
-							<h5 className="card-title">{props.recipe.title}</h5>
-							<p><small>Ready in: {props.recipe.readyInMinutes} mins</small></p>
-							<p><small>Health Score: {props.recipe.healthScore}</small></p>
-							<p><small>Likes: {props.recipe.aggregateLikes}</small></p>
-							<p><small>Spoonacular Score: {props.recipe.spoonacularScore}</small></p>
-						</div>
-					</div>
-					<div className="col-md-4">
-						<img src={props.recipe.image} className="card-img" alt={props.recipe.title}/>
-						<button
-							className="btn btn-primary"
-							onClick={() => {
-								props.setSelected(props.recipe.id);
-								handleShow();
-							}}
-						>
-							Details
-						</button>
-					</div>
-				</div>
-			</div>
+				<Card.Img variant="top" src={props.recipe.image} alt={props.recipe.title}/>
+				<Card.Body>
+					<Card.Title>{props.recipe.title.slice(0,20)}...</Card.Title>
+					<Card.Text>
+						<small>Ready in: {props.recipe.readyInMinutes} minutes</small><br/>
+						<small>Spoonacular Score: {props.recipe.spoonacularScore}%</small><br/>
+						<small>Health Score: {props.recipe.healthScore}</small><br/>
+						<small>Likes: {props.recipe.aggregateLikes}</small><br/>
+					</Card.Text>
+				</Card.Body>
+				<Card.Footer> 
+					<Button
+						variant="primary"
+						size="lg"
+						block
+						onClick={() => {
+							props.setSelected(props.recipe.id);
+							handleShow();
+						}}
+					>
+						Details
+					</Button>
+				</Card.Footer>
+			</Card>
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
