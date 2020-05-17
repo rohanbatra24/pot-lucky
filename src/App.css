@@ -28,7 +28,7 @@ li {
 }
 
 .pantry-container h3 {
-	margin-top: 6em;
+	margin-top: 2em;
 	font-size: medium;
 	color: brown;
 	text-align: center;
@@ -254,19 +254,21 @@ li {
 .recipe-container {
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
 	/* background-color: yellow; */
-	height: 100%;
+	height: 500px;
 	width: 75vw;
 }
 
 .mixingbowl {
-	display: unset;
+	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	margin-top: 30em;
 }
 
-.mixingbowl img {
-	height: 6em;
+.selected-pantry_empty {
+	height: 10em;
 }
 
 .centered-text {
@@ -275,14 +277,16 @@ li {
 
 .mixingbowl .jumbotron {
 	display: grid;
-	background-image: url('https://image.flaticon.com/icons/png/512/1689/1689198.png');
-	background-size: contain;
-	margin: 1em;
+	padding: 1em;
+	height: 250px;
+	overflow-y:scroll;
 }
-.selected-pantry__empty {
+.selected-pantry__empty .jumbotron{
 	display: flex;
 	justify-content: center;
+	overflow-y: hidden;
 }
+
 .selected-pantry__item {
 	display: flex;
 	justify-content: space-between;
@@ -303,4 +307,9 @@ li {
 }
 .btn-logout {
 	margin-left: 1em;
+}
+
+div .pantry-list {
+	height: 500px;
+	overflow-y: scroll;
 }
