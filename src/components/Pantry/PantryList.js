@@ -67,7 +67,7 @@ export default function PantryList(props) {
 			<Accordion>
 				<Card>
 					<Accordion.Toggle as={Button} eventKey="0">
-						Add items to your pantry!
+						New Item
 					</Accordion.Toggle>
 					<Accordion.Collapse eventKey="0">
 						<Card.Body>
@@ -76,8 +76,9 @@ export default function PantryList(props) {
 					</Accordion.Collapse>
 				</Card>
 			</Accordion>
-			<Accordion defaultActiveKey="0">{pantryList}</Accordion>
-
+			<div className="pantry-list">
+				<Accordion defaultActiveKey="0">{pantryList}</Accordion>
+			</div>
 			{/* <ListGroup as="ul">{pantryList}</ListGroup> */}
 		</Fragment>
 	);
