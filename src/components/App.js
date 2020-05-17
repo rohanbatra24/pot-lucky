@@ -15,7 +15,7 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
 
-import { Spinner } from 'react-bootstrap';
+import { Alert, Image } from 'react-bootstrap';
 
 function App() {
 	// const auth0 = useContext(Auth0Context);
@@ -282,9 +282,16 @@ function App() {
 	}
 	else {
 		return (
-			<Spinner animation="border" role="status">
-				<span className="sr-only">Loading...</span>
-			</Spinner>
+			<div className="loading-app">
+				<Alert key={1} variant="info">
+					Patience, hungry one!<br />
+					Good food takes time to make!
+				</Alert>
+				<Image
+					src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
+					alt="Loading"
+				/>
+			</div>
 		);
 	}
 }
