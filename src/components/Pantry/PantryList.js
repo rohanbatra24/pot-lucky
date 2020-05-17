@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import './styles.css';
 
-import { Accordion, Card, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { Accordion, Card, Button, ButtonGroup, ButtonToolbar, Image } from 'react-bootstrap';
 
 export default function PantryList(props) {
 	// Retrieve list from database
@@ -54,32 +54,51 @@ export default function PantryList(props) {
 			</Card>
 		);
 	});
-
-	return (
-		<Fragment>
-			<ButtonToolbar>
-				<ButtonGroup className="mr-2" aria-label="Add All Button">
-					<Button variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
-						Add All
-					</Button>
-				</ButtonGroup>
-			</ButtonToolbar>
-			<Accordion>
-				<Card>
-					<Accordion.Toggle as={Button} eventKey="0">
-						New Item
-					</Accordion.Toggle>
-					<Accordion.Collapse eventKey="0">
-						<Card.Body>
-							<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
-						</Card.Body>
-					</Accordion.Collapse>
-				</Card>
-			</Accordion>
-			<div className="pantry-list">
-				<Accordion defaultActiveKey="0">{pantryList}</Accordion>
-			</div>
-			{/* <ListGroup as="ul">{pantryList}</ListGroup> */}
-		</Fragment>
-	);
+	if (props.pantry.length) {
+		return (
+			<Fragment>
+				<ButtonToolbar>
+					<ButtonGroup className="mr-2" aria-label="Add All Button">
+						<Button variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+							Add All
+						</Button>
+					</ButtonGroup>
+				</ButtonToolbar>
+				<Accordion>
+					<Card>
+						<Accordion.Toggle as={Button} eventKey="0">
+							New Item
+						</Accordion.Toggle>
+						<Accordion.Collapse eventKey="0">
+							<Card.Body>
+								<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
+							</Card.Body>
+						</Accordion.Collapse>
+					</Card>
+				</Accordion>
+				<div className="pantry-list">
+					<Accordion defaultActiveKey="0">{pantryList}</Accordion>
+				</div>
+				{/* <ListGroup as="ul">{pantryList}</ListGroup> */}
+			</Fragment>
+		);
+	} else {
+		return (
+			<Fragment>
+				<Accordion>
+					<Card>
+						<Accordion.Toggle as={Button} eventKey="0">
+							New Item
+						</Accordion.Toggle>
+						<Accordion.Collapse eventKey="0">
+							<Card.Body>
+								<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
+							</Card.Body>
+						</Accordion.Collapse>
+					</Card>
+				</Accordion>
+				<Image className="pantry-list__empty"src="https://image.flaticon.com/icons/svg/2371/2371854.svg" alt="Groceries"/>
+			</Fragment>
+		)
+	}
 }
