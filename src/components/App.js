@@ -55,11 +55,9 @@ function App() {
 				if (data.length) {
 					getPantry(data[0].id);
 
-					const allergyList = data.map((item) => item.allergy);
+					const allergyList = data.filter((item) => item.allergy).map((item) => item.allergy);
 
-					const savedRecipesList = data
-					.filter(item => item.url)
-					.map((item) => {
+					const savedRecipesList = data.filter((item) => item.url).map((item) => {
 						return {
 							url   : item.url,
 							title : item.title,
@@ -142,7 +140,7 @@ function App() {
 			})
 			.catch((err) => console.error(err));
 	}
-	
+
 	function editInPantry(event, values) {
 		event.preventDefault();
 		fetch(`http://localhost:8080/api/pantries/${fullUser.id}/edit`, {
@@ -153,13 +151,12 @@ function App() {
 			.then((res) => {
 				// const copy = pantry.find(item => item.id === values.itemId)
 				// const updatedCopy = {...copy, unit: values.unit, quantity: values.quantity, expiry: values.expiry}
-				
+
 				// setPantry({...pantry, unit: values.unit, quantity: values.quantity, expiry: values.expiry})
 				getPantry(fullUser.id);
 			})
 			.catch((err) => console.error(err));
 	}
-
 
 	function addAllergy(event, newAllergy) {
 		event.preventDefault();
@@ -230,7 +227,7 @@ function App() {
 	//////////////
 	if (user && !isLoading) {
 		return (
-			<Fragment>			
+			<Fragment>
 				<NavBar
 					savedRecipes={fullUser.savedRecipes}
 					allergies={fullUser.allergies}
