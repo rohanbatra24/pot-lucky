@@ -22,7 +22,6 @@ export default function Show(props) {
 		for (let ingredient of props.recipe.extendedIngredients) {
 			for (let allergy of props.allergies) {
 				if (ingredient.name === allergy) {
-					console.log(true);
 					result = true;
 				}
 			}
@@ -35,8 +34,6 @@ export default function Show(props) {
 	function canCook() {
 		let result = true;
 		for (let ingredient of props.recipe.extendedIngredients) {
-			console.log('props.ingr', props.recipe.extendedIngredients);
-			console.log('pantry', props.pantry);
 			if (!pantryArr.includes(ingredient.name)) {
 				result = false;
 			}

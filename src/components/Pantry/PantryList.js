@@ -19,7 +19,6 @@ export default function PantryList(props) {
 
 	const allPantryNames = new Set(props.pantry.map((item) => item.name));
 
-	console.log('allPantrynames ===> ', allPantryNames);
 	const pantryList = props.pantry.map((item) => {
 		const isSelected = () => !props.selectedPantryList.includes(item.name);
 		return (

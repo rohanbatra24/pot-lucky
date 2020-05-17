@@ -71,9 +71,7 @@ export default function Search(props) {
 				`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}&ignorePantry=true&ranking=2`
 			)
 			.then((res) => {
-				// console.log('first log from generate: ', res.data);
 				const noMissingIngred = res.data.filter((recipe) => {
-					// console.log('recipe =====> ', recipe.missedIngredientCount);
 					return recipe.missedIngredientCount < 1;
 				});
 				if (noMissingIngred.length) {
