@@ -192,7 +192,7 @@ function App() {
 				<div className="main">
 					<div className="pantry-container">
 						<div className="mixingbowl">
-							<MixingBowl />
+							{/* <MixingBowl /> */}
 							<SelectedPantry
 								selectedPantryList={selectedPantryList}
 								setSelectedPantryList={setSelectedPantryList}
