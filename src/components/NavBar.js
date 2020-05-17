@@ -36,22 +36,22 @@ export default function NavBar(props) {
 		});
 		return allergiesList;
 	};
-	const distinct = []
-	const unique = props.savedRecipes.filter(item => {
+	const distinct = [];
+	const unique = props.savedRecipes.filter((item) => {
 		if (distinct.includes(item.url)) {
 			return false;
-		} else {
+		}
+		else {
 			distinct.push(item.url);
 			return true;
 		}
-	})
+	});
 	const setSavedRecipeList = () => {
 		const savedRecipeList = unique.map((savedRecipe) => {
-	
 			return (
 				<Card>
 					<Card.Body>
-						<img src={savedRecipe.image} alt={savedRecipe.title}/>
+						<img src={savedRecipe.image} alt={savedRecipe.title} />
 						<a href={savedRecipe.url}>{savedRecipe.title}</a>
 						<Button variant="danger" onClick={(e) => props.deleteSavedRecipe(e, savedRecipe.url)}>
 							Remove
@@ -67,6 +67,8 @@ export default function NavBar(props) {
 	const ingredientList = props.ingredients.map((ingred) => {
 		return <option key={ingred.spoonacular_id}>{ingred.name}</option>;
 	});
+
+	const disabled = value ? '' : 'true';
 
 	return (
 		<Fragment>
@@ -103,9 +105,10 @@ export default function NavBar(props) {
 				</Modal.Header>
 				<Modal.Body>
 					<h3>We'll alert you if a recipe includes any of these ingredients!</h3>
-					<Form>
-						<Form.Group>
+					<Form noValidate>
+						<Form.Group required>
 							<Form.Control
+								required
 								className="form-component"
 								value={value}
 								name="allergy"
@@ -118,10 +121,15 @@ export default function NavBar(props) {
 								<select>{ingredientList}</select>
 							</datalist>
 							<Button
-								className="centered-button"
-								variant="outline-warning"
+								disabled={disabled}
+								className="centered-button "
+								variant={disabled ? 'secondary' : 'info'}
 								type="submit"
-								onClick={(evt) => props.handleAddAllergy(evt, value)}
+								onClick={(evt) => {
+									props.handleAddAllergy(evt, value);
+
+									setValue('');
+								}}
 							>
 								Save
 							</Button>
