@@ -1,3 +1,5 @@
+
+@import "RecipeCard.css";
 /* h1,
 h2,
 h3,
@@ -14,18 +16,6 @@ li {
 	margin: 0;
 	padding: 0;
 } */
-
-.allergyBadge {
-	height: 2.5em;
-}
-
-.cannotCook {
-	background-color: #d05e5e75;
-}
-
-.canCook {
-	background-color: #a1b99175;
-}
 
 .pantry-container h3 {
 	margin-top: 2em;
@@ -96,42 +86,6 @@ li {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-}
-
-.card-body {
-	margin-left: 50px;
-}
-
-.recipe-card .btn {
-	border-radius: 30%;
-	margin-top: .4em;
-}
-
-.recipe-card {
-	border-radius: 30%;
-	border: 5px dotted bisque;
-	max-width: 540px;
-}
-
-.list-group {
-	border-top: 2px solid black;
-	padding: .4em;
-
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	height: 95vh;
-}
-
-.no-gutters {
-	overflow: hidden;
-}
-
-.card-img {
-	height: 70%;
-	/* width: auto; */
-	border-radius: 10% 30% 50% 70%;
 }
 
 .modalContainer {
@@ -258,11 +212,6 @@ li {
 	/* background-color: yellow; */
 	height: 500px;
 	width: 75vw;
-}
-
-.recipe-container img {
-	justify-self: center;
-	height: 6em;
 }
 
 .mixingbowl {

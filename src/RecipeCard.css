@@ -1,0 +1,62 @@
+
+.allergyBadge {
+  bottom: 80%;
+  height: 2.5em;
+  position: absolute;
+  overflow: visible;
+  left: 90%;
+  z-index: 1;
+}
+
+.cannotCook {
+	background-color: #d05e5e75;
+}
+
+.canCook {
+	background-color: #a1b99175;
+}
+
+.card-body {
+  padding: 0px;
+  position: relative;
+  height: 100%;
+  margin-left: 50px;
+}
+
+.recipe-card .btn {
+  position: absolute;
+  bottom: 20%;
+
+}
+
+.recipe-card {
+  position: relative;
+	border-radius: 3%;
+	border: 3px dotted bisque;
+  width: 40%;
+  height: 75%;
+  z-index: 1000;
+}
+
+.list-group {
+	border-top: 2px solid black;
+	padding: .4em;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	height: 100%;
+}
+
+.no-gutters {
+	overflow: hidden;
+}
+
+.card-img {
+  height: 5em;
+  border-radius: 3%;
+  position: absolute;
+  bottom: 67%;
+  right: 20%;
+}

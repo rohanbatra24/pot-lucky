@@ -28,6 +28,7 @@ export default function Show(props) {
 		}
 		return result;
 	}
+	const allergyClass = isAllergic ? 'allergic' : '';
 
 	const pantryArr = props.pantry.map((item) => item.name);
 
@@ -44,7 +45,7 @@ export default function Show(props) {
 
 	return (
 		<Fragment>
-			<div className={`recipe-card card mb-3 ${canCookClass}`}>
+			<div className={`recipe-card card mb-3 ${canCookClass} ${allergyClass}`}>
 				{isAllergic() && (
 					<Image src={allergyBadge} roundedCircle className="allergyBadge" alt="allergy badge" />
 				)}
@@ -55,13 +56,11 @@ export default function Show(props) {
 							<p className="card-text">Ready in: {props.recipe.readyInMinutes} mins</p>
 							<p className="card-text">Health Score: {props.recipe.healthScore}</p>
 							<p className="card-text">Likes: {props.recipe.aggregateLikes}</p>
-							<p className="card-text">
-								<small className="text-muted">Spoonacular Score: {props.recipe.spoonacularScore}</small>
-							</p>
+							<p className="card-text">Spoonacular Score: {props.recipe.spoonacularScore}</p>
 						</div>
 					</div>
 					<div className="col-md-4">
-						<img src={props.recipe.image} className="card-img" alt={props.recipe.title} />
+						<img src={props.recipe.image} className="card-img" alt={props.recipe.title} thumbnail/>
 						<button
 							className="btn btn-primary"
 							onClick={() => {
@@ -69,7 +68,7 @@ export default function Show(props) {
 								handleShow();
 							}}
 						>
-							View Full Recipe
+							Details
 						</button>
 					</div>
 				</div>
