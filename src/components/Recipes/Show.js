@@ -62,27 +62,37 @@ export default function Show(props) {
 
 	return (
 		<Fragment>
-			<div className={`recipe-card card mb-3 ${canCookClass} ${allergyClass}`}>
-				{isAllergic() && (
-					<Image
-						src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
-						roundedCircle
-						className="allergyBadge"
-						alt="allergy badge"
-					/>
-				)}
+			<div className={`recipe-card card mb-1 ${canCookClass} ${allergyClass}`}>
+				<div className="badges-container">
+					{isAllergic() && (
+						<Image
+							src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
+							roundedCircle
+							className="allergyBadge"
+							alt="Allergy Badge"
+						/>
+					)}
+					{!canCook() && (
+						<Image 
+							src="https://image.flaticon.com/icons/svg/859/859270.svg"
+							alt="Missing Ingredients Badge"
+							roundedCircle
+							className="cannotCookBadge"
+						/>	
+					)}
+				</div>
 				<div className="row no-gutters">
 					<div className="col-md-8">
 						<div className="card-body">
 							<h5 className="card-title">{props.recipe.title}</h5>
-							<p className="card-text">Ready in: {props.recipe.readyInMinutes} mins</p>
-							<p className="card-text">Health Score: {props.recipe.healthScore}</p>
-							<p className="card-text">Likes: {props.recipe.aggregateLikes}</p>
-							<p className="card-text">Spoonacular Score: {props.recipe.spoonacularScore}</p>
+							<p><small>Ready in: {props.recipe.readyInMinutes} mins</small></p>
+							<p><small>Health Score: {props.recipe.healthScore}</small></p>
+							<p><small>Likes: {props.recipe.aggregateLikes}</small></p>
+							<p><small>Spoonacular Score: {props.recipe.spoonacularScore}</small></p>
 						</div>
 					</div>
 					<div className="col-md-4">
-						<img src={props.recipe.image} className="card-img" alt={props.recipe.title} thumbnail/>
+						<img src={props.recipe.image} className="card-img" alt={props.recipe.title}/>
 						<button
 							className="btn btn-primary"
 							onClick={() => {

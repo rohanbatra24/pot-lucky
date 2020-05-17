@@ -1,28 +1,45 @@
 
-.allergyBadge {
-  bottom: 80%;
-  height: 2.5em;
-  position: absolute;
-  overflow: visible;
-  left: 90%;
+.badges-container {
+  /* display: flex */
+  /* bottom: 80%; */
+  /* height: 2.5em; */
+  /* position: absolute; */
+  /* overflow: visible; */
+  /* left: 94%; */
   z-index: 1;
 }
 
-.cannotCook {
-	background-color: #d05e5e75;
+.badges-container :first-child {
+  top: 5%;
+  height: 2.5em;
+  position: absolute;
+  overflow: visible;
+  left: 94%;
+  z-index: 1;
 }
 
-.canCook {
-	background-color: #a1b99175;
+.badges-container :nth-child(2)  {
+  top: 30%;
+  height: 2.5em;
+  position: absolute;
+  overflow: visible;
+  left: 94%;
+  z-index: 1;
 }
 
 .card-body {
   padding: 0px;
   position: relative;
   height: 100%;
-  margin-left: 50px;
+  margin-left: 1em;
 }
 
+.card-text {
+  margin: auto;
+}
+.card-title {
+  margin-top: .75rem;
+}
 .recipe-card .btn {
   position: absolute;
   bottom: 20%;
@@ -57,6 +74,10 @@
   height: 5em;
   border-radius: 3%;
   position: absolute;
-  bottom: 67%;
+  bottom: 50%;
   right: 20%;
+}
+
+p {
+  margin-bottom: .1em;
 }
