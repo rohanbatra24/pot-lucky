@@ -30,6 +30,7 @@ export default function RecipeList(props) {
 			const recipes = props.recipes.map((recipe) => {
 				return (
 					<Show
+						editInPantry={props.editInPantry}
 						allergies={props.allergies}
 						key={recipe.id}
 						selected={selected}
