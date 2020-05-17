@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import FullRecipe from './FullRecipe';
 import '../../App.css';
 import { Image, Modal, Button } from 'react-bootstrap';
-import allergyBadge from '../../assets/allergyBadge.svg';
 export default function Show(props) {
 	const [ show, setShow ] = useState(false);
 
@@ -64,7 +63,12 @@ export default function Show(props) {
 		<Fragment>
 			<div className={`recipe-card card mb-3 ${canCookClass}`}>
 				{isAllergic() && (
-					<Image src={allergyBadge} roundedCircle className="allergyBadge" alt="allergy badge" />
+					<Image
+						src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
+						roundedCircle
+						className="allergyBadge"
+						alt="allergy badge"
+					/>
 				)}
 				<div className="row no-gutters">
 					<div className="col-md-8">
