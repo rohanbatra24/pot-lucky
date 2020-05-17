@@ -47,6 +47,7 @@ export default function PantryList(props) {
 							selectedPantryList={props.selectedPantryList}
 							item={item}
 							handleDeleteItem={props.handleDeleteItem}
+							handleEditItem={props.handleEditItem}
 						/>
 					</Card.Body>
 				</Accordion.Collapse>

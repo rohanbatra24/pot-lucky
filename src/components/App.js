@@ -126,6 +126,24 @@ function App() {
 			})
 			.catch((err) => console.error(err));
 	}
+	
+	function editInPantry(event, values) {
+		event.preventDefault();
+		fetch(`http://localhost:8080/api/pantries/${fullUser.id}/edit`, {
+			method  : 'post',
+			headers : { 'Content-Type': 'application/json' },
+			body    : JSON.stringify(values)
+		})
+			.then((res) => {
+				// const copy = pantry.find(item => item.id === values.itemId)
+				// const updatedCopy = {...copy, unit: values.unit, quantity: values.quantity, expiry: values.expiry}
+				
+				// setPantry({...pantry, unit: values.unit, quantity: values.quantity, expiry: values.expiry})
+				getPantry(fullUser.id);
+			})
+			.catch((err) => console.error(err));
+	}
+
 
 	function addAllergy(event, newAllergy) {
 		event.preventDefault();
@@ -187,6 +205,7 @@ function App() {
 							setSelectedPantryList={setSelectedPantryList}
 							selectedPantryList={selectedPantryList}
 							handleDeleteItem={deleteFromPantry}
+							handleEditItem={editInPantry}
 							ingredients={ingredients}
 						/>
 					</div>
