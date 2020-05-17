@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Show from './Show';
-import ListGroup from 'react-bootstrap/ListGroup';
+import { Image, ListGroup} from 'react-bootstrap';
 
 import './styles.css';
 
@@ -19,7 +19,11 @@ export default function RecipeList(props) {
 	// Render PantryListItem in each iteration
 	const makeRecipeList = () => {
 		if (props.recipes.length === 0) {
-			return <div> Empty List - Search for something or add to your mixing bowl! </div>;
+			return (
+			<div> 
+				Empty List - Search for something or add to your mixing bowl! 
+				<Image src="https://image.flaticon.com/icons/svg/1971/1971011.svg" alt="Recipe Book" />
+			</div>);
 		}
 		else {
 			const recipes = props.recipes.map((recipe) => {
