@@ -1,0 +1,29 @@
+.navbar {
+	justify-content: space-between;
+	height: 3em;
+	opacity: .9;
+}
+
+.nav-avatar {
+	margin-right: .5em;
+	height: 2.2em;
+}
+
+.nav-logo {
+	height: 2em;
+}
+
+.nav-right {
+	display: flex;
+	align-items: center;
+}
+
+.nav-left {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.nav-left img {
+	margin-right: 1em;
+}
