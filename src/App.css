@@ -246,8 +246,8 @@ li {
 	display: flex;
 	flex-direction: column;
 	background-color: #bec7bb;
-	/* height: auto; */
-
+	height: 100%;
+	justify-content: space-evenly;
 	border: 5px solid white;
 }
 
@@ -260,15 +260,20 @@ li {
 	width: 75vw;
 }
 
+.recipe-container img {
+	justify-self: center;
+	height: 6em;
+}
+
 .mixingbowl {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin-top: 30em;
+	/* margin-top: 30em; */
 }
 
 .selected-pantry_empty {
-	height: 10em;
+	height: 6em;
 }
 
 .centered-text {
@@ -292,6 +297,9 @@ li {
 	justify-content: space-between;
 }
 
+.pantry-list__empty {
+	height: 6em;
+}
 .navbar {
 	justify-content: space-between;
 	height: 3em;
