@@ -35,6 +35,7 @@ export default function RecipeList(props) {
 						setSelected={setSelected}
 						recipe={recipe}
 						pantry={props.pantry}
+						addSavedRecipe={props.addSavedRecipe}
 					/>
 				);
 			});
