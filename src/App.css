@@ -14,6 +14,7 @@ li {
 	margin: 0;
 	padding: 0;
 } */
+@import "NavBar.css";
 
 .allergyBadge {
 	height: 2.5em;
@@ -92,7 +93,8 @@ li {
 }
 
 .search-container {
-	margin-top: 1em;
+	margin-top: 16em;
+	display: flex;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -231,15 +233,8 @@ li {
 	margin-top: 51px;
 	width: 100vw;
 	height: 94vh;
-	z-index: 1;
-	/*position: relative;*/
-}
-
-.main:before {
-	z-index: -1;
-	position: absolute;
-	content: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
-	opacity: 0.3;
+	background-image: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+	background-size: cover;
 }
 
 .pantry-container {
@@ -256,7 +251,7 @@ li {
 	flex-direction: column;
 	overflow-y: scroll;
 	/* background-color: yellow; */
-	height: 500px;
+	/* height: 500px; */
 	width: 75vw;
 }
 
@@ -284,9 +279,9 @@ li {
 	display: grid;
 	padding: 1em;
 	height: 250px;
-	overflow-y:scroll;
+	overflow-y: scroll;
 }
-.selected-pantry__empty .jumbotron{
+.selected-pantry__empty .jumbotron {
 	display: flex;
 	justify-content: center;
 	overflow-y: hidden;
@@ -300,19 +295,7 @@ li {
 .pantry-list__empty {
 	height: 6em;
 }
-.navbar {
-	justify-content: space-between;
-	height: 3em;
-}
-.nav-avatar {
-	height: 2em;
-	margin-top: .3em;
-	margin-right: 1em;
-}
 
-.nav-logo {
-	height: 2em;
-}
 .btn-logout {
 	margin-left: 1em;
 }
