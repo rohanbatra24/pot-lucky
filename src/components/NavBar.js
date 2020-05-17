@@ -36,13 +36,22 @@ export default function NavBar(props) {
 		});
 		return allergiesList;
 	};
-
+	const distinct = []
+	const unique = props.savedRecipes.filter(item => {
+		if (distinct.includes(item.url)) {
+			return false;
+		} else {
+			distinct.push(item.url);
+			return true;
+		}
+	})
 	const setSavedRecipeList = () => {
-		const savedRecipeList = props.savedRecipes.map((savedRecipe) => {
+		const savedRecipeList = unique.map((savedRecipe) => {
+	
 			return (
 				<Card>
 					<Card.Body>
-						<img src={savedRecipe.image} />
+						<img src={savedRecipe.image} alt={savedRecipe.title}/>
 						<a href={savedRecipe.url}>{savedRecipe.title}</a>
 						<Button variant="danger" onClick={(e) => props.deleteSavedRecipe(e, savedRecipe.url)}>
 							Remove
