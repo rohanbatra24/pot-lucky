@@ -63,11 +63,6 @@ export default function PantryList(props) {
 						Add All
 					</Button>
 				</ButtonGroup>
-				<ButtonGroup className="mr-2" aria-label="Reset All Button">
-					<Button variant="warning" onClick={() => props.setSelectedPantryList([])}>
-						Reset All
-					</Button>
-				</ButtonGroup>
 			</ButtonToolbar>
 			<Accordion>
 				<Card>
