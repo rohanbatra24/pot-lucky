@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react';
-import { Button, Jumbotron, ButtonGroup } from 'react-bootstrap';
+import React from 'react';
+import { Button, Jumbotron, ButtonGroup, Image } from 'react-bootstrap';
 
 export default function SelectedPantry(props) {
   if (props.selectedPantryList.length === 0) {
     return(
-      <Jumbotron className="seleted-pantry_empty">
-        Add Item from Pantry!
-      </Jumbotron>
+        <Image className="selected-pantry_empty" src="https://image.flaticon.com/icons/svg/2917/2917629.svg" alt="Ingredients"/>
     )
   }
   
@@ -20,15 +18,17 @@ export default function SelectedPantry(props) {
   });
 
   return (
-    <Jumbotron className="selected-pantry__full">
-      <h5>Searching with: </h5>
-      {items}
+    <div>
+      <p>Searching with: </p>
+      <Jumbotron className="selected-pantry__full">
+        {items}
+      </Jumbotron>
       <ButtonGroup className="mr-2" aria-label="Reset All Button">
 					<Button variant="warning" onClick={() => props.setSelectedPantryList([])}>
 						Reset All
 					</Button>
 				</ButtonGroup>
-    </Jumbotron>
+    </div>
     );
 };
 
