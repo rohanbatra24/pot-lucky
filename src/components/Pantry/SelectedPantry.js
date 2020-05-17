@@ -4,7 +4,7 @@ import { Button, Jumbotron, ButtonGroup, Image } from 'react-bootstrap';
 export default function SelectedPantry(props) {
   if (props.selectedPantryList.length === 0) {
     return(
-        <Image className="selected-pantry_empty" src="https://image.flaticon.com/icons/svg/2917/2917629.svg" alt="Ingredients"/>
+        <Image className="selected-pantry_empty" src="https://image.flaticon.com/icons/svg/1846/1846881.svg" alt="Ingredients"/>
     )
   }
   
