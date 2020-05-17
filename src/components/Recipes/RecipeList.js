@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Show from './Show';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-import './styles.css';
+// import './styles.css';
+import '../../styles/recipe.css';
 
 export default function RecipeList(props) {
 	const [ selected, setSelected ] = useState('');

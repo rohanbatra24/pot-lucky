@@ -25,7 +25,7 @@ export default function FullRecipe(props) {
 					<ul>{ingredients}</ul>
 				</div>
 				<div>
-					<h3>Intructions</h3>
+					<h3>Instructions</h3>
 					<ul>{steps}</ul>
 				</div>
 			</div>

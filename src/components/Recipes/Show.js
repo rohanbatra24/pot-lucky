@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import FullRecipe from './FullRecipe';
-import '../../App.css';
+// import '../../App.css';
+import '../../styles/App.css';
 import { Image, Modal, Button } from 'react-bootstrap';
 import allergyBadge from '../../assets/allergyBadge.svg';
 export default function Show(props) {

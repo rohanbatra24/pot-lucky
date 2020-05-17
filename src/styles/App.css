@@ -103,14 +103,15 @@ li {
 }
 
 .recipe-card .btn {
-	border-radius: 30%;
+	border-radius: 5%;
 	margin-top: .4em;
 }
 
 .recipe-card {
-	border-radius: 30%;
-	border: 5px dotted bisque;
+	border-radius: 25px;
+	border: 5px bisque;
 	max-width: 540px;
+	opacity: 1;
 }
 
 .list-group {
@@ -130,8 +131,9 @@ li {
 
 .card-img {
 	height: 70%;
+	padding: 20px 20px 20px 20px;
 	/* width: auto; */
-	border-radius: 10% 30% 50% 70%;
+	border-radius: 50%;
 }
 
 .modalContainer {
@@ -148,18 +150,23 @@ li {
 .modal-content {
 	width: 45em;
 	display: flex;
-	background-color: #dbddcc;
+	/*background-color: #dbddcc;*/
+	background-image: linear-gradient(to right, red, green);
+	/*background-image: linear-gradient(to right, #FAFAFA, #E2E3E2);*/
 	/* border: 5px solid black; */
 	border-radius: 25px;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+	color: magenta;
 }
 
-.modal-content h3 {
+/*.modal-content h3 {
 	color: green;
 }
 
 .modal-content h4 {
 	color: red;
-}
+}*/
 
 .modal-content img {
 	border-radius: 50px;
@@ -232,7 +239,7 @@ li {
 	width: 100vw;
 	height: 94vh;
 	z-index: 1;
-	/*position: relative;*/
+	position: relative;
 }
 
 .main:before {
@@ -273,16 +280,60 @@ li {
 	text-align: center;
 }
 
-.mixingbowl .jumbotron {
+/*.mixingbowl .jumbotron {
 	display: grid;
 	background-image: url('https://image.flaticon.com/icons/png/512/1689/1689198.png');
 	background-size: contain;
 	margin: 1em;
+}*/
+
+.jumbotron {
+	display: grid;
+	background-image: url('https://image.flaticon.com/icons/png/512/1689/1689198.png');
+	background-size: contain;
+	margin: 1em;
+	z-index: 1;
 }
+
 .selected-pantry__empty {
 	display: flex;
+	position: relative;
 	justify-content: center;
+	z-index: 1;
 }
+
+/*.jumbotron:before {
+	z-index: -1;
+	position: absolute;
+	content: url('https://image.flaticon.com/icons/png/512/1689/1689198.png');
+	background-image: url('https://image.flaticon.com/icons/png/512/1689/1689198.png');
+	opacity: 0.3;
+}*/
+
+/*.main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: 51px;
+	width: 100vw;
+	height: 94vh;
+	z-index: 1;
+	position: relative;
+}
+
+.main:before {
+	z-index: -1;
+	position: absolute;
+	content: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+	opacity: 0.3;
+}*/
+
+
+.selected-pantry__ {
+
+}
+
 .selected-pantry__item {
 	display: flex;
 	justify-content: space-between;
@@ -301,6 +352,7 @@ li {
 .nav-logo {
 	height: 2em;
 }
+
 .btn-logout {
 	margin-left: 1em;
 }

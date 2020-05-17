@@ -3,7 +3,8 @@ import Show from './Show';
 import Add from './Add';
 import classNames from 'classnames';
 
-import './styles.css';
+// import './styles.css';
+import '../../styles/pantry.css';
 
 import { Accordion, Card, Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
 

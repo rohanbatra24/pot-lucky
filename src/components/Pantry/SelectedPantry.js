@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+// import '../../App.css';
+import '../../styles/App.css';
 
 export default function SelectedPantry(props) {
   if (props.selectedPantryList.length === 0) {
     return(
-      <Jumbotron className="seleted-pantry_empty">
+      <Jumbotron className="selected-pantry_empty">
         Add Item from Pantry!
       </Jumbotron>
     )

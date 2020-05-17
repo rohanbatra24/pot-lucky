@@ -2,8 +2,10 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useAuth0 } from '../contexts/auth0-context';
 
 import '../hooks/useApplicationData';
-import '../App.css';
-import '../App.scss';
+// import '../App.css';
+// import '../App.scss';
+import '../styles/App.css';
+import '../styles/App.scss';
 
 import PantryList from './Pantry/PantryList';
 import RecipeList from './Recipes/RecipeList';

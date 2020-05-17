@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-import '../../App.css';
+// import '../../App.css';
+import '../../styles/App.css';
 
 export default function Add(props) {
 	const [ values, setValues ] = useState({

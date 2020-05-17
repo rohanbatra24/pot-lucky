@@ -109,10 +109,11 @@ export default function Search(props) {
 					<form type="submit" onSubmit={onSubmit} className="search">
 						<input
 							placeholder="Search recipes!"
+							className=""
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
 						/>
-						<button>Submit</button>
+						<button className="generate-recipe-btn">Submit</button>
 					</form>
 				</div>
 			</div>
