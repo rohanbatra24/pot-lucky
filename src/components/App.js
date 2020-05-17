@@ -34,7 +34,6 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
-	const [ savedRecipes, setSavedRecipes ] = useState([]);
 
 	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [], savedRecipes: [] });
 
@@ -55,18 +54,18 @@ function App() {
 			.then((data) => {
 				if (data.length) {
 					getPantry(data[0].id);
+
 					const allergyList = data.map((item) => item.allergy);
-					console.log('data', data);
-					const savedRecipesList = data.map((item) => {
-						console.log('item in map===', item);
+
+					const savedRecipesList = data
+					.filter(item => item.url)
+					.map((item) => {
 						return {
 							url   : item.url,
 							title : item.title,
 							image : item.image
 						};
 					});
-
-					console.log('saved recipe list before set full user ', savedRecipesList);
 					setFullUser({
 						id           : data[0].id,
 						email        : data[0].email,
@@ -173,7 +172,6 @@ function App() {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log('RETURN FROM ADD ALLERGY', res);
 				const copy = [ ...fullUser.allergies, res.name ];
 				setFullUser({ ...fullUser, allergies: copy });
 			})
@@ -207,8 +205,6 @@ function App() {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log('RETURN FROM ADD SAVED RECIPE', res);
-				console.log('fullusers.savedrecipes===', fullUser.savedRecipes);
 				const copy = [ ...fullUser.savedRecipes, res ];
 				setFullUser({ ...fullUser, savedRecipes: copy });
 			})
@@ -224,10 +220,7 @@ function App() {
 		})
 			.then((res) => {
 				const copy = fullUser.savedRecipes;
-				console.log('copy===', copy);
-				console.log('recipeID===', url);
 				const updated = copy.filter((savedRecipe) => savedRecipe.url !== url);
-				console.log('updated===', updated);
 				setFullUser({ ...fullUser, savedRecipes: updated });
 				getPantry(fullUser.id);
 			})
