@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Show from './Show';
-import { Image, CardColumns } from 'react-bootstrap';
+import { Image, Jumbotron, CardColumns } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -20,14 +20,14 @@ export default function RecipeList(props) {
 	const makeRecipeList = () => {
 		if (props.recipes.length === 0) {
 			return (
-				<div>
+				<Jumbotron className="recipes-empty">
 					Search for something or add to your mixing bowl!
 					<Image
 						className="no-results-img"
 						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
 						alt="Recipe Book"
 					/>
-				</div>
+				</Jumbotron>
 			);
 		}
 		else {
@@ -49,7 +49,11 @@ export default function RecipeList(props) {
 		}
 	};
 
-	return makeRecipeList();
+	return (
+		<div className="recipes-full">
+			{makeRecipeList()}
+		</div>
+		)
 	// <ListGroup className="overflow-auto" as="ul">
 	// </ListGroup>
 }
