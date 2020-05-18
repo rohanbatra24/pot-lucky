@@ -76,14 +76,14 @@ export default function NavBar(props) {
 
 	return (
 		<Fragment>
-			<Navbar fixed="top" bg="light">
+			<Navbar fixed="top" bg="light" variant="warning">
 				<div className="nav-left">
 					<div>
 						<Image className="nav-logo" src={logo} alt="PotLucky Logo" roundedCircle />
 					</div>
 
 					<div>
-						<Navbar.Brand href="#home">PotLucky</Navbar.Brand>
+						<Navbar.Brand>PotLucky</Navbar.Brand>
 					</div>
 				</div>
 				{!isLoading &&
