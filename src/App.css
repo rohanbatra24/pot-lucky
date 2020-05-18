@@ -1,5 +1,6 @@
 @import "RecipeCard.css";
-/* h1,
+/* 
+h1,
 h2,
 h3,
 h4,
@@ -44,6 +45,7 @@ li {
 .filter-container {
 	background: rgba(120, 161, 191, 0.9);
 	border-radius: 2em;
+	opacity: .75;
 }
 
 .cuisine span {
@@ -94,12 +96,6 @@ li {
 .recipe-card .btn {
 	border-radius: 30%;
 	margin-top: .4em;
-}
-
-.recipe-card {
-	border-radius: 30%;
-	border: 5px dotted bisque;
-	max-width: 540px;
 }
 
 .list-group {
@@ -222,13 +218,8 @@ li {
 	height: 94vh;
 	z-index: 1;
 	/*position: relative;*/
-}
-
-.main:before {
-	z-index: -1;
-	position: absolute;
-	content: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
-	opacity: 0.3;
+	background-image: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+	background-size: cover;
 }
 
 .pantry-container {
@@ -238,16 +229,16 @@ li {
 	height: 100%;
 	justify-content: space-evenly;
 	border: 5px solid white;
-	width: 375px;
+	width: 350px;
 }
 
 .recipe-container {
 	display: flex;
 	flex-direction: column;
-	overflow-y: scroll;
-	/* background-color: yellow; */
 	height: 500px;
 	width: 75vw;
+	margin-top: -14em;
+	margin-right: 2.5em;
 }
 
 .mixingbowl {

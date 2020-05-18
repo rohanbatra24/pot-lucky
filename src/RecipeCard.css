@@ -1,26 +1,33 @@
-
 .badges-container {
-  z-index: 1;
+	z-index: 1;
 }
 
 .badges-container :first-child {
-  top: 2%;
-  height: 2.5em;
-  position: absolute;
-  overflow: visible;
-  left: 94%;
-  z-index: 1;
+	top: 2%;
+	height: 2.5em;
+	position: absolute;
+	overflow: visible;
+	left: 94%;
+	z-index: 1;
 }
 
-.badges-container :nth-child(2)  {
-  top: 15%;
-  height: 2.5em;
-  position: absolute;
-  overflow: visible;
-  left: 94%;
-  z-index: 1;
+.badges-container :nth-child(2) {
+	top: 15%;
+	height: 2.5em;
+	position: absolute;
+	overflow: visible;
+	left: 94%;
+	z-index: 1;
 }
 
-.recipe-container {
+.recipe-card {
+	/* background-color: salmon; */
+	padding: 1em;
+	margin: 3em;
+	border-radius: 2em;
+	width: 9em;
+}
 
+.card-img-top {
+	border-radius: 1em;
 }
