@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import './styles.css';
 import '../../App.css';
 
-import { Accordion, Card, Button, ButtonGroup, ButtonToolbar, Image } from 'react-bootstrap';
+import { Accordion, Card, Button, Image } from 'react-bootstrap';
 
 export default function PantryList(props) {
 	// Retrieve list from database
@@ -28,14 +28,17 @@ export default function PantryList(props) {
 					<span class="adjusted-pantry-item">{item.name}</span>
 					{isSelected() && (
 						<Button
-							variant="outline-success"
+							variant="warning"
 							className={pantryClass}
 							onClick={() => props.setSelectedPantryList([ ...props.selectedPantryList, item.name ])}
 						>
-							+
+							<img 
+								alt="Add"
+								src="https://image.flaticon.com/icons/svg/1828/1828925.svg"
+							/>
 						</Button>
 					)}
-					<Accordion.Toggle as={Button} variant="outline-info" eventKey={item.id}>
+					<Accordion.Toggle as={Button} variant="light" eventKey={item.id}>
 						...
 					</Accordion.Toggle>
 				</Card.Header>
