@@ -102,7 +102,7 @@ export default function Search(props) {
 		<Fragment>
 			<div className="search-container">
 				<form type="submit" onSubmit={handleGenerateRecipe}>
-					<button className="generate-recipe-btn">Generate Recipe</button>
+					<button className="search-btn generate-recipe-btn">Generate Recipe</button>
 				</form>
 
 				<Form type="submit" onSubmit={onSubmit} className="search">
@@ -115,9 +115,9 @@ export default function Search(props) {
 							label="Search"
 						/>
 					</Form.Group>
-					<Button variant="primary" type="submit">
+					<button className="search-btn" type="submit">
 						Submit
-					</Button>
+					</button>
 				</Form>
 			</div>
 		</Fragment>
