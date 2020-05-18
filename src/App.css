@@ -109,7 +109,7 @@ li {
 	display: flex;
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
+	align-items: baseline;
 }
 
 .card-body {
@@ -330,8 +330,13 @@ div .pantry-list {
 }
 
 .search button {
-	height: fit-content;
+	height: 3.5em;
 	background-color: #60a3bc;
+	border: none;
+}
+
+.search input {
+	height: 3.5em;
 }
 
 .card-body small {
