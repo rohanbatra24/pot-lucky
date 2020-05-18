@@ -43,7 +43,7 @@ li {
 .pantry-container h3 {
 	margin-top: 2em;
 	font-size: medium;
-	color: brown;
+	color: #3d3b39;
 	text-align: center;
 }
 
@@ -53,22 +53,28 @@ li {
 	background-color: #bec7bb;
 }
 
-.btn-outline-info {
+.btn-light {
 	float: right;
 }
 
-.btn-outline-success {
+.btn-warning {
+	height: 2.4em;
 	float: right;
+	padding: 0;
+	width: 2em;
+	background: #fdb44c;
 }
-
+.btn-warning img {
+	height: 1em;
+}
 .react-slider {
 	margin-right: .5em;
 }
 
 .filter-container {
-	background: rgba(120, 161, 191, 0.9);
+	background: #f39539;
 	border-radius: 2em;
-	opacity: .75;
+	opacity: .84;
 }
 
 .cuisine span {
@@ -87,11 +93,11 @@ li {
 	align-items: center;
 }
 
-.generate-recipe-btn {
+.search-btn {
 	color: #fff !important;
 	text-transform: uppercase;
 	text-decoration: none;
-	background: #60a3bc;
+	background: #ef6630;
 	padding: 20px;
 	border-radius: 50px;
 	display: inline-block;
@@ -99,7 +105,8 @@ li {
 	transition: all 0.4s ease 0s;
 }
 
-.generate-recipe-btn:hover {
+
+.search-btn:hover {
 	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
 	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -183,7 +190,7 @@ li {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	margin-top: 51px;
+	margin-top: 3em;
 	width: 100vw;
 	height: 94vh;
 	z-index: 1;
@@ -195,11 +202,11 @@ li {
 .pantry-container {
 	display: flex;
 	flex-direction: column;
-	background-color: #bec7bb;
+	background-color: #f9fafa9e;
 	height: 100%;
 	justify-content: space-evenly;
-	border: 5px solid white;
 	width: 350px;
+	/* margin-top: em; */
 }
 
 .recipe-container {
@@ -216,7 +223,7 @@ li {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	/* margin-top: 30em; */
+	margin-top: 2em;
 }
 
 .selected-pantry__empty {
@@ -287,8 +294,8 @@ div .pantry-list {
 
 .search button {
 	height: 3.5em;
-	background-color: #60a3bc;
-	border: none;
+	/* background-color: #60a3bc; */
+	/* border: none; */
 }
 
 .search input {
@@ -304,5 +311,6 @@ div .pantry-list {
 }
 
 .pantry-list__new  {
-	background-color: blue;
+	background-color: #fdb44c;
+	text-align: center;
 }
