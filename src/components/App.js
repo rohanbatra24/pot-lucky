@@ -56,6 +56,10 @@ function App() {
 					getPantry(data[0].id);
 
 					const allergyList = data.filter((item) => item.allergy).map((item) => item.allergy);
+					const allergySet = new Set(allergyList);
+					console.log('allergy set', allergySet);
+					console.log('allergy list===', allergyList);
+					console.log('data===', data);
 
 					const savedRecipesList = data.filter((item) => item.url).map((item) => {
 						return {
@@ -67,7 +71,7 @@ function App() {
 					setFullUser({
 						id           : data[0].id,
 						email        : data[0].email,
-						allergies    : allergyList,
+						allergies    : [ ...allergySet ],
 						savedRecipes : savedRecipesList
 					});
 				}

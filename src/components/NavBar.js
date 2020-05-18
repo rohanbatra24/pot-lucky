@@ -74,27 +74,36 @@ export default function NavBar(props) {
 		<Fragment>
 			<Navbar fixed="top" bg="light">
 				<div className="nav-left">
-					<Image className="nav-logo" src={logo} alt="PotLucky Logo" roundedCircle />
-					<Navbar.Brand href="#home">PotLucky</Navbar.Brand>
+					<div>
+						<Image className="nav-logo" src={logo} alt="PotLucky Logo" roundedCircle />
+					</div>
+
+					<div>
+						<Navbar.Brand href="#home">PotLucky</Navbar.Brand>
+					</div>
 				</div>
 				{!isLoading &&
 				user && (
 					<div className="nav-right">
-						<Image className="nav-avatar" src={user.picture} alt="My Avatar" roundedCircle />
-						<NavDropdown alignRight title={`Signed in as: ${user.nickname}`} id="basic-nav-dropdown">
-							<NavDropdown.Item onClick={handleShowSavedRecipes}>My Saved Recipes</NavDropdown.Item>
-							<NavDropdown.Item onClick={handleShowAllergies}>Allergies</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item>
-								<Button
-									className="btn-logout"
-									variant="outline-dark"
-									onClick={() => logout({ returnTo: window.location.origin })}
-								>
-									Log Out
-								</Button>
-							</NavDropdown.Item>
-						</NavDropdown>
+						<div>
+							<Image className="nav-avatar" src={user.picture} alt="My Avatar" roundedCircle />
+						</div>
+						<div>
+							<NavDropdown alignRight title={`Signed in as: ${user.nickname}`} id="basic-nav-dropdown">
+								<NavDropdown.Item onClick={handleShowSavedRecipes}>My Saved Recipes</NavDropdown.Item>
+								<NavDropdown.Item onClick={handleShowAllergies}>Allergies</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item>
+									<Button
+										className="btn-logout"
+										variant="outline-dark"
+										onClick={() => logout({ returnTo: window.location.origin })}
+									>
+										Log Out
+									</Button>
+								</NavDropdown.Item>
+							</NavDropdown>
+						</div>
 					</div>
 				)}
 			</Navbar>

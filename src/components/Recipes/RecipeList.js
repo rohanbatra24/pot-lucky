@@ -22,7 +22,11 @@ export default function RecipeList(props) {
 			return (
 				<div>
 					Search for something or add to your mixing bowl!
-					<Image src="https://image.flaticon.com/icons/svg/1971/1971011.svg" alt="Recipe Book" />
+					<Image
+						className="no-results-img"
+						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
+						alt="Recipe Book"
+					/>
 				</div>
 			);
 		}
@@ -46,9 +50,7 @@ export default function RecipeList(props) {
 	};
 
 	return (
-		<CardColumns>
-			{makeRecipeList()}
-		</CardColumns>
+		<CardColumns>{makeRecipeList()}</CardColumns>
 		// <ListGroup className="overflow-auto" as="ul">
 		// </ListGroup>
 	);
