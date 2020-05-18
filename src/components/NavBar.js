@@ -27,7 +27,7 @@ export default function NavBar(props) {
 				<Card>
 					<Card.Body>
 						{allergy}
-						<Button variant="danger" onClick={(e) => props.handleDeleteAllergy(e, allergy)}>
+						<Button id="remove-btn" variant="danger" onClick={(e) => props.handleDeleteAllergy(e, allergy)}>
 							Remove
 						</Button>
 					</Card.Body>
@@ -53,7 +53,11 @@ export default function NavBar(props) {
 					<Card.Body>
 						<img src={savedRecipe.image} alt={savedRecipe.title} />
 						<a href={savedRecipe.url}>{savedRecipe.title}</a>
-						<Button variant="danger" onClick={(e) => props.deleteSavedRecipe(e, savedRecipe.url)}>
+						<Button
+							id="remove-btn"
+							variant="danger"
+							onClick={(e) => props.deleteSavedRecipe(e, savedRecipe.url)}
+						>
 							Remove
 						</Button>
 					</Card.Body>

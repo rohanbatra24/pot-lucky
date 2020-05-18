@@ -337,3 +337,7 @@ div .pantry-list {
 .card-body small {
 	color: darkgray;
 }
+
+#remove-btn {
+	float: right;
+}
