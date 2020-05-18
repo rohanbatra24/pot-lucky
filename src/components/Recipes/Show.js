@@ -99,7 +99,7 @@ export default function Show(props) {
           alt={props.recipe.title}
         />
         <Card.Body>
-          <Card.Title>{props.recipe.title.slice(0, 15)}...</Card.Title>
+          <Card.Title>{props.recipe.title}</Card.Title>
           <Card.Text>
             <small>Ready in: {props.recipe.readyInMinutes} minutes</small>
             <br />
