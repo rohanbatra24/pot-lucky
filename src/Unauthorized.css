@@ -35,12 +35,13 @@
 	justify-content: center;
 	flex-direction: column-reverse;
 	width: 15em;
-	margin-left: 45%;
+	/* margin-left: 45%; */
 }
 
 .blurb {
 	display: flex;
-	text-align: center;
+  text-align: center;
+  width: 30%;
 }
 
 .team {
@@ -61,14 +62,12 @@
 .unauthorized-site h3 {
 	display: flex;
 	justify-content: center;
+  text-align: center;
 }
 
-h3 {
-	text-align: center;
-}
-
-.jumbotron {
-	background-color: #d2baa66b;
+.unauthorized-site .jumbotron {
+  background-color: #d2baa66b;
+  /* padding: 0em; */
 }
 
 .login {
@@ -79,4 +78,11 @@ h3 {
 .login:hover {
 	background-color: #5b8b3d;
 	border-color: #4a5e29;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  padding: 0em;
+  width: fit-content;
 }
