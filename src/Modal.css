@@ -10,6 +10,9 @@
 	flex-direction: column;
 }
 
+.modal-footer {
+  justify-content: space-around;
+}
 .modal-content {
 	width: 45em;
 	display: flex;
@@ -23,7 +26,8 @@
 }
 
 .modal-content h4 {
-	color: red;
+  color: red;
+  text-align: center;
 }
 
 .modal-content img {
@@ -32,9 +36,35 @@
 	margin: 20px;
 }
 
+.modelMain ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 .modelMain ul {
   margin-top: 0;
   margin-bottom: 1rem;
   margin-left: 3rem;
   margin-right: 3rem;
+}
+
+.modalMain li {
+  margin-left: 3em;
+}
+
+.modalMain .jumbotron {
+  padding: 2em 1em;
+}
+
+.ingr-and-image {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-content img {
+  width: 20em;
+  margin: 20px;
+  border: .2em solid rgba(112, 69, 19, 0.47);
 }

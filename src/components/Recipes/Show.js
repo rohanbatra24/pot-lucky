@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-import classNames from "classnames";
 import FullRecipe from "./FullRecipe";
 import "../../App.css";
 import {
@@ -16,33 +15,35 @@ export default function Show(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [mode, setMode] = useState("before");
+  const [saveMode, setSaveMode] = useState("before");
+  const [updateMode, setUpdateMode] = useState("before");
 
   const updatePopover = (
     <Popover id="popover-update">
       <Popover.Title as="h3">Update Pantry?</Popover.Title>
       <Popover.Content>
-        After you make this recipe, click the button and we'll update your pantry items to remove the amounts
-        this recipe required.
+        After you make this recipe, click the button and we'll update your
+        pantry items to remove the amounts this recipe required.
       </Popover.Content>
     </Popover>
-	);
-	
-	const allergyPopover = (
+  );
+
+  const allergyPopover = (
     <Popover id="popover-update">
       <Popover.Title as="h3">Contains Allergens</Popover.Title>
       <Popover.Content>
-				Heads up! This recipe contains an ingredient you are allergic to. 
+        Heads up! This recipe contains an ingredient you are allergic to.
       </Popover.Content>
     </Popover>
-	);
+  );
 
-	const ingrPopover = (
+  const ingrPopover = (
     <Popover id="popover-update">
       <Popover.Title as="h3">Missing Ingredients?</Popover.Title>
       <Popover.Content>
-				Shopping cart: You're missing something.<br/>
-				Check mark: You're good to go.
+        Shopping cart: You're missing something.
+        <br />
+        Check mark: You're good to go.
       </Popover.Content>
     </Popover>
   );
@@ -95,35 +96,47 @@ export default function Show(props) {
       <Card className={`recipe-card card mb-1 ${canCookClass} ${allergyClass}`}>
         <div className="badges-container">
           {isAllergic() && (
-          <OverlayTrigger trigger="hover" placement="top" overlay={allergyPopover}>
-						<Image
-              src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
-              roundedCircle
-              className="allergyBadge"
-              alt="Allergy Badge"
-            />
-						</OverlayTrigger>
+            <OverlayTrigger
+              trigger="hover"
+              placement="top"
+              overlay={allergyPopover}
+            >
+              <Image
+                src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
+                roundedCircle
+                className="allergyBadge"
+                alt="Allergy Badge"
+              />
+            </OverlayTrigger>
           )}
           {!canCook() && (
-          <OverlayTrigger trigger="hover" placement="top" overlay={ingrPopover}>
-						<Image
-              src="https://image.flaticon.com/icons/svg/859/859270.svg"
-              alt="Missing Ingredients Badge"
-              roundedCircle
-              className="cannotCookBadge"
-            />
-					</OverlayTrigger>
+            <OverlayTrigger
+              trigger="hover"
+              placement="top"
+              overlay={ingrPopover}
+            >
+              <Image
+                src="https://image.flaticon.com/icons/svg/859/859270.svg"
+                alt="Missing Ingredients Badge"
+                roundedCircle
+                className="cannotCookBadge"
+              />
+            </OverlayTrigger>
           )}
-					{canCook() && (
-          <OverlayTrigger trigger="hover" placement="top" overlay={ingrPopover}>
-						<Image
-							src="https://image.flaticon.com/icons/svg/1009/1009256.svg"
-							alt="No Missing Ingredients Badge"
-							roundedCircle
-							className="cannotCookBadge"
-						/>
-						</OverlayTrigger>
-					)}
+          {canCook() && (
+            <OverlayTrigger
+              trigger="hover"
+              placement="top"
+              overlay={ingrPopover}
+            >
+              <Image
+                src="https://image.flaticon.com/icons/svg/1009/1009256.svg"
+                alt="No Missing Ingredients Badge"
+                roundedCircle
+                className="cannotCookBadge"
+              />
+            </OverlayTrigger>
+          )}
         </div>
         <Card.Img
           variant="top"
@@ -166,24 +179,43 @@ export default function Show(props) {
           <FullRecipe editInPantry={props.editInPantry} recipe={props.recipe} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <OverlayTrigger trigger="hover" placement="top" overlay={updatePopover}>
-            <Button variant="primary" onClick={(e) => updatePantryIngr(e)}>
-              Update Pantry
-            </Button>
-          </OverlayTrigger>
-
           <Button variant="primary" href={props.recipe.sourceUrl}>
             Go To Recipe
           </Button>
 
-          {mode === "before" ? (
+          {updateMode === "before" ? (
+            <OverlayTrigger
+              trigger="hover"
+              placement="top"
+              overlay={updatePopover}
+            >
+              <Button
+                variant="primary"
+                onClick={(e) => {
+                  setUpdateMode("after");
+                  updatePantryIngr(e);
+                }}
+              >
+                Update Pantry
+              </Button>
+            </OverlayTrigger>
+          ) : (
+            <Button
+              disabled
+              variant="success"
+              onClick={(e) => {
+                setUpdateMode("after");
+                updatePantryIngr(e);
+              }}
+            >
+              Updated
+            </Button>
+          )}
+          {saveMode === "before" ? (
             <Button
               variant="primary"
               onClick={(e) => {
-                setMode("after");
+                setSaveMode("after");
 
                 props.addSavedRecipe(e, {
                   url: props.recipe.sourceUrl,
@@ -192,7 +224,7 @@ export default function Show(props) {
                 });
               }}
             >
-              Add to my saved recipes
+              Save
             </Button>
           ) : (
             <Button

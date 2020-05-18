@@ -1,4 +1,5 @@
 import React from 'react';
+import { Jumbotron, Image } from 'react-bootstrap';
 
 export default function FullRecipe(props) {
 	const recipeSteps = props.recipe.instructions
@@ -17,15 +18,17 @@ export default function FullRecipe(props) {
 
 	return (
 		<div className="modalContainer recipe-modal" id={props.recipe.id}>
-			<img src={props.recipe.image} alt={props.recipe.title} />
 			<div className="modalMain">
+				<div className="ingr-and-image">
+				<Image roundedCircle src={props.recipe.image} alt={props.recipe.title} />
 				<div>
 					<h4>Ingredients</h4>
-					<ul>{ingredients}</ul>
+					<Jumbotron><ul>{ingredients}</ul></Jumbotron>
+				</div>
 				</div>
 				<div>
 					<h3>Instructions</h3>
-					<ul>{steps}</ul>
+					<Jumbotron><ol>{steps}</ol></Jumbotron>
 				</div>
 			</div>
 		</div>
