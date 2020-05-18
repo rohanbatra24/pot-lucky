@@ -57,28 +57,24 @@ export default function PantryList(props) {
 	if (props.pantry.length) {
 		return (
 			<Fragment>
-
-				<Accordion>
+				<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+					Select All
+				</Button>
+				<Accordion className="pantry-list">
 					<Card>
-						<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
-							Add All Items to Mixing Bowl
-						</Button>
-					</Card>
-					<Card>
-						<Accordion.Toggle as={Button} eventKey="0">
-							Add New Item to Pantry
+						<Accordion.Toggle className="pantry-list__new"as={Card.Header} eventKey="0">
+							New Item
 						</Accordion.Toggle>
 						<Accordion.Collapse eventKey="0">
-							<Card.Body>
+							<Card.Body>								
 								<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
 							</Card.Body>
 						</Accordion.Collapse>
-					</Card>
+					</Card>				
+					{/* <div className="pantry-list"> */}
+							{pantryList}
+					{/* </div> */}
 				</Accordion>
-				<div className="pantry-list">
-					<Accordion defaultActiveKey="0">{pantryList}</Accordion>
-				</div>
-				{/* <ListGroup as="ul">{pantryList}</ListGroup> */}
 			</Fragment>
 		);
 	} else {
@@ -86,9 +82,11 @@ export default function PantryList(props) {
 			<Fragment>
 				<Accordion>
 					<Card>
+						<Card.Header>
 						<Accordion.Toggle as={Button} eventKey="0">
 							New Item
 						</Accordion.Toggle>
+						</Card.Header>
 						<Accordion.Collapse eventKey="0">
 							<Card.Body>
 								<Add ingredients={props.ingredients} handleAddItem={props.handleAddItem} />
