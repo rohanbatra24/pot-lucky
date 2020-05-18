@@ -2,6 +2,8 @@
 @import "Unauthorized.css";
 @import "Slider.css";
 @import "Modal.css";
+@import "RecipeList.css";
+@import "NavBar.css";
 
 /* h1,
 h2,
@@ -19,7 +21,6 @@ li {
 	margin: 0;
 	padding: 0;
 } */
-@import "NavBar.css";
 
 .loading-app {
 	margin-left: 20em;
@@ -106,18 +107,11 @@ li {
 }
 
 .search-container {
-	margin-top: 16em;
+	/* margin-top: 16em; */
 	display: flex;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-}
-
-.card-body {
-}
-
-.recipe-card .btn {
-	margin-top: .4em;
 }
 
 .list-group {
@@ -129,16 +123,6 @@ li {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	height: 95vh;
-}
-
-.no-gutters {
-	overflow: hidden;
-}
-
-.card-img {
-	height: 70%;
-	/* width: auto; */
-	border-radius: 10% 30% 50% 70%;
 }
 
 .filters-row1 {
@@ -221,10 +205,11 @@ li {
 .recipe-container {
 	display: flex;
 	flex-direction: column;
-	height: 500px;
+	/* height: 500px; */
 	width: 75vw;
-	margin-top: -14em;
+	margin-top: -15em;
 	margin-right: 2.5em;
+	margin-left: 2.5em;
 }
 
 .mixingbowl {
@@ -234,8 +219,13 @@ li {
 	/* margin-top: 30em; */
 }
 
-.selected-pantry_empty {
+.selected-pantry__empty {
 	height: 6em;
+}
+
+.selected-pantry__full {
+	overflow-y: scroll;
+	height: 15em;
 }
 
 .centered-text {
@@ -259,6 +249,9 @@ li {
 	margin-bottom: 10px;
 }
 
+.selected-pantry__remove {
+	height: 3em;
+}
 .pantry-list__empty {
 	height: 6em;
 }
@@ -296,6 +289,6 @@ div .pantry-list {
 	background-color: #60a3bc;
 }
 
-.card-body small {
-	color: darkgray;
+.pantry-list__new  {
+	background-color: blue;
 }
