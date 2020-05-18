@@ -44,7 +44,7 @@
 	padding: 1em;
 	margin: 3em;
 	/* border-radius: 2em; */
-	width: 19em;
+	width: 15em;
 }
 
 .card-img-top {
@@ -53,4 +53,8 @@
 
 .card-columns .card {
 	width: 19em;
+}
+
+.card-title .h5 {
+  size: 1em;
 }
