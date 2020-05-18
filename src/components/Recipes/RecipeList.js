@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Show from './Show';
 import { Image, Jumbotron, CardColumns } from 'react-bootstrap';
 
@@ -14,20 +14,21 @@ export default function RecipeList(props) {
 		[ selected, props.recipes ]
 	);
 
+	const recipeListClass = props.recipes.length ? "recipes-full" : "empty-recipe-list"
 	// Retrieve list from database
 	// First item in list will always be New/Form
 	// Render PantryListItem in each iteration
 	const makeRecipeList = () => {
 		if (props.recipes.length === 0) {
 			return (
-				<div className="empty-recipe-list">
+				<Fragment>
 					<h2> Search for something or add to your mixing bowl! </h2>
 					<Image
 						className="no-results-img"
 						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
 						alt="Recipe Book"
 					/>
-				</div>
+				</Fragment>
 			);
 		}
 		else {
@@ -50,7 +51,7 @@ export default function RecipeList(props) {
 	};
 
 	return (
-		<div className="recipes-full">
+		<div className={recipeListClass}>
 			{makeRecipeList()}
 		</div>
 		)
