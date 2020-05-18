@@ -35,7 +35,7 @@
 	justify-content: center;
 	flex-direction: column-reverse;
 	width: 15em;
-	margin-left: 40%;
+	margin-left: 45%;
 }
 
 .blurb {
@@ -56,6 +56,11 @@
 
 .teammate img {
 	height: 12em;
+}
+
+.unauthorized-site h3 {
+	display: flex;
+	justify-content: center;
 }
 
 h3 {
