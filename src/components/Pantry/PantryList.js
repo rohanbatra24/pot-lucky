@@ -57,9 +57,7 @@ export default function PantryList(props) {
 	if (props.pantry.length) {
 		return (
 			<Fragment>
-				<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
-					Select All
-				</Button>
+				<h3>What's in my pantry?</h3>
 				<Accordion className="pantry-list">
 					<Card>
 						<Accordion.Toggle className="pantry-list__new"as={Card.Header} eventKey="0">
@@ -75,11 +73,17 @@ export default function PantryList(props) {
 							{pantryList}
 					{/* </div> */}
 				</Accordion>
+				{(props.selectedPantryList.length !== props.pantry.length) && props.pantry.length > 0 && 
+					(<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+						Select All
+					</Button>)
+				}
 			</Fragment>
 		);
 	} else {
 		return (
 			<Fragment>
+				<h3>What's in my pantry?</h3>
 				<Accordion>
 					<Card>
 						<Card.Header>
