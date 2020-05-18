@@ -4,6 +4,7 @@ import Add from './Add';
 import classNames from 'classnames';
 
 import './styles.css';
+import '../../App.css';
 
 import { Accordion, Card, Button, ButtonGroup, ButtonToolbar, Image } from 'react-bootstrap';
 
@@ -24,7 +25,7 @@ export default function PantryList(props) {
 		return (
 			<Card>
 				<Card.Header>
-					{item.name}
+					<span class="adjusted-pantry-item">{item.name}</span>
 					{isSelected() && (
 						<Button
 							variant="outline-success"
@@ -56,17 +57,16 @@ export default function PantryList(props) {
 	if (props.pantry.length) {
 		return (
 			<Fragment>
-				<ButtonToolbar>
-					<ButtonGroup className="mr-2" aria-label="Add All Button">
-						<Button variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
-							Add All
-						</Button>
-					</ButtonGroup>
-				</ButtonToolbar>
+
 				<Accordion>
 					<Card>
+						<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+							Add All Items to Mixing Bowl
+						</Button>
+					</Card>
+					<Card>
 						<Accordion.Toggle as={Button} eventKey="0">
-							New Item
+							Add New Item to Pantry
 						</Accordion.Toggle>
 						<Accordion.Collapse eventKey="0">
 							<Card.Body>

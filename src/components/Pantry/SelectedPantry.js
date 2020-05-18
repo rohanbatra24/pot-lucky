@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Jumbotron, ButtonGroup, Image } from 'react-bootstrap';
+import { Accordion, Card, Button, ButtonToolbar, Jumbotron, ButtonGroup, Image } from 'react-bootstrap';
 
 export default function SelectedPantry(props) {
   if (props.selectedPantryList.length === 0) {
@@ -11,7 +11,7 @@ export default function SelectedPantry(props) {
   const items = props.selectedPantryList.map(item => {
     return (
       <div className="selected-pantry__item">
-        <span>{item}</span>
+        <span class="adjusted-sel-pantry-item">{item}</span>
         <Button onClick={() => props.setSelectedPantryList(props.selectedPantryList.filter((name) => item !== name))} variant="outline-secondary">Remove</Button>
       </div>
     )
@@ -23,11 +23,12 @@ export default function SelectedPantry(props) {
       <Jumbotron className="selected-pantry__full">
         {items}
       </Jumbotron>
+
       <ButtonGroup className="mr-2" aria-label="Reset All Button">
-					<Button variant="warning" onClick={() => props.setSelectedPantryList([])}>
-						Reset All
-					</Button>
-				</ButtonGroup>
+				<Button block variant="warning" onClick={() => props.setSelectedPantryList([])}>
+					Remove All Items From Mixing Bowl
+				</Button>
+			</ButtonGroup>
     </div>
     );
 };

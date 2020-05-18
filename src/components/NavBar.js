@@ -68,7 +68,7 @@ export default function NavBar(props) {
 		return <option key={ingred.spoonacular_id}>{ingred.name}</option>;
 	});
 
-	const disabled = value ? '' : 'true';
+	const disabled = value ? false : true;
 
 	return (
 		<Fragment>

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Badge } from 'react-bootstrap';
 
 const Slider = ({ initialSize, minSize, maxSize, handleChange, type }) => {
 	return (
@@ -16,9 +17,11 @@ const Slider = ({ initialSize, minSize, maxSize, handleChange, type }) => {
 				type="range"
 			/>
 
-			<output htmlFor={`${type}-slider`} id={`${type}-slider-output`}>
-				{initialSize}
-			</output>
+			<Badge variant="dark">
+				<output htmlFor={`${type}-slider`} id={`${type}-slider-output`}>
+					{initialSize}
+				</output>
+			</Badge>
 		</div>
 	);
 };

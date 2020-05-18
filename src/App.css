@@ -1,3 +1,7 @@
+@import "RecipeCard.css";
+@import "Unauthorized.css";
+@import "Slider.css";
+
 /* h1,
 h2,
 h3,
@@ -16,16 +20,22 @@ li {
 } */
 @import "NavBar.css";
 
-.allergyBadge {
-	height: 2.5em;
+.loading-app {
+	margin-left: 20em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
-.cannotCook {
-	background-color: #d05e5e75;
+.loading-alert {
+	margin-top: 5em;
+	font-size: 1.5em;
+	text-align: center;
 }
 
-.canCook {
-	background-color: #a1b99175;
+.loading-img {
+	margin-bottom: 40em;
 }
 
 .pantry-container h3 {
@@ -38,6 +48,7 @@ li {
 .btn-toolbar {
 	display: flex;
 	justify-content: center;
+	background-color: #bec7bb;
 }
 
 .btn-outline-info {
@@ -55,6 +66,7 @@ li {
 .filter-container {
 	background: rgba(120, 161, 191, 0.9);
 	border-radius: 2em;
+	opacity: .75;
 }
 
 .cuisine span {
@@ -101,18 +113,10 @@ li {
 }
 
 .card-body {
-	margin-left: 50px;
 }
 
 .recipe-card .btn {
-	border-radius: 30%;
 	margin-top: .4em;
-}
-
-.recipe-card {
-	border-radius: 30%;
-	border: 5px dotted bisque;
-	max-width: 540px;
 }
 
 .list-group {
@@ -233,6 +237,8 @@ li {
 	margin-top: 51px;
 	width: 100vw;
 	height: 94vh;
+	z-index: 1;
+	/*position: relative;*/
 	background-image: url('https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
 	background-size: cover;
 }
@@ -244,20 +250,16 @@ li {
 	height: 100%;
 	justify-content: space-evenly;
 	border: 5px solid white;
+	width: 350px;
 }
 
 .recipe-container {
 	display: flex;
 	flex-direction: column;
-	overflow-y: scroll;
-	/* background-color: yellow; */
-	/* height: 500px; */
+	height: 500px;
 	width: 75vw;
-}
-
-.recipe-container img {
-	justify-self: center;
-	height: 6em;
+	margin-top: -14em;
+	margin-right: 2.5em;
 }
 
 .mixingbowl {
@@ -278,7 +280,6 @@ li {
 .mixingbowl .jumbotron {
 	display: grid;
 	padding: 1em;
-	height: 250px;
 	overflow-y: scroll;
 }
 .selected-pantry__empty .jumbotron {
@@ -290,6 +291,7 @@ li {
 .selected-pantry__item {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 10px;
 }
 
 .pantry-list__empty {
@@ -303,4 +305,35 @@ li {
 div .pantry-list {
 	height: 500px;
 	overflow-y: scroll;
+}
+
+.adjusted-sel-pantry-item {
+	margin: 5px 5px 0 0;
+}
+
+.adjusted-pantry-item {
+	position: absolute;
+	padding-top: 7px;
+}
+
+.adjusted-button {
+}
+
+.no-results-img {
+	height: 11em;
+	width: 11m;
+}
+
+.search {
+	display: flex;
+	align-items: baseline;
+}
+
+.search button {
+	height: fit-content;
+	background-color: #60a3bc;
+}
+
+.card-body small {
+	color: darkgray;
 }

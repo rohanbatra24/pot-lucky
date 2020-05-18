@@ -15,7 +15,7 @@ import SelectedPantry from './Pantry/SelectedPantry';
 import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
 
-import { Spinner } from 'react-bootstrap';
+import { Alert, Image } from 'react-bootstrap';
 
 function App() {
 	// const auth0 = useContext(Auth0Context);
@@ -56,6 +56,10 @@ function App() {
 					getPantry(data[0].id);
 
 					const allergyList = data.filter((item) => item.allergy).map((item) => item.allergy);
+					const allergySet = new Set(allergyList);
+					console.log('allergy set', allergySet);
+					console.log('allergy list===', allergyList);
+					console.log('data===', data);
 
 					const savedRecipesList = data.filter((item) => item.url).map((item) => {
 						return {
@@ -67,7 +71,7 @@ function App() {
 					setFullUser({
 						id           : data[0].id,
 						email        : data[0].email,
-						allergies    : allergyList,
+						allergies    : [ ...allergySet ],
 						savedRecipes : savedRecipesList
 					});
 				}
@@ -241,7 +245,7 @@ function App() {
 								setSelectedPantryList={setSelectedPantryList}
 							/>
 						</div>
-						<h3>What's in my kitchen?</h3>
+						<h3>What's in my pantry?</h3>
 						<PantryList
 							handleAddItem={addToPantry}
 							pantry={pantry}
@@ -282,9 +286,17 @@ function App() {
 	}
 	else {
 		return (
-			<Spinner animation="border" role="status">
-				<span className="sr-only">Loading...</span>
-			</Spinner>
+			<div className="loading-app">
+				<Alert key={1} variant="success" className="loading-alert">
+					Patience, hungry one!<br />
+					Good food takes time to make!
+				</Alert>
+				<Image
+					className="loading-img"
+					src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
+					alt="Loading"
+				/>
+			</div>
 		);
 	}
 }

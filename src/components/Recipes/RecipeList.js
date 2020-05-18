@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Show from './Show';
-import { Image, ListGroup } from 'react-bootstrap';
+import { Image, CardColumns } from 'react-bootstrap';
 
 import './styles.css';
 
@@ -22,7 +22,11 @@ export default function RecipeList(props) {
 			return (
 				<div>
 					Search for something or add to your mixing bowl!
-					<Image src="https://image.flaticon.com/icons/svg/1971/1971011.svg" alt="Recipe Book" />
+					<Image
+						className="no-results-img"
+						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
+						alt="Recipe Book"
+					/>
 				</div>
 			);
 		}
@@ -45,9 +49,7 @@ export default function RecipeList(props) {
 		}
 	};
 
-	return (
-		<ListGroup className="overflow-auto" as="ul">
-			{makeRecipeList()}
-		</ListGroup>
-	);
+	return makeRecipeList();
+	// <ListGroup className="overflow-auto" as="ul">
+	// </ListGroup>
 }
