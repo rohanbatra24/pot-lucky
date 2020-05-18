@@ -18,7 +18,8 @@
 }
 
 .recipes-full {
-  height: 500px;
+	display: flex;
+	height: 35em;
   overflow-y: scroll;
   flex-direction: row;
   flex-wrap: wrap;
