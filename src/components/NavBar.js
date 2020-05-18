@@ -112,7 +112,7 @@ export default function NavBar(props) {
 				)}
 			</Navbar>
 
-			<Modal show={showAllergies} onHide={handleCloseAllergies}>
+			<Modal classname="allergies-modal" show={showAllergies} onHide={handleCloseAllergies}>
 				<Modal.Header closeButton>
 					<Modal.Title>My Allergies</Modal.Title>
 				</Modal.Header>
@@ -157,7 +157,7 @@ export default function NavBar(props) {
 				</Modal.Footer>
 			</Modal>
 
-			<Modal show={showSavedRecipes} onHide={handleCloseSavedRecipes}>
+			<Modal className="saved-recipes-modal" show={showSavedRecipes} onHide={handleCloseSavedRecipes}>
 				<Modal.Header closeButton>
 					<Modal.Title>My Saved Recipes</Modal.Title>
 				</Modal.Header>

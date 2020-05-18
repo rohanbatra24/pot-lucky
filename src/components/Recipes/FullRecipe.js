@@ -16,9 +16,8 @@ export default function FullRecipe(props) {
 	});
 
 	return (
-		<div className="modalContainer" id={props.recipe.id}>
+		<div className="modalContainer recipe-modal" id={props.recipe.id}>
 			<img src={props.recipe.image} alt={props.recipe.title} />
-			<h1>{props.recipe.title}</h1>
 			<div className="modalMain">
 				<div>
 					<h4>Ingredients</h4>
