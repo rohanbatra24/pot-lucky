@@ -1,0 +1,40 @@
+
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modalMain {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-content {
+	width: 45em;
+	display: flex;
+	background-color: #dbddcc;
+	/* border: 5px solid black; */
+	/* border-radius: 25px; */
+}
+
+.modal-content h3 {
+	color: green;
+}
+
+.modal-content h4 {
+	color: red;
+}
+
+.modal-content img {
+	border-radius: 5%;
+	width: 20em;
+	margin: 20px;
+}
+
+.modelMain ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}

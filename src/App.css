@@ -1,6 +1,7 @@
 @import "RecipeCard.css";
 @import "Unauthorized.css";
 @import "Slider.css";
+@import "Modal.css";
 
 /* h1,
 h2,
@@ -138,42 +139,6 @@ li {
 	height: 70%;
 	/* width: auto; */
 	border-radius: 10% 30% 50% 70%;
-}
-
-.modalContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.modalMain {
-	display: flex;
-	flex-direction: column;
-}
-
-.modal-content {
-	width: 45em;
-	display: flex;
-	background-color: #dbddcc;
-	/* border: 5px solid black; */
-	border-radius: 25px;
-}
-
-.modal-content h3 {
-	color: green;
-}
-
-.modal-content h4 {
-	color: red;
-}
-
-.modal-content img {
-	border-radius: 50px;
-	width: fit-content;
-
-	margin: 20px;
-
-	/* border: 5px solid goldenrod; */
 }
 
 .filters-row1 {
@@ -314,9 +279,6 @@ div .pantry-list {
 .adjusted-pantry-item {
 	position: absolute;
 	padding-top: 7px;
-}
-
-.adjusted-button {
 }
 
 .no-results-img {
