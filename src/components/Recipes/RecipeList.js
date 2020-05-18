@@ -20,8 +20,8 @@ export default function RecipeList(props) {
 	const makeRecipeList = () => {
 		if (props.recipes.length === 0) {
 			return (
-				<div>
-					Search for something or add to your mixing bowl!
+				<div className="empty-recipe-list">
+					<h2> Search for something or add to your mixing bowl! </h2>
 					<Image
 						className="no-results-img"
 						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"

@@ -341,3 +341,20 @@ div .pantry-list {
 #remove-btn {
 	float: right;
 }
+
+.empty-recipe-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.empty-recipe-list img {
+	width: 5em;
+}
+
+.empty-recipe-list h2 {
+	color: olivedrab;
+	/* background-color: orange; */
+	border-radius: 1em;
+}
