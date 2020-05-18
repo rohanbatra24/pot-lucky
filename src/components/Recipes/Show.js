@@ -18,16 +18,34 @@ export default function Show(props) {
 
   const [mode, setMode] = useState("before");
 
-  const popover = (
-    <Popover id="popover-basic">
+  const updatePopover = (
+    <Popover id="popover-update">
       <Popover.Title as="h3">Update Pantry?</Popover.Title>
       <Popover.Content>
         After you make this recipe, click the button and we'll update your pantry items to remove the amounts
         this recipe required.
       </Popover.Content>
     </Popover>
-  );
+	);
+	
+	const allergyPopover = (
+    <Popover id="popover-update">
+      <Popover.Title as="h3">Contains Allergens</Popover.Title>
+      <Popover.Content>
+				Heads up! This recipe contains an ingredient you are allergic to. 
+      </Popover.Content>
+    </Popover>
+	);
 
+	const ingrPopover = (
+    <Popover id="popover-update">
+      <Popover.Title as="h3">Missing Ingredients?</Popover.Title>
+      <Popover.Content>
+				Shopping cart: You're missing something.<br/>
+				Check mark: You're good to go.
+      </Popover.Content>
+    </Popover>
+  );
   function isAllergic() {
     let result = false;
     for (let ingredient of props.recipe.extendedIngredients) {
@@ -77,21 +95,35 @@ export default function Show(props) {
       <Card className={`recipe-card card mb-1 ${canCookClass} ${allergyClass}`}>
         <div className="badges-container">
           {isAllergic() && (
-            <Image
+          <OverlayTrigger trigger="hover" placement="top" overlay={allergyPopover}>
+						<Image
               src="https://image.flaticon.com/icons/svg/1500/1500374.svg"
               roundedCircle
               className="allergyBadge"
               alt="Allergy Badge"
             />
+						</OverlayTrigger>
           )}
           {!canCook() && (
-            <Image
+          <OverlayTrigger trigger="hover" placement="top" overlay={ingrPopover}>
+						<Image
               src="https://image.flaticon.com/icons/svg/859/859270.svg"
               alt="Missing Ingredients Badge"
               roundedCircle
               className="cannotCookBadge"
             />
+					</OverlayTrigger>
           )}
+					{canCook() && (
+          <OverlayTrigger trigger="hover" placement="top" overlay={ingrPopover}>
+						<Image
+							src="https://image.flaticon.com/icons/svg/1009/1009256.svg"
+							alt="No Missing Ingredients Badge"
+							roundedCircle
+							className="cannotCookBadge"
+						/>
+						</OverlayTrigger>
+					)}
         </div>
         <Card.Img
           variant="top"
@@ -137,7 +169,7 @@ export default function Show(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <OverlayTrigger trigger="hover" placement="top" overlay={popover}>
+          <OverlayTrigger trigger="hover" placement="top" overlay={updatePopover}>
             <Button variant="primary" onClick={(e) => updatePantryIngr(e)}>
               Update Pantry
             </Button>
