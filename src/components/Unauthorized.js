@@ -12,6 +12,7 @@ export default function Unauthorized() {
 			<Jumbotron className="welcome row-fluid">
 				<h1>Welcome to Pot Lucky!</h1>
 			</Jumbotron>
+			<div className="middle">
 			<div className="logo-and-button">
 				<Image className="logo" roundedCircle src={logo} alt="Pot Lucky Logo" />
 				{!isLoading &&
@@ -38,6 +39,7 @@ export default function Unauthorized() {
 					</p>
 				</div>
 			</Jumbotron>
+			</div>
 			<Jumbotron>
 				<h3>About Our Team</h3>
 			</Jumbotron>
