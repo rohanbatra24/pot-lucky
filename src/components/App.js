@@ -245,7 +245,6 @@ function App() {
 								setSelectedPantryList={setSelectedPantryList}
 							/>
 						</div>
-						<h3>What's in my pantry?</h3>
 						<PantryList
 							handleAddItem={addToPantry}
 							pantry={pantry}
