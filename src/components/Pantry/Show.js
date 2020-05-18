@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Spinner, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const units = [
 	'g',
