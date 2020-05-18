@@ -1,10 +1,25 @@
-.recipes.empty {
+
+.empty-recipe-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-y: hidden;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.empty-recipe-list img {
+	width: 5em;
+}
+
+.empty-recipe-list h2 {
+	color: olivedrab;
+	/* background-color: orange; */
+	border-radius: 1em;
 }
 
 .recipes-full {
   height: 500px;
   overflow-y: scroll;
+  flex-direction: row;
+  flex-wrap: wrap;
 } 
