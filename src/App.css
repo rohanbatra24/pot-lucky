@@ -1,5 +1,6 @@
 @import "RecipeCard.css";
 @import "Unauthorized.css";
+@import "Slider.css";
 
 /* h1,
 h2,
@@ -17,6 +18,24 @@ li {
 	margin: 0;
 	padding: 0;
 } */
+
+.loading-app {
+	margin-left: 20em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.loading-alert {
+	margin-top: 5em;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.loading-img {
+	margin-bottom: 40em;
+}
 
 .pantry-container h3 {
 	margin-top: 2em;
@@ -95,7 +114,6 @@ li {
 }
 
 .recipe-card .btn {
-	border-radius: 30%;
 	margin-top: .4em;
 }
 
@@ -314,4 +332,18 @@ div .pantry-list {
 .no-results-img {
 	height: 11em;
 	width: 11m;
+}
+
+.search {
+	display: flex;
+	align-items: baseline;
+}
+
+.search button {
+	height: fit-content;
+	background-color: #60a3bc;
+}
+
+.card-body small {
+	color: darkgray;
 }

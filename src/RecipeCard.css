@@ -24,10 +24,14 @@
 	/* background-color: salmon; */
 	padding: 1em;
 	margin: 3em;
-	border-radius: 2em;
-	width: 9em;
+	/* border-radius: 2em; */
+	width: 19em;
 }
 
 .card-img-top {
 	border-radius: 1em;
+}
+
+.card-columns .card {
+	width: 19em;
 }

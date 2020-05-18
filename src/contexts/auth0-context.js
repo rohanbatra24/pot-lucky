@@ -56,7 +56,7 @@ export class Auth0Provider extends Component {
 		const isAuthenticated = await auth0Client.isAuthenticated();
 		const user = isAuthenticated ? await auth0Client.getUser() : null;
 
-		setTimeout(() => this.setState({ isLoading: false, isAuthenticated, user }), 2000);
+		setTimeout(() => this.setState({ isLoading: false, isAuthenticated, user }), 50000);
 	};
 
 	// handle the authentication callback
@@ -66,7 +66,7 @@ export class Auth0Provider extends Component {
 		await this.state.auth0Client.handleRedirectCallback();
 		const user = await this.state.auth0Client.getUser();
 
-		setTimeout(() => this.setState({ user, isAuthenticated: true, isLoading: false }), 2000);
+		setTimeout(() => this.setState({ user, isAuthenticated: true, isLoading: false }), 50000);
 		window.history.replaceState({}, document.title, window.location.pathname);
 	};
 

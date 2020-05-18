@@ -49,9 +49,7 @@ export default function RecipeList(props) {
 		}
 	};
 
-	return (
-		<CardColumns>{makeRecipeList()}</CardColumns>
-		// <ListGroup className="overflow-auto" as="ul">
-		// </ListGroup>
-	);
+	return makeRecipeList();
+	// <ListGroup className="overflow-auto" as="ul">
+	// </ListGroup>
 }

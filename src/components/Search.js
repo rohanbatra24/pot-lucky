@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
+import { Form, Button } from 'react-bootstrap';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
@@ -103,16 +104,21 @@ export default function Search(props) {
 				<form type="submit" onSubmit={handleGenerateRecipe}>
 					<button className="generate-recipe-btn">Generate Recipe</button>
 				</form>
-				<div>
-					<form type="submit" onSubmit={onSubmit} className="search">
-						<input
+
+				<Form type="submit" onSubmit={onSubmit} className="search">
+					<Form.Group>
+						<Form.Control
 							placeholder="Search recipes!"
+							type="text"
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
+							label="Search"
 						/>
-						<button>Submit</button>
-					</form>
-				</div>
+					</Form.Group>
+					<Button variant="primary" type="submit">
+						Submit
+					</Button>
+				</Form>
 			</div>
 		</Fragment>
 	);

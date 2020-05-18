@@ -73,25 +73,29 @@ export default function Show(props) {
 						/>
 					)}
 					{!canCook() && (
-						<Image 
+						<Image
 							src="https://image.flaticon.com/icons/svg/859/859270.svg"
 							alt="Missing Ingredients Badge"
 							roundedCircle
 							className="cannotCookBadge"
-						/>	
+						/>
 					)}
 				</div>
-				<Card.Img variant="top" src={props.recipe.image} alt={props.recipe.title}/>
+				<Card.Img variant="top" src={props.recipe.image} alt={props.recipe.title} />
 				<Card.Body>
-					<Card.Title>{props.recipe.title.slice(0,20)}...</Card.Title>
+					<Card.Title>{props.recipe.title.slice(0, 15)}...</Card.Title>
 					<Card.Text>
-						<small>Ready in: {props.recipe.readyInMinutes} minutes</small><br/>
-						<small>Spoonacular Score: {props.recipe.spoonacularScore}%</small><br/>
-						<small>Health Score: {props.recipe.healthScore}</small><br/>
-						<small>Likes: {props.recipe.aggregateLikes}</small><br/>
+						<small>Ready in: {props.recipe.readyInMinutes} minutes</small>
+						<br />
+						<small>Spoonacular Score: {props.recipe.spoonacularScore}%</small>
+						<br />
+						<small>Health Score: {props.recipe.healthScore}</small>
+						<br />
+						<small>Likes: {props.recipe.aggregateLikes}</small>
+						<br />
 					</Card.Text>
 				</Card.Body>
-				<Card.Footer> 
+				<Card.Footer>
 					<Button
 						variant="primary"
 						size="lg"

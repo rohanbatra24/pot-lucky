@@ -287,11 +287,12 @@ function App() {
 	else {
 		return (
 			<div className="loading-app">
-				<Alert key={1} variant="info">
+				<Alert key={1} variant="success" className="loading-alert">
 					Patience, hungry one!<br />
 					Good food takes time to make!
 				</Alert>
 				<Image
+					className="loading-img"
 					src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
 					alt="Loading"
 				/>
