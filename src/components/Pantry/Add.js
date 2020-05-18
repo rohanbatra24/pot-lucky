@@ -84,6 +84,7 @@ export default function Add(props) {
 						type="number"
 						onChange={(e) => setValues({ ...values, quantity: e.target.value })}
 					/>
+					<Form.Label>Expires on:</Form.Label>
 					<Form.Control
 						className="form-component"
 						value={values.expiry}
