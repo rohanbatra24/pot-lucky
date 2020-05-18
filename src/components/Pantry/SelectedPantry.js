@@ -43,16 +43,13 @@ export default function SelectedPantry(props) {
     <div>
       <p>Searching with: </p>
       <Jumbotron className="selected-pantry__full">{items}</Jumbotron>
-
-      <ButtonGroup className="mr-2" aria-label="Reset All Button">
         <Button
           block
           variant="warning"
           onClick={() => props.setSelectedPantryList([])}
         >
-          Remove All Items From Mixing Bowl
+          Remove All
         </Button>
-      </ButtonGroup>
     </div>
   );
 }

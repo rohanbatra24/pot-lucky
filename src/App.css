@@ -226,6 +226,7 @@ li {
 .selected-pantry__full {
 	overflow-y: scroll;
 	height: 15em;
+	justify-content: center
 }
 
 .centered-text {
