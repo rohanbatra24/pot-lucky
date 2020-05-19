@@ -72,9 +72,7 @@ export default function PantryList(props) {
 							</Card.Body>
 						</Accordion.Collapse>
 					</Card>				
-					{/* <div className="pantry-list"> */}
 							{pantryList}
-					{/* </div> */}
 				</Accordion>
 				{(props.selectedPantryList.length !== props.pantry.length) && props.pantry.length > 0 && 
 					(<Button block class="adjusted-button" variant="warning" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
@@ -90,7 +88,7 @@ export default function PantryList(props) {
 				<Accordion>
 					<Card>
 						<Card.Header>
-						<Accordion.Toggle className="pantry-list__new" as={Button} eventKey="0">
+						<Accordion.Toggle className="pantry-list__new" as={Card.Header} eventKey="0">
 							New Item
 						</Accordion.Toggle>
 						</Card.Header>
