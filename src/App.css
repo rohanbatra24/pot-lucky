@@ -57,14 +57,14 @@ li {
 	float: right;
 }
 
-.btn-warning {
+.plus-button {
 	height: 2.4em;
 	float: right;
 	padding: 0;
 	width: 2em;
 	background: #fdb44c;
 }
-.btn-warning img {
+.plus-button img {
 	height: 1em;
 }
 .react-slider {
@@ -73,7 +73,7 @@ li {
 
 .filter-container {
 	background: #f39539;
-	border-radius: 2em;
+	border-radius: 1em;
 	opacity: .84;
 }
 
@@ -226,6 +226,9 @@ li {
 	margin-top: 2em;
 }
 
+.mixingbowl p {
+	text-align: center;
+}
 .selected-pantry__empty {
 	height: 6em;
 }
@@ -273,6 +276,10 @@ div .pantry-list {
 	overflow-y: scroll;
 }
 
+.pantry-list .btn-outline-danger{
+	float: right;
+}
+
 .adjusted-sel-pantry-item {
 	margin: 5px 5px 0 0;
 }
@@ -282,6 +289,10 @@ div .pantry-list {
 	padding-top: 7px;
 }
 
+.pantry-list .adjusted-button {
+	width: auto;
+	background: #ef6630;
+}
 .no-results-img {
 	height: 11em;
 	width: 11m;
@@ -290,12 +301,6 @@ div .pantry-list {
 .search {
 	display: flex;
 	align-items: baseline;
-}
-
-.search button {
-	height: 3.5em;
-	/* background-color: #60a3bc; */
-	/* border: none; */
 }
 
 .search input {

@@ -2,6 +2,7 @@
 	justify-content: space-between;
 	height: 3em;
 	opacity: .9;
+	color: #fc8c29;
 }
 
 .nav-avatar {
@@ -26,4 +27,12 @@
 
 .nav-left img {
 	margin-right: 1em;
+}
+
+.navbar .dropdown-toggle {
+	color: #212529;
+}
+
+.navbar .dropdown-toggle :hover {
+	color: hsl(28, 97%, 57%);
 }

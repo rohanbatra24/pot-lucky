@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = 'dc75b7fa4f7948ceae6ce8c4e008208e';
+const apiKey = 'a260062916e04970801d03d0db2c32b4';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');

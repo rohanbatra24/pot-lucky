@@ -43,8 +43,8 @@ export default function Show(props) {
   if (mode === "view") {
     return (
       <div>
-        <h4>Quantity: {+props.item.quantity}</h4>
-        <h4>Unit: {props.item.unit}</h4>
+        <p>Quantity: {+props.item.quantity} {props.item.unit}</p>
+        <p>Expiry: {props.item.expiry.slice(0, 10)}</p>
         <Button
 					variant="outline-warning"
 					onClick={() => {

@@ -14,8 +14,8 @@ export default function PantryList(props) {
 	// Render PantryListItem in each iteration
 
 	const pantryClass = classNames({
-		'pantry-list__item'           : props,
-		'pantry-list__item--selected' : props.selected
+		'pantry-list__item plus-button'           : props,
+		'pantry-list__item--selected plus-button' : props.selected
 	});
 
 	const allPantryNames = new Set(props.pantry.map((item) => item.name));
@@ -77,7 +77,7 @@ export default function PantryList(props) {
 					{/* </div> */}
 				</Accordion>
 				{(props.selectedPantryList.length !== props.pantry.length) && props.pantry.length > 0 && 
-					(<Button class="adjusted-button" variant="success" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+					(<Button block class="adjusted-button" variant="warning" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
 						Select All
 					</Button>)
 				}
@@ -90,7 +90,7 @@ export default function PantryList(props) {
 				<Accordion>
 					<Card>
 						<Card.Header>
-						<Accordion.Toggle as={Button} eventKey="0">
+						<Accordion.Toggle className="pantry-list__new" as={Button} eventKey="0">
 							New Item
 						</Accordion.Toggle>
 						</Card.Header>

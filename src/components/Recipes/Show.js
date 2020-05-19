@@ -179,7 +179,7 @@ export default function Show(props) {
           <FullRecipe editInPantry={props.editInPantry} recipe={props.recipe} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" href={props.recipe.sourceUrl}>
+          <Button variant="dark" href={props.recipe.sourceUrl}>
             Go To Recipe
           </Button>
 
@@ -190,7 +190,7 @@ export default function Show(props) {
               overlay={updatePopover}
             >
               <Button
-                variant="primary"
+                variant="warning"
                 onClick={(e) => {
                   setUpdateMode("after");
                   updatePantryIngr(e);
@@ -213,7 +213,7 @@ export default function Show(props) {
           )}
           {saveMode === "before" ? (
             <Button
-              variant="primary"
+              variant="danger"
               onClick={(e) => {
                 setSaveMode("after");
 
