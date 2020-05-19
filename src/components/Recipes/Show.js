@@ -158,7 +158,7 @@ export default function Show(props) {
         </Card.Body>
         <Card.Footer>
           <Button
-            variant="primary"
+            variant="warning"
             size="lg"
             block
             onClick={() => {
@@ -171,7 +171,7 @@ export default function Show(props) {
         </Card.Footer>
       </Card>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="full-recipe-modal" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{props.recipe.title}</Modal.Title>
         </Modal.Header>
