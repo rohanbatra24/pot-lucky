@@ -1,60 +1,84 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import Show from './Show';
-import { Image, Jumbotron, CardColumns } from 'react-bootstrap';
+import React, { useState, useEffect, Fragment } from "react";
+import Show from "./Show";
+import { Image } from "react-bootstrap";
 
-import './styles.css';
+import "./styles.css";
 
 export default function RecipeList(props) {
-	const [ selected, setSelected ] = useState('');
+  const [selected, setSelected] = useState("");
 
-	useEffect(
-		() => {
-			makeRecipeList();
-		},
-		[ selected, props.recipes ]
-	);
+  useEffect(() => {
+    makeRecipeList();
+  }, [selected, props.recipes]);
 
-	const recipeListClass = props.recipes.length ? "recipes-full" : "empty-recipe-list"
-	// Retrieve list from database
-	// First item in list will always be New/Form
-	// Render PantryListItem in each iteration
-	const makeRecipeList = () => {
-		if (props.recipes.length === 0) {
-			return (
-				<Fragment>
-					<h4> Search for something or select items from your pantry! </h4>
-					<Image
-						className="no-results-img"
-						src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
-						alt="Recipe Book"
-					/>
-				</Fragment>
-			);
-		}
-		else {
-			const recipes = props.recipes.map((recipe) => {
-				return (
-					<Show
-						editInPantry={props.editInPantry}
-						allergies={props.allergies}
-						key={recipe.id}
-						selected={selected}
-						setSelected={setSelected}
-						recipe={recipe}
-						pantry={props.pantry}
-						addSavedRecipe={props.addSavedRecipe}
-					/>
-				);
-			});
-			return recipes;
-		}
-	};
+  const recipeListClass = props.recipes.length
+    ? "recipes-full"
+    : "empty-recipe-list";
+  // Retrieve list from database
+  // First item in list will always be New/Form
+  // Render PantryListItem in each iteration
+  const makeRecipeList = () => {
+    if (props.recipeState === "empty") {
+      return (
+        <Fragment>
+          <h4> Search for something or select items from your pantry! </h4>
+          <Image
+            className="recipe-empty"
+            src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
+            alt="Recipe Book"
+          />
+        </Fragment>
+      );
+    } else if (props.recipeState === "full") {
+      const recipes = props.recipes.map((recipe) => {
+        return (
+          <Show
+            editInPantry={props.editInPantry}
+            allergies={props.allergies}
+            key={recipe.id}
+            selected={selected}
+            setSelected={setSelected}
+            recipe={recipe}
+            pantry={props.pantry}
+            addSavedRecipe={props.addSavedRecipe}
+          />
+        );
+      });
+      return recipes;
+    } else if (props.recipeState === "error") {
+      return (
+        <div className="recipe-error">
+          <h4>Hmm...</h4>
+					<h6>Looks like something went wrong with our search engine.</h6>
+					<p>Try another search!</p>
+          <Image
+            src="https://cdn.dribbble.com/users/3817517/screenshots/6757521/burnt_toast.jpg"
+            alt="Burnt Toast"
+          />
+        </div>
+      );
+    } else if (props.recipeState === "loading") {
+      return (
+        <div className="recipe-loading">
+				<Image
+          src="https://cdn.dribbble.com/users/1522528/screenshots/6123013/adac_socialmedia_march2018-v3.gif"
+          alt="Loading Recipes"
+        />
+				</div>
+      );
+    } else if (props.recipeState === "noResults") {
+      return (
+        <Fragment>
+          <h4>No Results</h4>
+          <Image
+						className="recipe-no-results"
+            src="https://image.flaticon.com/icons/svg/2187/2187405.svg"
+            alt="Empty Tray"
+          />
+        </Fragment>
+      );
+    }
+  };
 
-	return (
-		<div className={recipeListClass}>
-			{makeRecipeList()}
-		</div>
-		)
-	// <ListGroup className="overflow-auto" as="ul">
-	// </ListGroup>
+  return <div className={recipeListClass}>{makeRecipeList()}</div>;
 }
