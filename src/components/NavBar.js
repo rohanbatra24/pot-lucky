@@ -52,7 +52,7 @@ export default function NavBar(props) {
 				<Card>
 					<Card.Body>
 						<img src={savedRecipe.image} alt={savedRecipe.title} />
-						<a href={savedRecipe.url}>{savedRecipe.title}</a>
+						<a href={savedRecipe.url} rel='noopener noreferrer' target="_blank">{savedRecipe.title}</a>
 						<Button
 							id="remove-btn"
 							variant="danger"

@@ -179,7 +179,7 @@ export default function Show(props) {
           <FullRecipe editInPantry={props.editInPantry} recipe={props.recipe} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" href={props.recipe.sourceUrl}>
+          <Button variant="dark" href={props.recipe.sourceUrl} rel='noopener noreferrer' target="_blank">
             Go To Recipe
           </Button>
 
