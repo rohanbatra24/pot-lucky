@@ -21,7 +21,7 @@
 
 .recipes-full {
 	display: flex;
-	height: 35em;
+	height: 30em;
   overflow-y: scroll;
   flex-direction: row;
   flex-wrap: wrap;

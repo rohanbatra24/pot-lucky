@@ -23,11 +23,11 @@ li {
 } */
 
 .loading-app {
-	margin-left: 20em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 100%
 }
 
 .loading-alert {

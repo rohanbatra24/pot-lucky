@@ -288,7 +288,7 @@ function App() {
 			<div className="loading-app">
 				<Alert key={1} variant="success" className="loading-alert">
 					Patience, hungry one!<br />
-					Good food takes time to make!
+					Good food takes time!
 				</Alert>
 				<Image
 					className="loading-img"

@@ -20,10 +20,16 @@
 .modal-content .jumbotron {
   background-color: #556b2f78;
 }
-.modal-content img {
+
+.saved_recipes-modal .modal-content img {
 	border-radius: 5%;
 	width: 20em;
 	margin: 20px;
+  border: .2em solid rgba(112, 69, 19, 0.47);
+}
+
+.full-recipe-modal img {
+  height: 10em;
 }
 
 .modelMain ol {
@@ -50,14 +56,10 @@
 
 .ingr-and-image {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.modal-content img {
-  width: 20em;
-  margin: 20px;
-  border: .2em solid rgba(112, 69, 19, 0.47);
-}
 
 .saved-recipes-modal img {
   height: 10em;
@@ -65,9 +67,6 @@
   margin: .5em;
 }
 
-.saved-recipes-modal .modal-title {
-  margin-left: 36%;
-}
 .saved-recipes-modal .card {
   margin-bottom: 1em;
   height: 12em;
@@ -83,4 +82,22 @@
 
 .recipe-modal h3 {
     color: #212529;
+}
+
+.allergies-modal .modal-body {
+  display: flex;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.allergies-modal h3 {
+  text-align: center;
+  width: 75%;
+}
+
+.allergies-modal .form-control {
+  display: block;
+  width: 85%;
 }

@@ -46,7 +46,7 @@ export default function Unauthorized() {
 
 			<div className="team row">
 				<Jumbotron className=" teammate span4">
-					Derek
+					Derek Nugroho
 					<Image
 						src="https://ca.slack-edge.com/T2G8TE2E5-UT8F3FGH0-3cf27af4b26a-512"
 						alt="Derek"
@@ -54,15 +54,15 @@ export default function Unauthorized() {
 					/>
 				</Jumbotron>
 				<Jumbotron className="teammate span4">
-					Kelsey
+					Kelsey Griffin
 					<Image
-						src="https://ca.slack-edge.com/T2G8TE2E5-UT85ZDV8A-19d8dae5de0a-512"
-						alt="Derek"
+						src="https://ca.slack-edge.com/T2G8TE2E5-UT85ZDV8A-1c6c7bab53fc-512"
+						alt="Kelsey"
 						roundedCircle
 					/>
 				</Jumbotron>
 				<Jumbotron className="teammate span4">
-					Rohan
+					Rohan Batra
 					<Image
 						src="https://ca.slack-edge.com/T2G8TE2E5-USNL6SZQX-106eb2e9f39a-512"
 						alt="Derek"
