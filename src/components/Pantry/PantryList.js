@@ -75,7 +75,7 @@ export default function PantryList(props) {
 							{pantryList}
 				</Accordion>
 				{(props.selectedPantryList.length !== props.pantry.length) && props.pantry.length > 0 && 
-					(<Button block class="adjusted-button" variant="warning" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
+					(<Button block className="adjusted-button" variant="warning" onClick={() => props.setSelectedPantryList([ ...allPantryNames ])}>
 						Select All
 					</Button>)
 				}
