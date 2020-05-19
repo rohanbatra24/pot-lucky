@@ -27,6 +27,20 @@
 	margin: 20px;
   border: .2em solid rgba(112, 69, 19, 0.47);
 }
+.saved-recipes-modal img {
+  height: 10em;
+  padding: 0em;
+  margin: .5em;
+}
+
+.saved_recipes-modal .card-body {
+  display: flex;
+  align-items: center;
+}
+
+.saved_recipes-modal a {
+  padding: 0em 1em;
+}
 
 .full-recipe-modal img {
   height: 10em;
@@ -58,13 +72,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-
-
-.saved-recipes-modal img {
-  height: 10em;
-  padding: 0em;
-  margin: .5em;
 }
 
 .saved-recipes-modal .card {
