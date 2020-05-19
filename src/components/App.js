@@ -34,7 +34,7 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
-
+	const [ recipeState, setRecipeState ] = useState("empty")
 	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [], savedRecipes: [] });
 
 	useEffect(
@@ -259,6 +259,7 @@ function App() {
 						<Search
 							selectedPantryList={selectedPantryList}
 							setRecipeList={setRecipeList}
+							setRecipeState={setRecipeState}
 							setFilters={setFilters}
 						/>
 						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
@@ -268,6 +269,7 @@ function App() {
 							<h1>Recipes</h1>
 						</label> */}
 						<RecipeList
+							recipeState={recipeState}
 							editInPantry={editInPantry}
 							pantry={pantry}
 							allergies={fullUser.allergies}
