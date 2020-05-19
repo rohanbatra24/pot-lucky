@@ -23,9 +23,9 @@ export default function PantryList(props) {
 	const pantryList = props.pantry.map((item) => {
 		const isSelected = () => !props.selectedPantryList.includes(item.name);
 		return (
-			<Card>
+			<Card key={item.id}>
 				<Card.Header>
-					<span class="adjusted-pantry-item">{item.name}</span>
+					<span className="adjusted-pantry-item">{item.name}</span>
 					{isSelected() && (
 						<Button
 							variant="warning"

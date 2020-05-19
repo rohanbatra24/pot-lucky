@@ -24,7 +24,7 @@ export default function NavBar(props) {
 	const setAllergyList = () => {
 		const allergiesList = props.allergies.map((allergy) => {
 			return (
-				<Card>
+				<Card key={allergy}>
 					<Card.Body>
 						{allergy}
 						<Button id="remove-btn" variant="danger" onClick={(e) => props.handleDeleteAllergy(e, allergy)}>
@@ -49,7 +49,7 @@ export default function NavBar(props) {
 	const setSavedRecipeList = () => {
 		const savedRecipeList = unique.map((savedRecipe) => {
 			return (
-				<Card>
+				<Card key={savedRecipe.title}>
 					<Card.Body>
 						<img src={savedRecipe.image} alt={savedRecipe.title} />
 						<a href={savedRecipe.url} rel='noopener noreferrer' target="_blank">{savedRecipe.title}</a>
