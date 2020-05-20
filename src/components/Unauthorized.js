@@ -13,32 +13,32 @@ export default function Unauthorized() {
 				<h1>Welcome to Pot Lucky!</h1>
 			</Jumbotron>
 			<div className="middle">
-			<div className="logo-and-button">
-				<Image className="logo" roundedCircle src={logo} alt="Pot Lucky Logo" />
-				{!isLoading &&
-				!user && (
-					<Button size="lg" variant="success" onClick={loginWithRedirect} className="login">
-						Let's Get Cookin'!
-					</Button>
-				)}
-			</div>
-			<br />
-			<Jumbotron className=" row-fluid">
-				<div className="blurb span12">
-					<p>
-						PotLucky is the site you've been wishing for!
-						<br />
-						<br />
-						Save ingredients you have at home and search for recipes using them. You can also search with
-						text if you already have an idea of what you're looing for. But the fun doesn't stop there!
-						Update your pantry after you complete a recipe, save recipes for later. You can even save
-						allergies and we'll let you know if a recipe has that allergen.
-						<br />
-						<br />
-						So what are you waiting for?
-					</p>
+				<div className="logo-and-button">
+					<Image className="logo" roundedCircle src={logo} alt="Pot Lucky Logo" />
+					{!isLoading &&
+					!user && (
+						<Button size="lg" variant="success" onClick={loginWithRedirect} className="login">
+							Let's Get Cookin'!
+						</Button>
+					)}
 				</div>
-			</Jumbotron>
+				<br />
+				<Jumbotron className=" row-fluid">
+					<div className="blurb span12">
+						<p>
+							PotLucky is the site you've been wishing for!
+							<br />
+							<br />
+							Save ingredients you have at home and search for recipes using them. You can also search
+							with text if you already have an idea of what you're looking for. But the fun doesn't stop
+							there! Update your pantry after you complete a recipe, save recipes for later. You can even
+							save allergies and we'll let you know if a recipe has that allergen.
+							<br />
+							<br />
+							So what are you waiting for?
+						</p>
+					</div>
+				</Jumbotron>
 			</div>
 			<Jumbotron>
 				<h3>About Our Team</h3>
