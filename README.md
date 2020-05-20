@@ -4,7 +4,7 @@ PotLucky helps you optimize your food consumption, reduce food waste, and make f
 
 ## Getting started
 
-PotLucky uses an external PostgreSQL API to store user information, preferences, and other data the site needs. In order to get started, please first go to the [PotLucky API](https://github.com/rohanbatra24/pot-lucky) github page and follow the instructions in that ReadMe. 
+PotLucky uses an external PostgreSQL API to store user information, preferences, and other data the site needs. In order to get started, please first go to the [PotLucky API](https://github.com/rohanbatra24/pot-lucky-api) github page and follow the instructions in that ReadMe. 
 
 After setting up the PotLucky API and cloning this repo, simply run `npm start` and navigate to `localhost:3000` in your browser. Make sure you have started the PotLucky API by running `node index.js`.
 
