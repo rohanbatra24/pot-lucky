@@ -22,8 +22,8 @@ export default function SelectedPantry(props) {
 
   const items = props.selectedPantryList.map((item) => {
     return (
-      <div className="selected-pantry__item">
-        <span class="adjusted-sel-pantry-item">{item}</span>
+      <div className="selected-pantry__item" key={item}>
+        <span className="adjusted-sel-pantry-item">{item}</span>
         <Button
           className="selected-pantry__remove"
           onClick={() =>
