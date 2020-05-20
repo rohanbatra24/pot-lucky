@@ -16,7 +16,7 @@ Simply input the items in your pantry, specify which items you would like to con
 
 You can also search recipes with the search bar. This takes semantic queries, meaning that you can search for specific ingredients, like `bananas`, or more complex phrases like `gluten free brownies`. You will be informed whether or not you have the required ingredients in your pantry to make each recipe via a badge on the recipe card. 
 * Green Checkmark: No missing ingredients
-* Shopping Card: Missing ingredients
+* Shopping Cart: Missing ingredients
 
 If you wish, you can also filter by vegan, gluten-free, cuisine, preparation time, and more.
 
