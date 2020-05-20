@@ -106,7 +106,9 @@ export default function Search(props) {
 						.then((res) => {
 							console.log('RESULTS from BULK api call==>', res.data);
 							props.setRecipeList(res.data);
-							props.setRecipeState("full");
+							// setTimeout(() => {
+								props.setRecipeState("full");
+							// }, 444444); 
 						});
 				}
 			})
