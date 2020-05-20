@@ -111,7 +111,7 @@ export default function Filter(props) {
 
 						<Slider
 							disabled={min_time === max_time}
-							type="Time"
+							type="Prep Time"
 							maxSize={max_time}
 							minSize={min_time}
 							initialSize={props.filters.time}
