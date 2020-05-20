@@ -2,17 +2,6 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Switch from './Switch';
 import Slider from './Slider';
-import { Jumbotron } from 'react-bootstrap';
-
-// cuisine - dropdown
-// time required - slider
-// dietary restrictions - switches
-//  - vegan
-//  - vegatarian
-//  - gluten-free
-//  - low calories (?)
-// spoonacular score - slider
-// dish type - dropdown
 
 export default function Filter(props) {
 	//get a list of dish types from recipe list
@@ -20,7 +9,7 @@ export default function Filter(props) {
 	const dishList = [
 		'main course',
 		'side dish',
-		'dessert',
+		'desserts',
 		'appetizer',
 		'salad',
 		'bread',
@@ -71,19 +60,9 @@ export default function Filter(props) {
 		return <option key={cuisine}>{cuisine}</option>;
 	});
 
-	// props.recipeList.forEach((recipe) => {
-	// 	recipe.dishTypes.forEach((dish) => {
-	// 		dishList.add(dish);
-	// 	});
-	// });
-
-	// const dishesList = [ ...dishList ].map((type) => {
-	// 	return <option value={type}>{type}</option>;
-	// });
-
-	//for time range slider
+	// for time range slider
 	// go through recipeList and get readyInMinutes
-	//choose the maximum and the minimum
+	// choose the maximum and the minimum
 	const times = [];
 	props.recipeList.forEach((recipe) => {
 		times.push(recipe.readyInMinutes);
@@ -131,6 +110,7 @@ export default function Filter(props) {
 						/>
 
 						<Slider
+							disabled={min_time === max_time}
 							type="Time"
 							maxSize={max_time}
 							minSize={min_time}

@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Badge } from 'react-bootstrap';
 
-const Slider = ({ initialSize, minSize, maxSize, handleChange, type }) => {
+const Slider = ({ initialSize, minSize, maxSize, handleChange, type, disabled }) => {
 	return (
 		<div className="sliderFilterContainer-item">
 			<label className="react-slider-label" htmlFor={`react-slider`}>
 				<span className={`react-slider`}>{type}</span>
 			</label>
 			<input
+				disabled={disabled}
 				value={initialSize}
 				onChange={handleChange}
 				max={maxSize}
