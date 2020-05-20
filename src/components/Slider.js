@@ -20,7 +20,7 @@ const Slider = ({ initialSize, minSize, maxSize, handleChange, type, disabled })
 
 			<Badge variant="dark">
 				<output htmlFor={`${type}-slider`} id={`${type}-slider-output`}>
-					{initialSize}
+					{initialSize} {type === 'Prep Time' ? ' Mins' : '%'}
 				</output>
 			</Badge>
 		</div>
