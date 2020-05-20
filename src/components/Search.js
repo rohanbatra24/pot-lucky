@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = '7a707a8f3c6b42ffb52bccfa111f4a00';
+const apiKey = '14c45fb37c9e4e1baf8400f2d95678ae';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
@@ -13,7 +13,7 @@ export default function Search(props) {
 
 	function onSubmit(event) {
 		event.preventDefault();
-		props.setRecipeState("loading")
+		props.setRecipeState('loading');
 
 		//reset filters
 		props.setFilters({
@@ -42,22 +42,22 @@ export default function Search(props) {
 							.then((res) => {
 								console.log('RESULTS from api call==>', res.data);
 								props.setRecipeList(res.data);
-								props.setRecipeState("full")
+								props.setRecipeState('full');
 							});
 					}
 				})
 				.catch((err) => {
-					props.setRecipeState("error")
+					props.setRecipeState('error');
 					setTimeout(() => {
-						props.setRecipeState("empty")
+						props.setRecipeState('empty');
 					}, 4000);
-					console.error(err)
+					console.error(err);
 				});
 	}
 
 	function handleGenerateRecipe(event) {
 		event.preventDefault();
-		props.setRecipeState("loading");
+		props.setRecipeState('loading');
 
 		props.setFilters({
 			vegan      : false,
@@ -76,7 +76,7 @@ export default function Search(props) {
 		}
 
 		const apiString = pantryArr.join(',+');
-		
+
 		axios
 			.get(
 				`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${apiString}&apiKey=${apiKey}&ignorePantry=true&ranking=2`
@@ -89,11 +89,11 @@ export default function Search(props) {
 					return noMissingIngred.map((item) => item.id);
 				}
 				else {
-					console.log(props.selectedPantryList)
+					console.log(props.selectedPantryList);
 					props.setRecipeList([]);
-					props.setRecipeState("noResults");
+					props.setRecipeState('noResults');
 					setTimeout(() => {
-						props.setRecipeState("empty")
+						props.setRecipeState('empty');
 					}, 4000);
 				}
 			})
@@ -107,16 +107,16 @@ export default function Search(props) {
 							console.log('RESULTS from BULK api call==>', res.data);
 							props.setRecipeList(res.data);
 							// setTimeout(() => {
-								props.setRecipeState("full");
-							// }, 444444); 
+							props.setRecipeState('full');
+							// }, 444444);
 						});
 				}
 			})
 			.catch((err) => {
-				console.error(err)
-				props.setRecipeState("error");
+				console.error(err);
+				props.setRecipeState('error');
 				setTimeout(() => {
-					props.setRecipeState("empty")
+					props.setRecipeState('empty');
 				}, 4000);
 			});
 	}
@@ -131,14 +131,13 @@ export default function Search(props) {
 				<Form type="submit" onSubmit={onSubmit} className="search">
 					<Form.Group>
 						<Form.Control
-							placeholder="Search recipes!"
 							type="text"
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
 							label="Search"
 						/>
 					</Form.Group>
-					<button className="search-btn" type="submit">
+					<button disabled={!searchText.length} className="search-btn" type="submit">
 						Submit
 					</button>
 				</Form>
