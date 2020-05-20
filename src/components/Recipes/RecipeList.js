@@ -13,21 +13,33 @@ export default function RecipeList(props) {
 
   const recipeListClass = props.recipes.length
     ? "recipes-full"
-    : "empty-recipe-list";
+		: "empty-recipe-list";
+
   // Retrieve list from database
   // First item in list will always be New/Form
   // Render PantryListItem in each iteration
   const makeRecipeList = () => {
     if (props.recipeState === "empty") {
-      return (
-        <Fragment>
+      return (  
+				<div className="recipe-empty">
           <h4> Search for something or select items from your pantry! </h4>
           <Image
-            className="recipe-empty"
             src="https://image.flaticon.com/icons/svg/1971/1971011.svg"
             alt="Recipe Book"
           />
-        </Fragment>
+        </div>
+			);
+			// second condition is for when you filter the list down to no recipes left
+			// recipeState is still full but no recipes in the container
+    } else if (props.recipeState === "noResults" || (props.recipeState === "full" && !props.recipes.length)) {
+      return (
+        <div className="recipe-no-results">
+          <h4>No Results</h4>
+          <Image
+            src="https://image.flaticon.com/icons/svg/2187/2187405.svg"
+            alt="Empty Tray"
+          />
+        </div>
       );
     } else if (props.recipeState === "full") {
       const recipes = props.recipes.map((recipe) => {
@@ -65,19 +77,8 @@ export default function RecipeList(props) {
           alt="Loading Recipes"
         />
 				</div>
-      );
-    } else if (props.recipeState === "noResults") {
-      return (
-        <Fragment>
-          <h4>No Results</h4>
-          <Image
-						className="recipe-no-results"
-            src="https://image.flaticon.com/icons/svg/2187/2187405.svg"
-            alt="Empty Tray"
-          />
-        </Fragment>
-      );
-    }
+			);
+    } 
   };
 
   return <div className={recipeListClass}>{makeRecipeList()}</div>;
