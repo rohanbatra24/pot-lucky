@@ -9,7 +9,11 @@ export default function FullRecipe(props) {
 	recipeSteps.pop();
 
 	const ingredients = props.recipe.extendedIngredients.map((ingr) => {
-		return <li>{ingr.name}</li>;
+		return (
+			<li>
+				{ingr.name} ({ingr.amount} {ingr.unit})
+			</li>
+		);
 	});
 
 	const steps = recipeSteps.map((step) => {
@@ -20,15 +24,19 @@ export default function FullRecipe(props) {
 		<div className="modalContainer recipe-modal" id={props.recipe.id}>
 			<div className="modalMain">
 				<div className="ingr-and-image">
-				<Image roundedCircle src={props.recipe.image} alt={props.recipe.title} />
-				<div>
-					<h4>Ingredients</h4>
-					<Jumbotron><ul>{ingredients}</ul></Jumbotron>
-				</div>
+					<Image roundedCircle src={props.recipe.image} alt={props.recipe.title} />
+					<div>
+						<h4>Ingredients</h4>
+						<Jumbotron>
+							<ul>{ingredients}</ul>
+						</Jumbotron>
+					</div>
 				</div>
 				<div>
 					<h3>Instructions</h3>
-					<Jumbotron><ol>{steps}</ol></Jumbotron>
+					<Jumbotron>
+						<ol>{steps}</ol>
+					</Jumbotron>
 				</div>
 			</div>
 		</div>
