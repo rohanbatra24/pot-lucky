@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 
 console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 // const apiKey = process.env.SPOONACULAR_API_KEY;
-const apiKey = '14c45fb37c9e4e1baf8400f2d95678ae';
+const apiKey = '7a707a8f3c6b42ffb52bccfa111f4a00';
 
 export default function Search(props) {
 	const [ searchText, setSearchText ] = useState('');
@@ -29,7 +29,7 @@ export default function Search(props) {
 
 		searchText &&
 			axios
-				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=7&apiKey=${apiKey}`)
+				.get(`https://api.spoonacular.com/recipes/search?query=${searchText}&number=12&apiKey=${apiKey}`)
 				.then((res) => res.data.results.map((item) => item.id))
 				.then((ids) => {
 					if (ids) {
