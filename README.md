@@ -37,24 +37,24 @@ Saved Recipes, Allergies, and the Log Out button can be found in the right hand 
 
 API: [spoonacular](https://spoonacular.com/food-api)
 
-## Final Product
+# Final Product
 
-# Main
+## Main
 !["Main page"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Main%20page.png?raw=true)
 
-# Allergens badge
+## Allergens badge
 !["Allergens tooltip"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Allergens%20tooltip.png?raw=true)
 
-# Full Recipe Modal
+## Full Recipe Modal
 !["Full recipe"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Full%20recipe.png?raw=true)
 
-# Missing ingredients badge
+## Missing ingredients badge
 !["Missing ingredients"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Missing%20ingredients%20tooltip.png?raw=true)
 
-# User preferences dropdown
+## User preferences dropdown
 !["User prefs dropdown"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/User%20pref%20dropdown.png?raw=true)
 
-# Allergies modal
+## Allergies modal
 !["allergies"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/allergies.png?raw=true)
 
 ## Collaborators
