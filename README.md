@@ -39,6 +39,14 @@ API: [spoonacular](https://spoonacular.com/food-api)
 
 ## Screenshots
 
+!["Main page"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Main%20page.png?raw=true)
+!["Allergens tooltip"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Allergens%20tooltip.png?raw=true)
+!["Searching with"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/searching%20with.png?raw=true)
+!["Full recipe"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Full%20recipe.png?raw=true)
+!["Missing ingredients"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/Missing%20ingredients%20tooltip.png?raw=true)
+!["User prefs dropdown"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/User%20pref%20dropdown.png?raw=true)
+!["allergies"](https://github.com/rohanbatra24/pot-lucky/blob/master/src/assets/screenshots/allergies.png?raw=true)
+
 ## Collaborators
 
 [Kelsey Griffin](https://github.com/kelsey-griffin)  
