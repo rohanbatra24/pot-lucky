@@ -135,6 +135,7 @@ export default function Search(props) {
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
 							label="Search"
+							placeholder="Search recipes!"
 						/>
 					</Form.Group>
 					<button disabled={!searchText.length} className="search-btn" type="submit">
