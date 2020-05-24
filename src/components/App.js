@@ -46,7 +46,7 @@ function App() {
 	);
 
 	function getUserFromDb(userEmail) {
-		fetch(`http://localhost:8080/api/users/${userEmail}`)
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${userEmail}`)
 			.then((response) => response.json())
 			.then((data) => {
 				return data;
