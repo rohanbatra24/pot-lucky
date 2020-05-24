@@ -225,81 +225,81 @@ function App() {
 	}
 
 	//////////////
-	// if (user && !isLoading) {
-	return (
-		<Fragment>
-			<NavBar
-				savedRecipes={fullUser.savedRecipes}
-				allergies={fullUser.allergies}
-				ingredients={ingredients}
-				handleAddAllergy={addAllergy}
-				handleDeleteAllergy={deleteAllergy}
-				deleteSavedRecipe={deleteSavedRecipe}
-			/>
-			<div className="main">
-				<div className="pantry-container">
-					<div className="mixingbowl">
-						{/* <MixingBowl /> */}
-						<SelectedPantry
-							selectedPantryList={selectedPantryList}
+	if (user && !isLoading) {
+		return (
+			<Fragment>
+				<NavBar
+					savedRecipes={fullUser.savedRecipes}
+					allergies={fullUser.allergies}
+					ingredients={ingredients}
+					handleAddAllergy={addAllergy}
+					handleDeleteAllergy={deleteAllergy}
+					deleteSavedRecipe={deleteSavedRecipe}
+				/>
+				<div className="main">
+					<div className="pantry-container">
+						<div className="mixingbowl">
+							{/* <MixingBowl /> */}
+							<SelectedPantry
+								selectedPantryList={selectedPantryList}
+								setSelectedPantryList={setSelectedPantryList}
+							/>
+						</div>
+						<PantryList
+							handleAddItem={addToPantry}
+							pantry={pantry}
 							setSelectedPantryList={setSelectedPantryList}
+							selectedPantryList={selectedPantryList}
+							handleDeleteItem={deleteFromPantry}
+							handleEditItem={editInPantry}
+							ingredients={ingredients}
 						/>
 					</div>
-					<PantryList
-						handleAddItem={addToPantry}
-						pantry={pantry}
-						setSelectedPantryList={setSelectedPantryList}
-						selectedPantryList={selectedPantryList}
-						handleDeleteItem={deleteFromPantry}
-						handleEditItem={editInPantry}
-						ingredients={ingredients}
-					/>
-				</div>
-				<div className="recipe-container">
-					<Search
-						selectedPantryList={selectedPantryList}
-						setRecipeList={setRecipeList}
-						setRecipeState={setRecipeState}
-						setFilters={setFilters}
-					/>
-					{/* {recipeList.length > 0 && // only show filters if there are recipes */}
-					<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
-					{/* } */}
-					{/* <label htmlFor="">
+					<div className="recipe-container">
+						<Search
+							selectedPantryList={selectedPantryList}
+							setRecipeList={setRecipeList}
+							setRecipeState={setRecipeState}
+							setFilters={setFilters}
+						/>
+						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
+						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
+						{/* } */}
+						{/* <label htmlFor="">
 							<h1>Recipes</h1>
 						</label> */}
-					<RecipeList
-						recipeState={recipeState}
-						editInPantry={editInPantry}
-						pantry={pantry}
-						allergies={fullUser.allergies}
-						recipes={getFilteredRecipes(filters, recipeList)}
-						addSavedRecipe={addSavedRecipe}
-					/>
-					{/* <div className="recipes">{getRecipes()}</div> */}
+						<RecipeList
+							recipeState={recipeState}
+							editInPantry={editInPantry}
+							pantry={pantry}
+							allergies={fullUser.allergies}
+							recipes={getFilteredRecipes(filters, recipeList)}
+							addSavedRecipe={addSavedRecipe}
+						/>
+						{/* <div className="recipes">{getRecipes()}</div> */}
+					</div>
 				</div>
+			</Fragment>
+		);
+	}
+	else if (!user && !isLoading) {
+		return <Unauthorized />;
+	}
+	else {
+		return (
+			<div className="loading-app">
+				<Alert key={1} variant="success" className="loading-alert">
+					Patience, hungry one!<br />
+					Good food takes time!
+				</Alert>
+				<Image
+					className="loading-img"
+					src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
+					alt="Loading"
+				/>
 			</div>
-		</Fragment>
-	);
-	// }
-	// else if (!user && !isLoading) {
-	// 	return <Unauthorized />;
-	// }
-	// else {
-	// 	return (
-	// 		<div className="loading-app">
-	// 			<Alert key={1} variant="success" className="loading-alert">
-	// 				Patience, hungry one!<br />
-	// 				Good food takes time!
-	// 			</Alert>
-	// 			<Image
-	// 				className="loading-img"
-	// 				src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
-	// 				alt="Loading"
-	// 			/>
-	// 		</div>
-	// 	);
-	// }
+		);
+	}
 }
 
 export default App;
