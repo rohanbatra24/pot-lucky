@@ -46,7 +46,7 @@ function App() {
 	);
 
 	function getUserFromDb(userEmail) {
-		fetch(`https://pot-lucky1.herokuapp.com/api/users/${userEmail}`)
+		fetch(`/api/users/${userEmail}`)
 			.then((response) => response.json())
 			.then((data) => {
 				return data;
@@ -84,7 +84,7 @@ function App() {
 
 	function addUserToDb(newEmail) {
 		const email = { email: newEmail };
-		fetch('https://pot-lucky1.herokuapp.com/api/users/add', {
+		fetch('/api/users/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(email)
@@ -97,7 +97,7 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 	function getIngredients() {
-		fetch('https://pot-lucky1.herokuapp.com/api/ingredients/all')
+		fetch('/api/ingredients/all')
 			.then((response) => response.json())
 			.then((data) => {
 				setIngredients(data);
@@ -106,7 +106,7 @@ function App() {
 	}
 
 	function getPantry(id) {
-		fetch(`https://pot-lucky1.herokuapp.com/api/pantries/${id}`)
+		fetch(`/api/pantries/${id}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setPantry(data);
@@ -118,7 +118,7 @@ function App() {
 		event.preventDefault();
 		const itemWithId = { ...newItem, id: fullUser.id };
 
-		fetch('https://pot-lucky1.herokuapp.com/api/pantries/add', {
+		fetch('/api/pantries/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(itemWithId)
@@ -132,7 +132,7 @@ function App() {
 
 	function deleteFromPantry(event, itemId, name) {
 		event.preventDefault();
-		fetch('https://pot-lucky1.herokuapp.com/api/pantries/delete', {
+		fetch('/api/pantries/delete', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ id: itemId })
@@ -147,7 +147,7 @@ function App() {
 
 	function editInPantry(event, values) {
 		event.preventDefault();
-		fetch(`https://pot-lucky1.herokuapp.com/api/pantries/${fullUser.id}/edit`, {
+		fetch(`/api/pantries/${fullUser.id}/edit`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(values)
@@ -162,7 +162,7 @@ function App() {
 		event.preventDefault();
 		const itemWithId = { allergy: newAllergy };
 
-		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/allergies/add`, {
+		fetch(`/api/users/${fullUser.id}/allergies/add`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(itemWithId)
@@ -177,7 +177,7 @@ function App() {
 
 	function deleteAllergy(event, ingredient) {
 		event.preventDefault();
-		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/allergies/delete`, {
+		fetch(`/api/users/${fullUser.id}/allergies/delete`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ ingredient: ingredient })
@@ -195,7 +195,7 @@ function App() {
 		event.preventDefault();
 		// const itemWithId = { allergy: newAllergy };
 
-		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/savedRecipes/add`, {
+		fetch(`/api/users/${fullUser.id}/savedRecipes/add`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ newSavedRecipe })
@@ -210,7 +210,7 @@ function App() {
 
 	function deleteSavedRecipe(event, url) {
 		event.preventDefault();
-		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/savedRecipes/delete`, {
+		fetch(`/api/users/${fullUser.id}/savedRecipes/delete`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ url: url })
