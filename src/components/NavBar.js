@@ -4,7 +4,9 @@ import { useAuth0 } from '../contexts/auth0-context';
 import logo from '../assets/bowl.png';
 
 export default function NavBar(props) {
-	const { isLoading, user, logout } = useAuth0();
+	const user = {nickname: "Guest", picture: "https://image.flaticon.com/icons/svg/2431/2431573.svg"}
+
+	// const { isLoading, user, logout } = useAuth0();
 	const [ showAllergies, setShowAllergies ] = useState(false);
 	const [ showSavedRecipes, setShowSavedRecipes ] = useState(false);
 	const [ value, setValue ] = useState('');
@@ -86,8 +88,8 @@ export default function NavBar(props) {
 						<Navbar.Brand>PotLucky</Navbar.Brand>
 					</div>
 				</div>
-				{!isLoading &&
-				user && (
+				{/* {!isLoading &&
+				user && ( */}
 					<div className="nav-right">
 						<div>
 							<Image className="nav-avatar" src={user.picture} alt="My Avatar" roundedCircle />
@@ -99,9 +101,10 @@ export default function NavBar(props) {
 								<NavDropdown.Divider />
 								<NavDropdown.Item>
 									<Button
+										disabled
 										className="btn-logout"
 										variant="outline-dark"
-										onClick={() => logout({ returnTo: window.location.origin })}
+										// onClick={() => logout({ returnTo: window.location.origin })}
 									>
 										Log Out
 									</Button>
@@ -109,7 +112,7 @@ export default function NavBar(props) {
 							</NavDropdown>
 						</div>
 					</div>
-				)}
+				{/* )} */}
 			</Navbar>
 
 			<Modal classname="allergies-modal" show={showAllergies} onHide={handleCloseAllergies}>

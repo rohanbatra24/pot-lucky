@@ -7,19 +7,19 @@ import '../App.scss';
 
 import PantryList from './Pantry/PantryList';
 import RecipeList from './Recipes/RecipeList';
-import MixingBowl from './MixingBowl';
 import Search from './Search';
 import NavBar from './NavBar';
 import Filter from './Filter';
 import SelectedPantry from './Pantry/SelectedPantry';
-import Unauthorized from './Unauthorized';
+// import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
 
 import { Alert, Image } from 'react-bootstrap';
 
 function App() {
 	// const auth0 = useContext(Auth0Context);
-	const { isLoading, user } = useAuth0();
+	// const { isLoading, user } = useAuth0();
+	const user = { email: 'a@gmail.com' };
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
 		vegetarian : false,
@@ -37,18 +37,17 @@ function App() {
 	const [ recipeState, setRecipeState ] = useState('empty');
 	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [], savedRecipes: [] });
 
-	useEffect(
-		() => {
-			user && getUserFromDb(user.email);
-			getIngredients();
-		},
-		[ user ]
-	);
+	useEffect(() => {
+		console.log('USER.EMAIL in useeffect ==> ', user.email);
+		user && getUserFromDb(user.email);
+		// getIngredients();
+	}, []);
 
 	function getUserFromDb(userEmail) {
-		fetch(`/api/users/${userEmail}`)
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${userEmail}`)
 			.then((response) => response.json())
 			.then((data) => {
+				console.log('RESULT FROM GET USER', data);
 				return data;
 			})
 			.then((data) => {
@@ -84,7 +83,7 @@ function App() {
 
 	function addUserToDb(newEmail) {
 		const email = { email: newEmail };
-		fetch('/api/users/add', {
+		fetch('https://pot-lucky1.herokuapp.com/api/users/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(email)
@@ -97,7 +96,7 @@ function App() {
 			.catch((err) => console.error(err));
 	}
 	function getIngredients() {
-		fetch('/api/ingredients/all')
+		fetch('https://pot-lucky1.herokuapp.com/api/ingredients/all')
 			.then((response) => response.json())
 			.then((data) => {
 				setIngredients(data);
@@ -106,7 +105,7 @@ function App() {
 	}
 
 	function getPantry(id) {
-		fetch(`/api/pantries/${id}`)
+		fetch(`https://pot-lucky1.herokuapp.com/api/pantries/${id}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setPantry(data);
@@ -118,7 +117,7 @@ function App() {
 		event.preventDefault();
 		const itemWithId = { ...newItem, id: fullUser.id };
 
-		fetch('/api/pantries/add', {
+		fetch('https://pot-lucky1.herokuapp.com/api/pantries/add', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(itemWithId)
@@ -132,7 +131,7 @@ function App() {
 
 	function deleteFromPantry(event, itemId, name) {
 		event.preventDefault();
-		fetch('/api/pantries/delete', {
+		fetch('https://pot-lucky1.herokuapp.com/api/pantries/delete', {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ id: itemId })
@@ -147,7 +146,7 @@ function App() {
 
 	function editInPantry(event, values) {
 		event.preventDefault();
-		fetch(`/api/pantries/${fullUser.id}/edit`, {
+		fetch(`https://pot-lucky1.herokuapp.com/api/pantries/${fullUser.id}/edit`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(values)
@@ -162,7 +161,7 @@ function App() {
 		event.preventDefault();
 		const itemWithId = { allergy: newAllergy };
 
-		fetch(`/api/users/${fullUser.id}/allergies/add`, {
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/allergies/add`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify(itemWithId)
@@ -177,7 +176,7 @@ function App() {
 
 	function deleteAllergy(event, ingredient) {
 		event.preventDefault();
-		fetch(`/api/users/${fullUser.id}/allergies/delete`, {
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/allergies/delete`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ ingredient: ingredient })
@@ -195,7 +194,7 @@ function App() {
 		event.preventDefault();
 		// const itemWithId = { allergy: newAllergy };
 
-		fetch(`/api/users/${fullUser.id}/savedRecipes/add`, {
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/savedRecipes/add`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ newSavedRecipe })
@@ -210,7 +209,7 @@ function App() {
 
 	function deleteSavedRecipe(event, url) {
 		event.preventDefault();
-		fetch(`/api/users/${fullUser.id}/savedRecipes/delete`, {
+		fetch(`https://pot-lucky1.herokuapp.com/api/users/${fullUser.id}/savedRecipes/delete`, {
 			method  : 'post',
 			headers : { 'Content-Type': 'application/json' },
 			body    : JSON.stringify({ url: url })
@@ -225,81 +224,80 @@ function App() {
 	}
 
 	//////////////
-	if (user && !isLoading) {
-		return (
-			<Fragment>
-				<NavBar
-					savedRecipes={fullUser.savedRecipes}
-					allergies={fullUser.allergies}
-					ingredients={ingredients}
-					handleAddAllergy={addAllergy}
-					handleDeleteAllergy={deleteAllergy}
-					deleteSavedRecipe={deleteSavedRecipe}
-				/>
-				<div className="main">
-					<div className="pantry-container">
-						<div className="mixingbowl">
-							{/* <MixingBowl /> */}
-							<SelectedPantry
-								selectedPantryList={selectedPantryList}
-								setSelectedPantryList={setSelectedPantryList}
-							/>
-						</div>
-						<PantryList
-							handleAddItem={addToPantry}
-							pantry={pantry}
-							setSelectedPantryList={setSelectedPantryList}
+	// if (user && !isLoading) {
+	return (
+		<Fragment>
+			<NavBar
+				savedRecipes={fullUser.savedRecipes}
+				allergies={fullUser.allergies}
+				ingredients={ingredients}
+				handleAddAllergy={addAllergy}
+				handleDeleteAllergy={deleteAllergy}
+				deleteSavedRecipe={deleteSavedRecipe}
+			/>
+			<div className="main">
+				<div className="pantry-container">
+					<div className="mixingbowl">
+						<SelectedPantry
 							selectedPantryList={selectedPantryList}
-							handleDeleteItem={deleteFromPantry}
-							handleEditItem={editInPantry}
-							ingredients={ingredients}
+							setSelectedPantryList={setSelectedPantryList}
 						/>
 					</div>
-					<div className="recipe-container">
-						<Search
-							selectedPantryList={selectedPantryList}
-							setRecipeList={setRecipeList}
-							setRecipeState={setRecipeState}
-							setFilters={setFilters}
-						/>
-						{/* {recipeList.length > 0 && // only show filters if there are recipes */}
-						<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
-						{/* } */}
-						{/* <label htmlFor="">
+					<PantryList
+						handleAddItem={addToPantry}
+						pantry={pantry}
+						setSelectedPantryList={setSelectedPantryList}
+						selectedPantryList={selectedPantryList}
+						handleDeleteItem={deleteFromPantry}
+						handleEditItem={editInPantry}
+						ingredients={ingredients}
+					/>
+				</div>
+				<div className="recipe-container">
+					<Search
+						selectedPantryList={selectedPantryList}
+						setRecipeList={setRecipeList}
+						setRecipeState={setRecipeState}
+						setFilters={setFilters}
+					/>
+					{/* {recipeList.length > 0 && // only show filters if there are recipes */}
+					<Filter filters={filters} setFilters={setFilters} recipeList={recipeList} />
+					{/* } */}
+					{/* <label htmlFor="">
 							<h1>Recipes</h1>
 						</label> */}
-						<RecipeList
-							recipeState={recipeState}
-							editInPantry={editInPantry}
-							pantry={pantry}
-							allergies={fullUser.allergies}
-							recipes={getFilteredRecipes(filters, recipeList)}
-							addSavedRecipe={addSavedRecipe}
-						/>
-						{/* <div className="recipes">{getRecipes()}</div> */}
-					</div>
+					<RecipeList
+						recipeState={recipeState}
+						editInPantry={editInPantry}
+						pantry={pantry}
+						allergies={fullUser.allergies}
+						recipes={getFilteredRecipes(filters, recipeList)}
+						addSavedRecipe={addSavedRecipe}
+					/>
+					{/* <div className="recipes">{getRecipes()}</div> */}
 				</div>
-			</Fragment>
-		);
-	}
-	else if (!user && !isLoading) {
-		return <Unauthorized />;
-	}
-	else {
-		return (
-			<div className="loading-app">
-				<Alert key={1} variant="success" className="loading-alert">
-					Patience, hungry one!<br />
-					Good food takes time!
-				</Alert>
-				<Image
-					className="loading-img"
-					src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
-					alt="Loading"
-				/>
 			</div>
-		);
-	}
+		</Fragment>
+	);
+	// }
+	// else if (!user && !isLoading) {
+	// 	return <Unauthorized />;
+	// // }
+	// else {
+	// 	return (
+	// 		<div className="loading-app">
+	// 			<Alert key={1} variant="success" className="loading-alert">
+	// 				Patience, hungry one!<br />
+	// 				Good food takes time!
+	// 			</Alert>
+	// 			<Image
+	// 				className="loading-img"
+	// 				src="https://i.pinimg.com/originals/60/f1/c4/60f1c4968273fc566e7de76aac88d61c.gif"
+	// 				alt="Loading"
+	// 			/>
+	// 		</div>
+	// 	);
+	// }
 }
 
 export default App;
