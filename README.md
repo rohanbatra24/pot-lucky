@@ -2,6 +2,9 @@
 
 PotLucky helps you optimize your food consumption, reduce food waste, and make fewer trips to the grocery store by suggesting recipes based on the items in your kitchen pantry.
 
+Our app is now **live**! Check it out [here](https://hungry-meitner-9671ad.netlify.app/).
+Please note, user authentication with auth0 has been removed in the deployed version of the app due to subscription fees.
+
 ## Getting started
 
 PotLucky uses an external PostgreSQL API to store user information, preferences, and other data the site needs. In order to get started, please first go to the [PotLucky API](https://github.com/rohanbatra24/pot-lucky-api) github page and follow the instructions in that ReadMe. 
