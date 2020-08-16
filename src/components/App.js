@@ -13,12 +13,14 @@ import Filter from './Filter';
 import SelectedPantry from './Pantry/SelectedPantry';
 // import Unauthorized from './Unauthorized';
 import getFilteredRecipes from '../helpers';
+import { dummyData } from '../dummyData';
 
 import { Alert, Image } from 'react-bootstrap';
 
 function App() {
 	// const auth0 = useContext(Auth0Context);
 	// const { isLoading, user } = useAuth0();
+
 	const user = { email: 'a@gmail.com' };
 	const [ filters, setFilters ] = useState({
 		vegan      : false,
@@ -34,8 +36,11 @@ function App() {
 	const [ pantry, setPantry ] = useState([]);
 	const [ recipeList, setRecipeList ] = useState([]);
 	const [ selectedPantryList, setSelectedPantryList ] = useState([]);
-	const [ recipeState, setRecipeState ] = useState('empty');
+	const [ recipeState, setRecipeState ] = useState('full');
 	const [ fullUser, setFullUser ] = useState({ id: '', email: '', allergies: [], savedRecipes: [] });
+
+	console.log('======dummyData', dummyData);
+	console.log('recipeList.length', recipeList.length);
 
 	useEffect(() => {
 		console.log('USER.EMAIL in useeffect ==> ', user.email);
@@ -271,7 +276,7 @@ function App() {
 						editInPantry={editInPantry}
 						pantry={pantry}
 						allergies={fullUser.allergies}
-						recipes={getFilteredRecipes(filters, recipeList)}
+						recipes={getFilteredRecipes(filters, recipeList.length ? recipeList : dummyData.results)}
 						addSavedRecipe={addSavedRecipe}
 					/>
 					{/* <div className="recipes">{getRecipes()}</div> */}

@@ -1,4 +1,7 @@
+import dummyData from './dummyData';
+
 export default function getFilteredRecipes(filters, recipeList) {
+	// const recipes = recipeList.length ? recipeList : dummyData;
 	//loop filters keys, get true ones "active filters"
 	function checkFilters(currFilter, currRecipe, allFilters, isPassing) {
 		switch (currFilter) {

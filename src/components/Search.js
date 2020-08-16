@@ -7,7 +7,7 @@ console.log('api key: ', process.env.SPOONACULAR_API_KEY);
 const apiKey = '7a707a8f3c6b42ffb52bccfa111f4a00';
 
 export default function Search(props) {
-	const [ searchText, setSearchText ] = useState('');
+	const [ searchText, setSearchText ] = useState('chocolate');
 
 	// Dynamically update list of recipes based on user's search input
 
