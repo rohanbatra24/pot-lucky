@@ -27,7 +27,7 @@ li {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%
+	width: 100%;
 }
 
 .loading-alert {
@@ -105,7 +105,6 @@ li {
 	transition: all 0.4s ease 0s;
 }
 
-
 .search-btn:hover {
 	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -114,7 +113,7 @@ li {
 }
 
 .search-container {
-	margin-top: 16em;
+	margin-top: 22em;
 	display: flex;
 	display: flex;
 	justify-content: space-around;
@@ -236,7 +235,7 @@ li {
 .selected-pantry__full {
 	overflow-y: scroll;
 	height: 15em;
-	justify-content: center
+	justify-content: center;
 }
 
 .centered-text {
@@ -276,7 +275,7 @@ div .pantry-list {
 	overflow-y: scroll;
 }
 
-.pantry-list .btn-outline-danger{
+.pantry-list .btn-outline-danger {
 	float: right;
 }
 
@@ -311,7 +310,7 @@ div .pantry-list {
 	float: right;
 }
 
-.pantry-list__new  {
+.pantry-list__new {
 	background-color: #fdb44c;
 	text-align: center;
 }
